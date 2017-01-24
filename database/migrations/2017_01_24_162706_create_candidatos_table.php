@@ -24,6 +24,7 @@ class CreateCandidatosTable extends Migration
             $table->string('rg', 20);
             $table->string('rg_org_exp', 10);
             $table->integer('rg_uf');
+            $table->date('rg_data_expedicao');
             $table->integer('cidade_id');
             $table->integer('tipo_logradouro_id');
             $table->string('logradouro', 255);
