@@ -39,7 +39,7 @@ class CreateInscricaosTable extends Migration
                   ->onUpdate('restrict')  
                   ->onDelete('restrict');
             
-            $table->unique(['concurso_id', 'candidato_id', 'cargo_id']);
+            $table->unique(['concurso_id', 'candidato_id']);
             
             
         });
