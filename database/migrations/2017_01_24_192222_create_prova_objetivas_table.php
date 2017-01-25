@@ -31,6 +31,19 @@ class CreateProvaObjetivasTable extends Migration
                   ->on('concursos')
                   ->onUpdate('restrict')  
                   ->onDelete('restrict');
+            
+            $table->foreign('cargo_id')
+                  ->references('id')
+                  ->on('cargos')
+                  ->onUpdate('restrict')  
+                  ->onDelete('restrict');
+            
+            $table->foreign('disciplina_id')
+                  ->references('id')
+                  ->on('disciplinas')
+                  ->onUpdate('restrict')  
+                  ->onDelete('restrict');
+            
         });
     }
 
