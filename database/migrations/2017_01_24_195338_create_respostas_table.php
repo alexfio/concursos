@@ -14,19 +14,21 @@ class CreateRespostasTable extends Migration
     public function up()
     {
         Schema::create('respostas', function (Blueprint $table) {
-            $table->integer('candidato_id');
+            $table->integer('inscricao_id');
             $table->integer('prova_id');
             
             $table->string('resposta', 255);
-            $table->integer('qtd_acertos')->nullable();
-            $table->decimal('qtd_pontos_obtidos',4,2)->nullable();
+            $table->integer('qtd_acertos_preliminar')->nullable();
+            $table->decimal('qtd_pontos_obtidos_preliminar',4,2)->nullable();
+            $table->integer('qtd_acertos_definitivo')->nullable();
+            $table->decimal('qtd_pontos_definitivo',4,2)->nullable();
             
             
-            $table->primary(['candidato_id', 'prova_id']);
+            $table->primary(['inscricao_id', 'prova_id']);
             
-            $table->foreign('candidato_id')
+            $table->foreign('inscricao_id')
                   ->references('id')
-                  ->on('candidatos')  
+                  ->on('inscricaos')  
                   ->onUpdate('restrict') 
                   ->onDelete('restrict');
             
@@ -47,7 +49,7 @@ class CreateRespostasTable extends Migration
     public function down()
     {
         Schema::table('respostas', function(Blueprint $table) {
-           $table->dropForeign(['candidato_id']);
+           $table->dropForeign(['inscricao_id']);
            $table->dropForeign(['prova_id']);
         });
         
