@@ -177,6 +177,7 @@ return [
         // Concursos\Providers\BroadcastServiceProvider::class,
         Concursos\Providers\EventServiceProvider::class,
         Concursos\Providers\RouteServiceProvider::class,
+        Concursos\Providers\EstadosRepositoryProvider::class,
 
     ],
 

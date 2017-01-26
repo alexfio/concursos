@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+use Concursos\Model\Repositories\EstadosRepositoryInterface;
+Route::get('/', function (EstadosRepositoryInterface $rep) {
+    var_dump($rep->getById(8));
+    //return view('welcome');
 });
