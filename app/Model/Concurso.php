@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Concursos\Model\SituacaoConcurso;
 use Concursos\Model\Inscricao;
 use Concursos\Model\ProvaObjetiva;
+use Concursos\Model\Cargo;
 
 class Concurso extends Model
 {
@@ -28,5 +29,19 @@ class Concurso extends Model
         return $this->hasMany(ProvaObjetiva::class, 'concurso_id', 'id');
     }
     
+    public function cargosOfertados() {
+        return $this->belongsToMany(
+                Cargo::class, 
+                'oferta_vagas', 
+                'concurso_id', 
+                'cargo_id'
+                )
+                ->withPivot(
+                'vagas_ampla_concorrencia',
+                'vagas_pcd',
+                'qtd_aprovados_ampla_concorrencia',
+                'qtd_aprovados_pcd'        
+                );
+    }
     
 }

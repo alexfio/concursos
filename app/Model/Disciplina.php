@@ -11,4 +11,6 @@ class Disciplina extends Model
     public function provasObjetivas() {
         return $this->hasMany(ProvaObjetiva::class, 'disciplina_id', 'id');
     }
+    
+    
 }

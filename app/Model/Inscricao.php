@@ -7,6 +7,8 @@ use Concursos\Model\Candidato;
 use Concursos\Model\Concurso;
 use Concursos\Model\Cargo;
 use Concursos\Model\Resultado;
+use Concursos\Model\ProvaObjetiva;
+
 
 class Inscricao extends Model
 {
@@ -30,5 +32,17 @@ class Inscricao extends Model
     public function resultado() {
         return $this->hasOne(Resultado::class, 'inscricao_id', 'id');
     }
+    
+    public function provasObjetivasRealizadas() {
+        return $this->belongsToMany(ProvaObjetiva::class, 
+                'respostas', 'inscricao_id', 'prova_id')
+                ->withPivot(
+                    'resposta', 'qtd_acertos_preliminar',
+                    'qtd_pontos_obtidos_preliminar', 'qtd_acertos_definitivo',
+                    'qtd_pontos_obtidos_definitivo' 
+                );
+    }
+    
+    
     
 }

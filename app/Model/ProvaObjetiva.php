@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Concursos\Model\Concurso;
 use Concursos\Model\Cargo;
 use Concursos\Model\Disciplina;
+use Concursos\Model\Inscricao;
 
 class ProvaObjetiva extends Model
 {
@@ -23,5 +24,20 @@ class ProvaObjetiva extends Model
         return $this->belongsTo(Disciplina::class, 'disciplna_id', 'id');
     }
     
+    public function inscricoes() {
+        return $this->belongsToMany(
+                Inscricao::class, 
+                'respostas',
+                'prova_id',
+                'inscricao_id'
+                )->withPivot(
+                'resposta',
+                'qtd_acertos_preliminar',
+                'qtd_pontos_obtidos_preliminar',
+                'qtd_acertos_definitivo',
+                'qtd_pontos_obtidos_definitivo'      
+                );
+                
+    }
     
 }
