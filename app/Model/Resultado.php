@@ -12,6 +12,6 @@ class Resultado extends Model
     public $incrementing = false;
     
     public function getInscricao() {
-        return $this->belongsTo(Inscricao::class, 'inscricao_id');
+        return $this->belongsTo(Inscricao::class, 'inscricao_id', 'id');
     }
 }

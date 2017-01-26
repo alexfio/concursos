@@ -15,20 +15,20 @@ class Inscricao extends Model
         'updated_at'
     ];
     
-    public function getCandidato() {
-        return $this->belongsTo(Candidato::class, 'candidato_id');
+    public function candidato() {
+        return $this->belongsTo(Candidato::class, 'candidato_id', 'id');
     }
     
-    public function getConcurso() {
-        return $this->belongsTo(Concurso::class, 'concurso_id');
+    public function concurso() {
+        return $this->belongsTo(Concurso::class, 'concurso_id', 'id');
     }
     
-    public function getCargo() {
-        return $this->belongsTo(Cargo::class, 'cargo_id');
+    public function cargo() {
+        return $this->belongsTo(Cargo::class, 'cargo_id', 'id');
     }
     
-    public function getResultado() {
-        return $this->hasOne(Resultado::class, 'inscricao_id');
+    public function resultado() {
+        return $this->hasOne(Resultado::class, 'inscricao_id', 'id');
     }
     
 }
