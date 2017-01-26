@@ -4,8 +4,8 @@ namespace Concursos\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Concursos\Model\TipoLogradouro;
-use Concurso\Model\Estado;
-use Concurso\Model\Cidade;
+use Concursos\Model\Estado;
+use Concursos\Model\Cidade;
 use Concursos\Model\Inscricao;
 
 
