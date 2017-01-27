@@ -56,7 +56,7 @@ class EloquentEstadosRepositoryTest extends TestCase
         $estado = $this->estadosRepository->getCidadesByEstadoId(1);
         $this->assertArrayHasKey('id', $estado[0]);
         $this->assertArrayHasKey('nome', $estado[0]);
-    }
+    }   
    
     
 }
