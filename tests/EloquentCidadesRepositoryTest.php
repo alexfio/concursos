@@ -18,7 +18,7 @@ class EloquentCidadesRepositoryTest extends TestCase
     {
         
         $cidade = $this->cidadesRepository->getById(8);
-        
+        $this->assertEquals(8, $cidade['id']);
         $this->assertArrayHasKey('id', $cidade);
         $this->assertArrayHasKey('nome', $cidade);
         

@@ -33,6 +33,7 @@ class EloquentEstadosRepositoryTest extends TestCase
     
     public function testConsultarPorSiglaExistente() {
         $estado = $this->estadosRepository->getBySigla('CE');
+        $this->assertEquals('CE', $estado['sigla']);
         $this->assertArrayHasKey('id', $estado);
         $this->assertArrayHasKey('nome', $estado);
         $this->assertArrayHasKey('sigla', $estado);
@@ -53,9 +54,10 @@ class EloquentEstadosRepositoryTest extends TestCase
     }
     
     public function testObterCidadesPorIdEstadoExistente() {
-        $estado = $this->estadosRepository->getCidadesByEstadoId(1);
-        $this->assertArrayHasKey('id', $estado[0]);
-        $this->assertArrayHasKey('nome', $estado[0]);
+        $cidades = $this->estadosRepository->getCidadesByEstadoId(1);
+        $this->assertEquals(1, $cidades[0]['estado_id']);
+        $this->assertArrayHasKey('id', $cidades[0]);
+        $this->assertArrayHasKey('nome', $cidades[0]);
     }   
    
     

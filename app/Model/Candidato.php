@@ -18,7 +18,6 @@ class Candidato extends Model
         'updated_at',
      ];
     
-    public $timestamps = false;
     
     public function tipoLogradouro() {
         return $this->belongsTo(TipoLogradouro::class, 'tipo_logradouro_id', 'id');
