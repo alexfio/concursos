@@ -11,7 +11,25 @@
 |
 */
 use Concursos\Model\Repositories\EstadosRepositoryInterface;
-Route::get('/', function (EstadosRepositoryInterface $rep) {
-    var_dump($rep->getById(8));
-    //return view('welcome');
+use Concursos\Modules\CandidatosInterface;
+Route::get('/', function (CandidatosInterface $can) {
+        $dados['id'] = '1';
+        $dados['nome'] = 'Flávia Adriana Mena Rebouças';
+        $dados['nascimento'] = '08/03/1975';
+        $dados['email'] = 'glamreboucas@gmail.com';
+        $dados['telefone_residencial'] = '(011)32232416';
+        $dados['telefone_celular'] = '(011)996511476';
+        $dados['cpf'] = '674.834.060-89';
+        $dados['rg'] = '3003004000246';
+        $dados['rg_org_exp'] = 'SSP';
+        $dados['rg_uf'] = 25;
+        $dados['rg_data_expedicao'] = '17/08/1987';
+        $dados['cidade'] = 4850;
+        $dados['tipo_logradouro'] = 1;
+        $dados['logradouro'] = 'Campinas';
+        $dados['numero'] = '1533';
+        $dados['cep'] = '60020295';
+        $dados['bairro'] = 'Higienópolis';
+      echo   $can->cadastrarOuAtualizar($dados);
+    
 });

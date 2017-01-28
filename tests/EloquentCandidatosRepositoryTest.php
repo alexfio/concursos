@@ -18,8 +18,6 @@ class EloquentCandidatosRepositoryTest extends TestCase
         parent::setUp();
         $this->transformador = new TransformadorDadosDefault();
         $this->candidatosRepository = new CandidatosRepository($this->transformador);
-        
-        
     }
     
     /**

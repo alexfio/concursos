@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Concursos\Modules\CandidatosInterface;
 use Concursos\Modules\CandidatosDefault;
 use Concursos\Model\Repositories\CandidatosRepositoryInterface;
+use Concursos\Helpers\TransformadorDadosInterface;
 
 class CandidatosModuleProvider extends ServiceProvider
 {
@@ -27,8 +28,11 @@ class CandidatosModuleProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CandidatosInterface::class, function($app) {
-            return new 
-            CandidatosDefault($app->make(CandidatosRepositoryInterface::class));
+            
+            $transformador = $app->make(TransformadorDadosInterface::class);
+            $repositorio = $app->make(CandidatosRepositoryInterface::class);
+            
+            return new CandidatosDefault($repositorio, $transformador);
         });
     }
 }

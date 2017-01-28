@@ -21,66 +21,45 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
     public function criarOuAtualizar(array $dados): int {
         $candidato = null;
         if (!array_key_exists('id', $dados)) {
+           
+            if(Candidato::where('cpf', $dados['cpf'])->get()) {
+                throw new \Exception('Candidato já cadastrado');    
+            }
+               
             $candidato = new Candidato();
         } else {
-            $candidato = $this->getById($dados['id']);
+            $candidato = Candidato::findOrFail($dados['id']);
         }
-
+        
+        
         $idCandidato = DB::transaction(function() use ($candidato, $dados) {
-            $candidato->nome = $this->transformador->trim($this->transformador->trim($dados['nome']));
-
-            $candidato->nascimento = $this->transformador
-                    ->converterDataBrasileiraParaDateTime(
-                    $this->transformador->trim($dados['nascimento']));
-
-            $candidato->email = $this->transformador->trim($dados['email']);
-
-            $candidato->telefone_residencial = $this->transformador
-                    ->trim($this->transformador->deixarApenasNumeros($dados['telefone_residencial']));
-
-            $candidato->telefone_celular = $this->transformador
-                    ->trim($this->transformador->deixarApenasNumeros($dados['telefone_celular']));
-
-            $candidato->cpf = $this->transformador
-                    ->trim($this->transformador->deixarApenasNumeros($dados['cpf']));
-
-            $candidato->rg = $this->transformador
-                    ->trim($this->transformador->deixarApenasNumeros($dados['rg']));
-
-            $candidato->rg_org_exp = $this->transformador
-                    ->trim($dados['rg_org_exp']);
-
-            $candidato->rg_data_expedicao = $this->transformador
-                    ->converterDataBrasileiraParaDateTime(
-                    $this->transformador->trim($dados['rg_data_expedicao']));
-
-
-            $dados['rg_uf'] = $this->transformador->trim($dados['rg_uf']);
+            $candidato->nome = $dados['nome'];
+            $candidato->nascimento = $dados['nascimento'];
+            $candidato->email = $dados['email'];
+            $candidato->telefone_residencial = $dados['telefone_residencial'];
+            $candidato->telefone_celular = $dados['telefone_celular'];
+            $candidato->cpf = $dados['cpf'];
+            $candidato->rg = $dados['rg'];
+            $candidato->rg_org_exp = $dados['rg_org_exp'];
+            $candidato->rg_data_expedicao = $dados['rg_data_expedicao'];
+            
             $rgUf = Estado::findOrFail($dados['rg_uf']);
             $candidato->rgUf()->associate($rgUf);
-
-            $dados['cidade'] = $this->transformador->trim($dados['cidade']);
+            
             $cidade = Cidade::findOrFail($dados['cidade']);
             $candidato->cidade()->associate($cidade);
-
-            $dados['tipo_logradouro'] = $this->transformador->trim($dados['tipo_logradouro']);
+            
             $tipoLogradouro = TipoLogradouro::findOrFail($dados['tipo_logradouro']);
-
             $candidato->tipoLogradouro()->associate($tipoLogradouro);
-
-            $candidato->logradouro = $this->transformador->trim($dados['logradouro']);
-
-            $candidato->numero = $this->transformador->trim($dados['numero']);
-
-            $candidato->cep = $this->transformador
-                    ->trim($this->transformador->deixarApenasNumeros($dados['cep']));
-
-            $candidato->bairro = $this->transformador->trim($dados['bairro']);
-
+            
+            $candidato->logradouro = $dados['logradouro'];
+            $candidato->numero = $dados['numero'];
+            $candidato->cep = $dados['cep'];
+            $candidato->bairro = $dados['bairro'];
+            
             $candidato->save();
             
             return $candidato->id;
-            
         });
         
         return $idCandidato;
