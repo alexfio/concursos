@@ -181,6 +181,7 @@ return [
         Concursos\Providers\EstadosRepositoryProvider::class,
         Concursos\Providers\CidadesRepositoryProvider::class,
         Concursos\Providers\CandidatosRepositoryProvider::class,
+        Concursos\Providers\CandidatosModuleProvider::class,
 
     ],
 
