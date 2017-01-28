@@ -22,7 +22,7 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
         $candidato = null;
         if (!array_key_exists('id', $dados)) {
            
-            if(Candidato::where('cpf', $dados['cpf'])->get()) {
+            if(Candidato::where('cpf', $dados['cpf'])->first()) {
                 throw new \Exception('Candidato já cadastrado');    
             }
                

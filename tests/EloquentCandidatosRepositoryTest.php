@@ -8,6 +8,9 @@ use Concursos\Helpers\TransformadorDadosDefault;
 
 class EloquentCandidatosRepositoryTest extends TestCase
 {
+    
+    use DatabaseMigrations;
+    
     private $candidatosRepository;
     private $novoCandidato;
     private $transformador;
@@ -16,8 +19,15 @@ class EloquentCandidatosRepositoryTest extends TestCase
     
     public function setUp() {
         parent::setUp();
+        
+        $this->artisan('db:seed', ['--class' => 'LogradourosSeeder']);
+        $this->artisan('db:seed', ['--class' => 'EstadosSeeder']);
+        $this->artisan('db:seed', ['--class' => 'CidadesSeederTest']);
+        
         $this->transformador = new TransformadorDadosDefault();
         $this->candidatosRepository = new CandidatosRepository($this->transformador);
+        
+        
     }
     
     /**
@@ -28,6 +38,27 @@ class EloquentCandidatosRepositoryTest extends TestCase
     }
     
     public function testConsultarPorIdExistente() {
+        
+        $this->novoCandidato['nome'] = 'Francisco Chagas Alexandre de Souza Filho';
+        $this->novoCandidato['nascimento'] =  DateTime::createFromFormat('d/m/Y','17/08/1986');
+        $this->novoCandidato['email'] = 'glamreboucas@gmail.com';
+        $this->novoCandidato['telefone_residencial'] = '01332232416';
+        $this->novoCandidato['telefone_celular'] = '013996511476';
+        $this->novoCandidato['cpf'] = '67483406089';
+        $this->novoCandidato['rg'] = '3003004000246';
+        $this->novoCandidato['rg_org_exp'] = 'SSP';
+        $this->novoCandidato['rg_uf'] = 25;
+        $this->novoCandidato['rg_data_expedicao'] = DateTime::createFromFormat('d/m/Y','17/08/1986');
+        $this->novoCandidato['cidade'] = 4850;
+        $this->novoCandidato['tipo_logradouro'] = 1;
+        $this->novoCandidato['logradouro'] = 'José Jatahy';
+        $this->novoCandidato['numero'] = '1533';
+        $this->novoCandidato['cep'] = '60020295';
+        $this->novoCandidato['bairro'] = 'Farias Brito';
+        $idCandidato = 
+          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+        
+        
         $candidato = $this->candidatosRepository->getById(1);
         $this->assertEquals(1, $candidato['id']);
         $this->assertArrayHasKey('nome', $candidato);
@@ -43,8 +74,28 @@ class EloquentCandidatosRepositoryTest extends TestCase
     }
     
     public function testConsultarPorEmailExistente() {
-        $candidato = $this->candidatosRepository->getByEmail('alexfiofcasf@gmail.com');
-        $this->assertEquals('alexfiofcasf@gmail.com', $candidato['email']);
+        
+        $this->novoCandidato['nome'] = 'Francisco Chagas Alexandre de Souza Filho';
+        $this->novoCandidato['nascimento'] =  DateTime::createFromFormat('d/m/Y','17/08/1986');
+        $this->novoCandidato['email'] = 'glamreboucas@gmail.com';
+        $this->novoCandidato['telefone_residencial'] = '01332232416';
+        $this->novoCandidato['telefone_celular'] = '013996511476';
+        $this->novoCandidato['cpf'] = '67483406089';
+        $this->novoCandidato['rg'] = '3003004000246';
+        $this->novoCandidato['rg_org_exp'] = 'SSP';
+        $this->novoCandidato['rg_uf'] = 25;
+        $this->novoCandidato['rg_data_expedicao'] = DateTime::createFromFormat('d/m/Y','17/08/1986');
+        $this->novoCandidato['cidade'] = 4850;
+        $this->novoCandidato['tipo_logradouro'] = 1;
+        $this->novoCandidato['logradouro'] = 'José Jatahy';
+        $this->novoCandidato['numero'] = '1533';
+        $this->novoCandidato['cep'] = '60020295';
+        $this->novoCandidato['bairro'] = 'Farias Brito';
+        $idCandidato = 
+          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+        
+        $candidato = $this->candidatosRepository->getByEmail('glamreboucas@gmail.com');
+        $this->assertEquals('glamreboucas@gmail.com', $candidato['email']);
         
     }
     
@@ -56,23 +107,77 @@ class EloquentCandidatosRepositoryTest extends TestCase
     }
     
     public function testConsultarPorCPFExistente() {
-        $candidato = $this->candidatosRepository->getByCPF('02464310328');
-        $this->assertEquals('02464310328', $candidato['cpf']);
+        
+        $this->novoCandidato['nome'] = 'Francisco Chagas Alexandre de Souza Filho';
+        $this->novoCandidato['nascimento'] =  DateTime::createFromFormat('d/m/Y','17/08/1986');
+        $this->novoCandidato['email'] = 'alexfiofcasf@gmail.com';
+        $this->novoCandidato['telefone_residencial'] = '01332232416';
+        $this->novoCandidato['telefone_celular'] = '013996511476';
+        $this->novoCandidato['cpf'] = '67483406089';
+        $this->novoCandidato['rg'] = '3003004000246';
+        $this->novoCandidato['rg_org_exp'] = 'SSP';
+        $this->novoCandidato['rg_uf'] = 25;
+        $this->novoCandidato['rg_data_expedicao'] = DateTime::createFromFormat('d/m/Y','17/08/1986');
+        $this->novoCandidato['cidade'] = 4850;
+        $this->novoCandidato['tipo_logradouro'] = 1;
+        $this->novoCandidato['logradouro'] = 'José Jatahy';
+        $this->novoCandidato['numero'] = '1533';
+        $this->novoCandidato['cep'] = '60020295';
+        $this->novoCandidato['bairro'] = 'Farias Brito';
+        $idCandidato = 
+          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+        
+        $candidato = $this->candidatosRepository->getByCPF('67483406089');
+        $this->assertEquals('67483406089', $candidato['cpf']);
         
     }
     
 
     public function testCriarNovoCandidato() {
-        $this->novoCandidato['nome'] = 'Adriana Mena Rebouças';
-        $this->novoCandidato['nascimento'] = '08/03/1975';
-        $this->novoCandidato['email'] = 'glamreboucas@gmail.com';
-        $this->novoCandidato['telefone_residencial'] = '(011)32232416';
-        $this->novoCandidato['telefone_celular'] = '(011)996511476';
-        $this->novoCandidato['cpf'] = '674.834.060-89';
+        $this->novoCandidato['nome'] = 'Francisco Chagas Alexandre de Souza Filho';
+        $this->novoCandidato['nascimento'] =  DateTime::createFromFormat('d/m/Y','17/08/1986');
+        $this->novoCandidato['email'] = 'alexfiofcasf@gmail.com';
+        $this->novoCandidato['telefone_residencial'] = '01332232416';
+        $this->novoCandidato['telefone_celular'] = '013996511476';
+        $this->novoCandidato['cpf'] = '67483406088';
         $this->novoCandidato['rg'] = '3003004000246';
         $this->novoCandidato['rg_org_exp'] = 'SSP';
         $this->novoCandidato['rg_uf'] = 25;
-        $this->novoCandidato['rg_data_expedicao'] = '17/08/1987';
+        $this->novoCandidato['rg_data_expedicao'] = DateTime::createFromFormat('d/m/Y','17/08/1986');
+        $this->novoCandidato['cidade'] = 4850;
+        $this->novoCandidato['tipo_logradouro'] = 1;
+        $this->novoCandidato['logradouro'] = 'José Jatahy';
+        $this->novoCandidato['numero'] = '1533';
+        $this->novoCandidato['cep'] = '60020295';
+        $this->novoCandidato['bairro'] = 'Farias Brito';
+        $idCandidato = 
+          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+        
+        $this->assertInternalType('int', $idCandidato);
+        
+        $candidato = $this->candidatosRepository->getById($idCandidato);
+        
+        $this->assertEquals('67483406088', $candidato['cpf']);
+        
+    }
+    
+    /**
+     * @expectedException Exception
+     */
+    public function testCriarNovoCandidatoComCpfJaCadastrado() {
+        
+        //Supondo que este registro já está no banco de dados
+        
+        $this->novoCandidato['nome'] = 'Adriana Mena Rebouças';
+        $this->novoCandidato['nascimento'] =  DateTime::createFromFormat('d/m/Y','08/03/1975');
+        $this->novoCandidato['email'] = 'glamreboucas@gmail.com';
+        $this->novoCandidato['telefone_residencial'] = '01132232416';
+        $this->novoCandidato['telefone_celular'] = '011996511476';
+        $this->novoCandidato['cpf'] = '67483406089';
+        $this->novoCandidato['rg'] = '3003004000246';
+        $this->novoCandidato['rg_org_exp'] = 'SSP';
+        $this->novoCandidato['rg_uf'] = 25;
+        $this->novoCandidato['rg_data_expedicao'] = DateTime::createFromFormat('d/m/Y','17/08/1986');
         $this->novoCandidato['cidade'] = 4850;
         $this->novoCandidato['tipo_logradouro'] = 1;
         $this->novoCandidato['logradouro'] = 'Campinas';
@@ -82,11 +187,8 @@ class EloquentCandidatosRepositoryTest extends TestCase
         $idCandidato = 
           $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
         
-        $this->assertInternalType('int', $idCandidato);
-        
-        $candidato = $this->candidatosRepository->getById($idCandidato);
-        
-        $this->assertEquals('67483406089', $candidato['cpf']);
-        
+        $idCandidato = 
+          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+         
     }
 }

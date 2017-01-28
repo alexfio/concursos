@@ -8,17 +8,24 @@ use Concursos\Model\Repositories\Eloquent\CidadesRepository;
 
 class EloquentCidadesRepositoryTest extends TestCase
 {
+    use DatabaseMigrations;
+    
     private $cidadesRepository;
     public function setUp() {
+        
         parent::setUp();
+        $this->artisan('db:seed', ['--class' => 'LogradourosSeeder']);
+        $this->artisan('db:seed', ['--class' => 'EstadosSeeder']);
+        $this->artisan('db:seed', ['--class' => 'CidadesSeederTest']);
         $this->cidadesRepository = new CidadesRepository();
+        
     }
     
     public function testConsultarPorIdCidadeExistente()
     {
         
-        $cidade = $this->cidadesRepository->getById(8);
-        $this->assertEquals(8, $cidade['id']);
+        $cidade = $this->cidadesRepository->getById(4850);
+        $this->assertEquals(4850, $cidade['id']);
         $this->assertArrayHasKey('id', $cidade);
         $this->assertArrayHasKey('nome', $cidade);
         

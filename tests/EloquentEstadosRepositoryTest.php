@@ -8,9 +8,14 @@ use Concursos\Model\Repositories\Eloquent\EstadosRepository;
 
 class EloquentEstadosRepositoryTest extends TestCase
 {
+    use DatabaseMigrations;
+    
     private $estadosRepository;
     public function setUp() {
         parent::setUp();
+        $this->artisan('db:seed', ['--class' => 'LogradourosSeeder']);
+        $this->artisan('db:seed', ['--class' => 'EstadosSeeder']);
+        $this->artisan('db:seed', ['--class' => 'CidadesSeederTest']);
         $this->estadosRepository = new EstadosRepository();
     }
     
@@ -54,8 +59,8 @@ class EloquentEstadosRepositoryTest extends TestCase
     }
     
     public function testObterCidadesPorIdEstadoExistente() {
-        $cidades = $this->estadosRepository->getCidadesByEstadoId(1);
-        $this->assertEquals(1, $cidades[0]['estado_id']);
+        $cidades = $this->estadosRepository->getCidadesByEstadoId(25);
+        $this->assertEquals(25, $cidades[0]['estado_id']);
         $this->assertArrayHasKey('id', $cidades[0]);
         $this->assertArrayHasKey('nome', $cidades[0]);
     }   
