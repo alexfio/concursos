@@ -12,7 +12,7 @@ use Concursos\Helpers\TransformadorDadosInterface;
 
 class CandidatosRepository implements CandidatosRepositoryInterface {
 
-    public function criarOuAtualizar(array $dados): int {
+    public function saveOrUpdate(array $dados): int {
         $candidato = null;
         
         if (!array_key_exists('id', $dados)) {
@@ -60,19 +60,9 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
         return $idCandidato;
     }
 
-    public function getByCPF(string $cpf): array {
-        $candidato = Candidato::where('cpf', $cpf)->firstOrFail();
+    public function findBy(string $coluna, string $valor) : array {
+        $candidato = Candidato::where($coluna, $valor)->firstOrFail();
         return $candidato->toArray();
     }
-
-    public function getByEmail(string $email): array {
-        $candidato = Candidato::where('email', $email)->firstOrFail();
-        return $candidato->toArray();
-    }
-
-    public function getById(int $id): array {
-        $candidato = Candidato::findOrFail($id);
-        return $candidato->toArray();
-    }
-
+    
 }

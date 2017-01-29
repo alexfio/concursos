@@ -34,7 +34,7 @@ class EloquentCandidatosRepositoryTest extends TestCase
      * @expectedException Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function testConsultarPorIdInexistente() {
-        $this->candidatosRepository->getById(1000000);
+        $this->candidatosRepository->findBy('id',1000000);
     }
     
     public function testConsultarPorIdExistente() {
@@ -56,10 +56,10 @@ class EloquentCandidatosRepositoryTest extends TestCase
         $this->novoCandidato['cep'] = '60020295';
         $this->novoCandidato['bairro'] = 'Farias Brito';
         $idCandidato = 
-          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+          $this->candidatosRepository->saveOrUpdate($this->novoCandidato); 
         
         
-        $candidato = $this->candidatosRepository->getById(1);
+        $candidato = $this->candidatosRepository->findBy('id',1);
         $this->assertEquals(1, $candidato['id']);
         $this->assertArrayHasKey('nome', $candidato);
         $this->assertArrayHasKey('nascimento', $candidato);
@@ -70,7 +70,7 @@ class EloquentCandidatosRepositoryTest extends TestCase
      * @expectedException Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function testConsultarPorEmailInexistente() {
-        $this->candidatosRepository->getByEmail('blablabla');
+        $this->candidatosRepository->findBy('email', 'blablabla');
     }
     
     public function testConsultarPorEmailExistente() {
@@ -92,9 +92,9 @@ class EloquentCandidatosRepositoryTest extends TestCase
         $this->novoCandidato['cep'] = '60020295';
         $this->novoCandidato['bairro'] = 'Farias Brito';
         $idCandidato = 
-          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+          $this->candidatosRepository->saveOrUpdate($this->novoCandidato); 
         
-        $candidato = $this->candidatosRepository->getByEmail('glamreboucas@gmail.com');
+        $candidato = $this->candidatosRepository->findBy('email', 'glamreboucas@gmail.com');
         $this->assertEquals('glamreboucas@gmail.com', $candidato['email']);
         
     }
@@ -103,7 +103,7 @@ class EloquentCandidatosRepositoryTest extends TestCase
      * @expectedException Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function testConsultarPorCPFInexistente() {
-        $this->candidatosRepository->getByCPF('blablabla');
+        $this->candidatosRepository->findBy('cpf','blablabla');
     }
     
     public function testConsultarPorCPFExistente() {
@@ -125,9 +125,9 @@ class EloquentCandidatosRepositoryTest extends TestCase
         $this->novoCandidato['cep'] = '60020295';
         $this->novoCandidato['bairro'] = 'Farias Brito';
         $idCandidato = 
-          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+          $this->candidatosRepository->saveOrUpdate($this->novoCandidato); 
         
-        $candidato = $this->candidatosRepository->getByCPF('67483406089');
+        $candidato = $this->candidatosRepository->findBy('cpf','67483406089');
         $this->assertEquals('67483406089', $candidato['cpf']);
         
     }
@@ -151,11 +151,11 @@ class EloquentCandidatosRepositoryTest extends TestCase
         $this->novoCandidato['cep'] = '60020295';
         $this->novoCandidato['bairro'] = 'Farias Brito';
         $idCandidato = 
-          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+          $this->candidatosRepository->saveOrUpdate($this->novoCandidato); 
         
         $this->assertInternalType('int', $idCandidato);
         
-        $candidato = $this->candidatosRepository->getById($idCandidato);
+        $candidato = $this->candidatosRepository->findBy('id', $idCandidato);
         
         $this->assertEquals('67483406088', $candidato['cpf']);
         
@@ -185,10 +185,10 @@ class EloquentCandidatosRepositoryTest extends TestCase
         $this->novoCandidato['cep'] = '60020295';
         $this->novoCandidato['bairro'] = 'Higienópolis';
         $idCandidato = 
-          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+          $this->candidatosRepository->saveOrUpdate($this->novoCandidato); 
         
         $idCandidato = 
-          $this->candidatosRepository->criarOuAtualizar($this->novoCandidato); 
+          $this->candidatosRepository->saveOrUpdate($this->novoCandidato); 
          
     }
 }

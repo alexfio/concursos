@@ -42,7 +42,7 @@ class CandidatosDefault implements CandidatosInterface {
        $dados['bairro'] = $this->transformador->trim($dados['bairro']);
        
        //Criando ou atualizando um novo candidato 
-       return $this->candidatosRepository->criarOuAtualizar($dados);
+       return $this->candidatosRepository->saveOrUpdate($dados);
       
       } catch (CandidatoJaCadastradoException $ex) {
          throw $ex;
@@ -50,6 +50,11 @@ class CandidatosDefault implements CandidatosInterface {
       catch(\Exception $ex) {
           throw $ex;
       }
+   }
+   
+   public function recuperarSenha(string $email) {
+       $email = $this->transformador->trim($email);
+       
    }
 }
 

@@ -3,7 +3,7 @@
 namespace Concursos\Model\Repositories;
 
 interface CidadesRepositoryInterface {
-    public function getById(int $id) : array; 
+    public function findBy(string $coluna, string $valor) : array; 
    
 }
 

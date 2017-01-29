@@ -8,8 +8,8 @@ use Concursos\Model\Cidade;
 
 class CidadesRepository implements CidadesRepositoryInterface {
     
-    public function getById(int $id): array {
-      $cidade = Cidade::findOrFail($id);  
+    public function findBy(string $coluna, string $valor): array {
+      $cidade = Cidade::where($coluna, $valor)->firstOrFail();  
       return $cidade->toArray();
     }
 

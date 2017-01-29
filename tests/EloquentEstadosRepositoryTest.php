@@ -22,7 +22,7 @@ class EloquentEstadosRepositoryTest extends TestCase
     public function testConsultarPorIdEstadoExistente()
     {
         
-        $estado = $this->estadosRepository->getById(8);
+        $estado = $this->estadosRepository->findBy('id', 8);
         
         $this->assertArrayHasKey('id', $estado);
         $this->assertArrayHasKey('nome', $estado);
@@ -33,11 +33,11 @@ class EloquentEstadosRepositoryTest extends TestCase
      * @expectedException Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function testConsultarPorIdInexistente() {
-        $this->estadosRepository->getById(1000000);
+        $this->estadosRepository->findBy('id', 1000000);
     }
     
     public function testConsultarPorSiglaExistente() {
-        $estado = $this->estadosRepository->getBySigla('CE');
+        $estado = $this->estadosRepository->findBy('sigla','CE');
         $this->assertEquals('CE', $estado['sigla']);
         $this->assertArrayHasKey('id', $estado);
         $this->assertArrayHasKey('nome', $estado);
@@ -49,7 +49,7 @@ class EloquentEstadosRepositoryTest extends TestCase
      * @expectedException Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function testConsultarPorSiglaInexistente() {
-        $this->estadosRepository->getBySigla('ZE');
+        $this->estadosRepository->findBy('sigla','ZE');
     }
     /**
      * @expectedException Illuminate\Database\Eloquent\ModelNotFoundException

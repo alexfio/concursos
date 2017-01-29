@@ -24,7 +24,7 @@ class EloquentCidadesRepositoryTest extends TestCase
     public function testConsultarPorIdCidadeExistente()
     {
         
-        $cidade = $this->cidadesRepository->getById(4850);
+        $cidade = $this->cidadesRepository->findBy('id', 4850);
         $this->assertEquals(4850, $cidade['id']);
         $this->assertArrayHasKey('id', $cidade);
         $this->assertArrayHasKey('nome', $cidade);
@@ -35,7 +35,7 @@ class EloquentCidadesRepositoryTest extends TestCase
      * @expectedException Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function testConsultarPorIdCidadeInexistente() {
-        $this->cidadesRepository->getById(1000000);
+        $this->cidadesRepository->findBy('id', 1000000);
     }
     
 }
