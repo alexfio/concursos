@@ -12,14 +12,9 @@ use Concursos\Helpers\TransformadorDadosInterface;
 
 class CandidatosRepository implements CandidatosRepositoryInterface {
 
-    private $transformador;
-
-    public function __construct(TransformadorDadosInterface $transformadorDados) {
-        $this->transformador = $transformadorDados;
-    }
-
     public function criarOuAtualizar(array $dados): int {
         $candidato = null;
+        
         if (!array_key_exists('id', $dados)) {
            
             if(Candidato::where('cpf', $dados['cpf'])->first()) {

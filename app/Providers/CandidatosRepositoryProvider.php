@@ -5,7 +5,7 @@ namespace Concursos\Providers;
 use Illuminate\Support\ServiceProvider;
 use Concursos\Model\Repositories\CandidatosRepositoryInterface;
 use Concursos\Model\Repositories\Eloquent\CandidatosRepository;
-use Concursos\Helpers\TransformadorDadosInterface;
+
 
 class CandidatosRepositoryProvider extends ServiceProvider
 {
@@ -26,8 +26,9 @@ class CandidatosRepositoryProvider extends ServiceProvider
      */
     public function register()
     {
-         $this->app->bind(CandidatosRepositoryInterface::class, function($app) {
-             return new CandidatosRepository($app->make(TransformadorDadosInterface::class));
-         });
+         $this->app->bind(
+                 CandidatosRepositoryInterface::class, 
+                 CandidatosRepository::class);
+         
     }
 }

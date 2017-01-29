@@ -5,6 +5,16 @@ use Concursos\Helpers\TransformadorDadosInterface;
 
 class TransformadorDadosDefault implements TransformadorDadosInterface {
     
+    //As funções são aplicadas na ordem em que foram passadas na cadeia....
+    public function aplicarComposicao(string $cadeia, $dado) {
+        $transformacoes = explode('|', $cadeia);
+        foreach($transformacoes as $transformacao) {
+           $dado = $this->$transformacao($dado); 
+        }
+        
+        return $dado;
+    }
+    
     public function converterDataBrasileiraParaDateTime(string $data) : \DateTime {
         return \DateTime::createFromFormat('d/m/Y', $data);
     }
@@ -26,6 +36,6 @@ class TransformadorDadosDefault implements TransformadorDadosInterface {
     }
     
     public function trim(string $entrada) : string {
-        return $entrada;
+        return \trim($entrada);
     }
 }

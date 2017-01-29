@@ -13,8 +13,8 @@
 use Concursos\Model\Repositories\EstadosRepositoryInterface;
 use Concursos\Modules\CandidatosInterface;
 Route::get('/', function (CandidatosInterface $can) {
-        $dados['id'] = '1';
-        $dados['nome'] = 'Flávia Adriana Mena Rebouças';
+        
+        $dados['nome'] = '      Flávia Adriana Mena Rebouças';
         $dados['nascimento'] = '08/03/1975';
         $dados['email'] = 'glamreboucas@gmail.com';
         $dados['telefone_residencial'] = '(011)32232416';

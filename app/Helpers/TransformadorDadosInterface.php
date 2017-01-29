@@ -3,6 +3,7 @@
 namespace Concursos\Helpers;
 
 interface TransformadorDadosInterface {
+    public function aplicarComposicao(string $cadeia, $dado);
     public function converterDataBrasileiraParaDateTime(string $data) : \DateTime;
     public function converterDateTimeParaDataBrasileira(\DateTime $data) : string;
     public function deixarApenasNumeros(string $entrada) : string;
