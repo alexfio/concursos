@@ -1,0 +1,19 @@
+{
+  "name": "Sistema de Gerenciamento de Concursos",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Alexandre Filho <alexfiofcasf@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/alexfio/concursos",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ]
+}
