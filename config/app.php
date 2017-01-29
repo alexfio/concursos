@@ -182,6 +182,7 @@ return [
         Concursos\Providers\CidadesRepositoryProvider::class,
         Concursos\Providers\CandidatosRepositoryProvider::class,
         Concursos\Providers\CandidatosModuleProvider::class,
+        Concursos\Providers\GerenciadorEmailProvider::class,
 
     ],
 
