@@ -31,6 +31,7 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
             $candidato->nome = $dados['nome'];
             $candidato->nascimento = $dados['nascimento'];
             $candidato->email = $dados['email'];
+            $candidato->senha = $dados['senha'];
             $candidato->telefone_residencial = $dados['telefone_residencial'];
             $candidato->telefone_celular = $dados['telefone_celular'];
             $candidato->cpf = $dados['cpf'];

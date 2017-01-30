@@ -38,4 +38,8 @@ class TransformadorDadosDefault implements TransformadorDadosInterface {
     public function trim(string $entrada) : string {
         return \trim($entrada);
     }
+    
+    public function hash(string $entrada) : string {
+        return sha1($entrada);
+    }
 }

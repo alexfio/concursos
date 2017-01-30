@@ -18,6 +18,6 @@ class CandidatosController extends Controller
     }
         
     public function cadastrar(CandidatoRequest $request) {
-        
+        $this->moduloCandidatos->cadastrarOuAtualizar($request->all());
     }
 }

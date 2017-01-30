@@ -5,14 +5,16 @@
         <title>@yield('titulo')</title>
         @section('style')
 
-        <link  rel  = "stylesheet" type = "text/css"
-               href = "{{url('lib/materialize/dist/css/materialize.min.css')}}" >
+            <link  rel  = "stylesheet" type = "text/css"
+                href = "{{url('lib/font-awesome/css/font-awesome.min.css')}}" >
 
-        <link  rel  = "stylesheet" type = "text/css"
-               href = "{{url('lib/font-awesome/css/font-awesome.min.css')}}" >
+                <link  rel  = "stylesheet" type = "text/css"
+                href = "{{url('lib/materialize/dist/css/materialize.min.css')}}" >
 
-        <link  rel  = "stylesheet" type = "text/css"
-               href = "{{url('lib/animate.css/animate.min.css')}}" >       
+            <link  rel  = "stylesheet" type = "text/css"
+                href = "{{url('lib/animate.css/animate.min.css')}}" >   
+
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         @show
 
@@ -22,9 +24,9 @@
     </body>
     
     @section('scripts')
-    <script type ='text/javascript' 
-    src ="{{url('lib/jquery/dist/jquery.min.js')}}" ></script>
-    <script type ='text/javascript' 
-    src ="{{url('lib/materialize/dist/js/materialize.min.js')}}" ></script>
+        <script type ='text/javascript' 
+        src ="{{url('lib/jquery/dist/jquery.min.js')}}" ></script>
+        <script type ='text/javascript' 
+        src ="{{url('lib/materialize/dist/js/materialize.min.js')}}" ></script>
     @show
 </html>

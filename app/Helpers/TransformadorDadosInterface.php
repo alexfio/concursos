@@ -10,4 +10,5 @@ interface TransformadorDadosInterface {
     public function adicionarMascaraTelefone(string $telefone) : string;
     public function adicionarMascaraCPF(string $cpf) : string;
     public function trim(string $entrada) : string;
+    public function hash(string $entrada) : string;
 }
