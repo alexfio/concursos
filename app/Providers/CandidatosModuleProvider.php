@@ -7,6 +7,7 @@ use Concursos\Modules\CandidatosInterface;
 use Concursos\Modules\CandidatosDefault;
 use Concursos\Model\Repositories\CandidatosRepositoryInterface;
 use Concursos\Helpers\TransformadorDadosInterface;
+use Concursos\Helpers\GerenciadorEmailInterface;
 
 class CandidatosModuleProvider extends ServiceProvider
 {
@@ -31,8 +32,8 @@ class CandidatosModuleProvider extends ServiceProvider
             
             $transformador = $app->make(TransformadorDadosInterface::class);
             $repositorio = $app->make(CandidatosRepositoryInterface::class);
-            
-            return new CandidatosDefault($repositorio, $transformador);
+            $gerenciadoEmail = $app->make(GerenciadorEmailInterface::class);
+            return new CandidatosDefault($repositorio, $transformador, $gerenciadoEmail);
         });
     }
 }

@@ -6,18 +6,21 @@ use Concursos\Modules\CandidatosInterface;
 use Concursos\Model\Repositories\CandidatosRepositoryInterface;
 use Concursos\Helpers\TransformadorDadosInterface;
 use Concursos\Exceptions\CandidatoJaCadastradoException;
+use Concursos\Helpers\GerenciadorEmailInterface;
 
 class CandidatosDefault implements CandidatosInterface {
    
    private $candidatosRepository; 
    private $transformador;
+   private $email;
    
    public function __construct(CandidatosRepositoryInterface $repository, 
-           TransformadorDadosInterface $transformador) {
+           TransformadorDadosInterface $transformador, GerenciadorEmailInterface $email) {
       
       $this->candidatosRepository = $repository; 
       $this->transformador = $transformador;
-   }
+      $this->email = $email;
+   }  
    
    public function  cadastrarOuAtualizar(array $dados) {
        
@@ -52,8 +55,9 @@ class CandidatosDefault implements CandidatosInterface {
       }
    }
    
-   public function recuperarSenha(string $email) {
-       $email = $this->transformador->trim($email);
+   public function recuperarSenha(string $enderecoEmail) {
+       $enderecoEmail = $this->transformador->trim($enderecoEmail);
+       
        
    }
 }
