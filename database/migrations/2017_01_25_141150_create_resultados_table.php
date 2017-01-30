@@ -31,6 +31,7 @@ class CreateResultadosTable extends Migration
                   ->onDelete('restrict');
                    
         });
+        
     }
 
     /**

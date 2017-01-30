@@ -42,6 +42,7 @@ class EloquentCandidatosRepositoryTest extends TestCase
         $this->novoCandidato['nome'] = 'Francisco Chagas Alexandre de Souza Filho';
         $this->novoCandidato['nascimento'] =  DateTime::createFromFormat('d/m/Y','17/08/1986');
         $this->novoCandidato['email'] = 'glamreboucas@gmail.com';
+        $this->novoCandidato['senha'] = 'aaaaaaaaa';
         $this->novoCandidato['telefone_residencial'] = '01332232416';
         $this->novoCandidato['telefone_celular'] = '013996511476';
         $this->novoCandidato['cpf'] = '67483406089';

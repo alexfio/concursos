@@ -8,7 +8,7 @@ use Concursos\Model\Candidato;
 use Concursos\Model\Estado;
 use Concursos\Model\Cidade;
 use Concursos\Model\TipoLogradouro;
-use Concursos\Helpers\TransformadorDadosInterface;
+
 
 class CandidatosRepository implements CandidatosRepositoryInterface {
 

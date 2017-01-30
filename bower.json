@@ -15,5 +15,10 @@
     "lib",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "materialize": "^0.98.0",
+    "font-awesome": "fontawesome#^4.7.0",
+    "animate.css": "^3.5.2"
+  }
 }

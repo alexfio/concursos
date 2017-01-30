@@ -30,6 +30,7 @@ class CandidatosDefault implements CandidatosInterface {
        $dados['nome'] = $this->transformador->aplicarComposicao('trim', $dados['nome']);
        $dados['nascimento'] = $this->transformador->aplicarComposicao('trim|converterDataBrasileiraParaDateTime', $dados['nascimento']);
        $dados['email'] = $this->transformador->trim($dados['email']);
+       $dados['senha'] = $this->transformador->trim($dados['senha']);
        $dados['telefone_residencial'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim',$dados['telefone_residencial']);
        $dados['telefone_celular'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim',$dados['telefone_celular']);
        $dados['cpf'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim',$dados['cpf']);

@@ -18,6 +18,7 @@ class CreateCandidatosTable extends Migration
             $table->string('nome');
             $table->date('nascimento');
             $table->string('email');
+            $table->string('senha');
             $table->string('telefone_residencial', 15);
             $table->string('telefone_celular', 15);
             $table->string('cpf',11);
