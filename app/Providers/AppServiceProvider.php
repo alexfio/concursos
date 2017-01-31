@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(ValidacaoInterface $validacao)
     {
         //Registrando a validação de CPF...
-        Validator::extend('cpf', function($atributo, $valor) use ($validacao) {
+        Validator::extend('cpf_valido', function($atributo, $valor) use ($validacao) {
             return $validacao->cpfEhValido($valor);
         });
     }

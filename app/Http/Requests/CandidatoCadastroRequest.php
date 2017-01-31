@@ -26,7 +26,7 @@ class CandidatoCadastroRequest extends FormRequest
         return [
             "nome" => "required|string",
             "nascimento" => "required|date_format:d/m/Y",
-            "cpf" => "required|regex:/^[0-9]{3}.[0-9]{3}.[0-9]{3}\-[0-9]{2}$/|cpf",
+            "cpf" => "required|regex:/^[0-9]{3}.[0-9]{3}.[0-9]{3}\-[0-9]{2}$/|cpf_valido",
             "telefone_residencial" => "required|regex:/^\([0-9]{2}\)[0-9]{4}\-[0-9]{4}$/",
             "telefone_celular" => "required|regex:/^\([0-9]{2}\)[0-9]{5}\-[0-9]{4}$/",
             "rg" => "required|alpha_num",
@@ -55,7 +55,7 @@ class CandidatoCadastroRequest extends FormRequest
         'nascimento.date_format'  => 'O campo Nascimento deve obedecer ao padrão dd/mm/aaaa;',
         'cpf.required' => 'O campo CPF é obrigatório;',
         'cpf.regex' => 'O campo CPF deve obedecer ao padrão xxx.xxx.xxx-xx;',
-        'cpf.cpf' => 'CPF Inválido;',
+        'cpf.cpf_valido' => 'CPF Inválido;',
         'telefone_residencial.required' => 'O campo Telefone Residencial é obrigatório;',
         'telefone_residencial.regex' => 'O campo Telefone Residencial deve obedecer ao padrão (xx)xxxx-xxxx;',
         'telefone_celular.required' => 'O campo Telefone Celular é obrigatório;',
