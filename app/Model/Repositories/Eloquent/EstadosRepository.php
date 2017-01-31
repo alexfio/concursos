@@ -19,6 +19,10 @@ class EstadosRepository implements EstadosRepositoryInterface {
         return $cidades;
     }
 
-    
+    public function all() : array {
+        $estados  = Estado::all()->toArray();
+        sort($estados);
+        return $estados;
+    }
 
 }

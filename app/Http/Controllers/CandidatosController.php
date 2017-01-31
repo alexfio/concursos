@@ -4,7 +4,7 @@ namespace Concursos\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Concursos\Modules\CandidatosInterface;
-use Concursos\Http\Requests\CandidatoRequest;
+use Concursos\Http\Requests\CandidatoCadastroRequest;
 
 class CandidatosController extends Controller
 {
@@ -17,7 +17,7 @@ class CandidatosController extends Controller
        return view('candidatos.cadastro');
     }
         
-    public function cadastrar(CandidatoRequest $request) {
+    public function cadastrar(CandidatoCadastroRequest $request) {
         $this->moduloCandidatos->cadastrarOuAtualizar($request->all());
     }
 }

@@ -2,9 +2,8 @@
 
 namespace Concursos\Model\Repositories;
 
-interface EstadosRepositoryInterface {
+interface TiposLogradouroRepositoryInterface {
     public function findBy(string $coluna, string $valor) : array;
-    public function getCidadesByEstadoId(int $id) : array;
     public function all() : array;
 }
 

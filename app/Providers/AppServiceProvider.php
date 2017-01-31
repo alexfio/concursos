@@ -3,6 +3,8 @@
 namespace Concursos\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Concursos\Helpers\ValidacaoInterface;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,9 +13,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(ValidacaoInterface $validacao)
     {
-        //
+        //Registrando a validação de CPF...
+        Validator::extend('cpf', function($atributo, $valor) use ($validacao) {
+            return $validacao->cpfEhValido($valor);
+        });
     }
 
     /**
