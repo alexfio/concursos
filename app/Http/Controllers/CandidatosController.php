@@ -5,6 +5,7 @@ namespace Concursos\Http\Controllers;
 use Illuminate\Http\Request;
 use Concursos\Modules\CandidatosInterface;
 use Concursos\Http\Requests\CandidatoCadastroRequest;
+use Concursos\Exceptions\CandidatoJaCadastradoException;
 
 class CandidatosController extends Controller
 {
@@ -18,6 +19,23 @@ class CandidatosController extends Controller
     }
         
     public function cadastrar(CandidatoCadastroRequest $request) {
-        $this->moduloCandidatos->cadastrarOuAtualizar($request->all());
+        try{
+            $this->moduloCandidatos->cadastrarOuAtualizar($request->all());
+        } 
+        catch(CandidatoJaCadastradoException $ex) {
+            $entrada = $request->all();
+            $entrada['jaCadastrado'] = true;
+            return redirect()
+                    ->action("CandidatosController@carregarViewCadastrar")
+                    ->withInput($entrada);
+        }
+        catch (\Exception $ex) {
+            $entrada = $request->all();
+            $entrada['excecaoGenerica'] = true;
+            return redirect()
+                    ->action("CandidatosController@carregarViewCadastrar")
+                    ->withInput($entrada);
+        }
+            
     }
 }

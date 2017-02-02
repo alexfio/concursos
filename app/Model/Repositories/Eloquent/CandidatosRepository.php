@@ -8,7 +8,7 @@ use Concursos\Model\Candidato;
 use Concursos\Model\Estado;
 use Concursos\Model\Cidade;
 use Concursos\Model\TipoLogradouro;
-
+use Concursos\Exceptions\CandidatoJaCadastradoException;
 
 class CandidatosRepository implements CandidatosRepositoryInterface {
 
@@ -18,7 +18,7 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
         if (!array_key_exists('id', $dados)) {
            
             if(Candidato::where('cpf', $dados['cpf'])->first()) {
-                throw new \Exception('Candidato já cadastrado');    
+                throw new CandidatoJaCadastradoException();    
             }
                
             $candidato = new Candidato();

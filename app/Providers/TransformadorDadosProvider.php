@@ -8,6 +8,13 @@ use Concursos\Helpers\TransformadorDadosDefault;
 
 class TransformadorDadosProvider extends ServiceProvider
 {
+    protected $defer;
+    
+    public function __construct($app) {
+        parent::__construct($app);
+        $this->defer = true;
+    }
+    
     /**
      * Bootstrap the application services.
      *
@@ -26,5 +33,9 @@ class TransformadorDadosProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(TransformadorDadosInterface::class, TransformadorDadosDefault::class);
+    }
+    
+    public function provides() {
+        return [TransformadorDadosInterface::class];
     }
 }

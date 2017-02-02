@@ -9,6 +9,14 @@ use Illuminate\Contracts\Mail\Mailer;
 
 class GerenciadorEmailProvider extends ServiceProvider
 {
+    
+    protected $defer;
+    
+    public function __construct($app) {
+        parent::__construct($app);
+        $this->defer = true;
+    }
+    
     /**
      * Bootstrap the application services.
      *
@@ -30,4 +38,10 @@ class GerenciadorEmailProvider extends ServiceProvider
             return new GerenciadorEmailDefault($app->make(Mailer::class));
         });
     }
+    
+    public function provides() {
+        return [GerenciadorEmailInterface::class];
+    }
+    
 }
+

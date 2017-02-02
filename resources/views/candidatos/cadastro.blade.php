@@ -38,6 +38,33 @@
             </div>
         @endif
 
+         @if(old('jaCadastrado'))
+            <div class="row">
+                <div class="col l12">
+                    <div class="card red darken-3">
+                        <div class="card-content white-text">
+                            <span class="card-title">O Formulário submetido apresenta erros:</span>
+                            <p>O CPF fornecido já está sendo utilizado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        @if(old('excecaoGenerica'))
+            <div class="row">
+                <div class="col l12">
+                    <div class="card red darken-3">
+                        <div class="card-content white-text">
+                            <span class="card-title">O Formulário submetido apresenta erros:</span>
+                            <p>Problema ao submeter dados do candidato. Tente novamento mais tarde.</p>
+                            <p>Persistindo o problema, o suporte deve ser contato.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
        <div class = "row">     
           <div class = "col l12">  
             <form action = "{{action('CandidatosController@cadastrar')}}" method = "post" >

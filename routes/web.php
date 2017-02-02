@@ -14,4 +14,4 @@ use Concursos\Model\Repositories\EstadosRepositoryInterface;
 use Concursos\Modules\CandidatosInterface;
 
 Route::get('/candidatos/cadastro', 'CandidatosController@carregarViewCadastrar');
-Route::post('/candidatos/cadastro', 'CandidatosController@cadastrar');
+Route::post('/candidatos/cadastrar', 'CandidatosController@cadastrar');

@@ -22,7 +22,7 @@ class CandidatosDefault implements CandidatosInterface {
       $this->email = $email;
    }  
    
-   public function  cadastrarOuAtualizar(array $dados) {
+   public function cadastrarOuAtualizar(array $dados) {
        
       try {
         

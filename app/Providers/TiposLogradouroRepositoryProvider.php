@@ -8,6 +8,13 @@ use Concursos\Model\Repositories\Eloquent\TiposLogradouroRepository;
 
 class TiposLogradouroRepositoryProvider extends ServiceProvider
 {
+    protected $defer;
+    
+    public function __construct($app) {
+        parent::__construct($app);
+        $this->defer = true;
+    }
+    
     /**
      * Bootstrap the application services.
      *
@@ -26,5 +33,9 @@ class TiposLogradouroRepositoryProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(TiposLogradouroRepositoryInterface::class, TiposLogradouroRepository::class);
+    }
+    
+    public function provides() {
+        return [TiposLogradouroRepositoryInterface::class];
     }
 }
