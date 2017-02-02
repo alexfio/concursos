@@ -2,7 +2,6 @@
 
 namespace Concursos\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Concursos\Modules\CandidatosInterface;
 use Concursos\Http\Requests\CandidatoCadastroRequest;
 use Concursos\Exceptions\CandidatoJaCadastradoException;
