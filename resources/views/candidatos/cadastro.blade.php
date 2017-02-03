@@ -1,6 +1,6 @@
 
 
-@extends('candidatos.template')
+@extends('commons.template')
 
 @section('titulo', 'SGC - Cadastro de Candidato') 
 
@@ -12,9 +12,9 @@
                 <nav>
                     <div class="nav-wrapper teal lighten-2">
                         <div class="col s12 m12 l12">
-                            <a href="#!" class="breadcrumb">Home</a>
-                            <a href="#!" class="breadcrumb">Candidatos</a>
-                            <a href="#!" class="breadcrumb">Cadastro</a>
+                            <a href="{{action('AdminController@index')}}" class="breadcrumb">Home</a>
+                            <a href="{{action('CandidatosController@index')}}" class="breadcrumb">Candidatos</a>
+                            <a href="{{action('CandidatosController@carregarViewCadastrar')}}" class="breadcrumb">Cadastro</a>
                         </div>
                     </div>
                 </nav>
@@ -67,7 +67,7 @@
         @endif
 
        <div class = "row">     
-          <div class = "col l12">  
+          <div class = "col m12 s12 l12 card-panel">    
             <form action = "{{action('CandidatosController@cadastrar')}}" method = "post" >
                 <input type ="hidden" name = "_token" value = "{{csrf_token()}}">
               <!--  <fieldset> -->
@@ -206,14 +206,16 @@
                             <?= $errors->has('senha1') || $errors->has('senha2')  || old('senha1') || old('senha2') ?  "class = 'validate invalid'" : '' ?>>
                         </div>  
                         
-                        <button class="btn waves-effect waves-light btn col s12 m12 l12" type = "submit" >
+                        
+                    </div>
+              
+            </form>
+          </div>
+           <button class="btn waves-effect waves-light btn col s12 m12 l12" type = "submit" >
                             <i class="material-icons right">send</i>
                             Realizar Cadastro
                             
                         </button>     
-                    </div>
-            </form>
-          </div>
        </div>   
     </div>
 @endsection

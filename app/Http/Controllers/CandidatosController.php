@@ -13,6 +13,10 @@ class CandidatosController extends Controller
         $this->moduloCandidatos = $moduloCandidatos;
     }
     
+    public function index() {
+        return view('candidatos.index');
+    }
+    
     public function carregarViewCadastrar() {
        return view('candidatos.cadastro');
     }

@@ -13,5 +13,11 @@
 use Concursos\Model\Repositories\EstadosRepositoryInterface;
 use Concursos\Modules\CandidatosInterface;
 
-Route::get('/candidatos/cadastro', 'CandidatosController@carregarViewCadastrar');
-Route::post('/candidatos/cadastrar', 'CandidatosController@cadastrar');
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/candidatos/', 'CandidatosController@index');
+Route::get('/admin/candidatos/cadastro', 'CandidatosController@carregarViewCadastrar');
+Route::post('/admin/candidatos/cadastrar', 'CandidatosController@cadastrar');
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index');
