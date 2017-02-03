@@ -14,7 +14,15 @@
             <link  rel  = "stylesheet" type = "text/css"
                 href = "{{url('lib/animate.css/animate.min.css')}}" >   
 
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link 
+                href="https://fonts.googleapis.com/icon?family=Material+Icons" 
+                rel="stylesheet">
+
+            <link 
+                media ="screen and (max-width:320px)"
+                href = "{{url('css/app-width-320.css')}}" 
+                rel ="stylesheet">
+            
 
         @show
 
