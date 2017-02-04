@@ -7,44 +7,23 @@ Sistema de Gerenciamento de Concursos
 @section('conteudo')
 <div class ="container">
     <br>
-    <div class = "row">
-        <div class = "col s12 m12 l12">
-            <nav>
-                <div class="nav-wrapper teal lighten-2">
-                    <div class="col s12 m12 l12">
-                        <a href="{{action('AdminController@index')}}" class="breadcrumb">Home</a>
-                        <a href="{{action('CandidatosController@index')}}" class="breadcrumb">Candidatos</a>
-
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
+   
     <div class ="row">
-        <div class = "col s12 m12 l12">
+        <div class = "col s12 m12 l12 right-align">
             <a  href ="{{action('CandidatosController@carregarViewCadastrar')}}"
-                class = "btn btn-large waves-effect waves-light col s12 m12 l12">
+                class = "btn btn-large waves-effect waves-light">
                 <i class="material-icons left">perm_identity</i>
                 Cadastrar Candidato
             </a>
+            <a  href ="#!"
+                class = "btn btn-large waves-effect waves-light">
+                <i class="material-icons left">search</i>
+                Consultar Candidato
+            </a>
         </div>
     </div>
-    <div class ="row">
-        <div class ="col s12 m12 l12 ">
-            <nav>
-                <div class="nav-wrapper">
-                    <form>
-                        <div class="input-field teal lighten-2">
-                            <input id="search" type="search" required>
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i class="material-icons">close</i>
-                        </div>
-                    </form>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <div class ="row">
+    
+   <!--  <div class ="row">
         <div class = "col s12 m12 l12">
             <ul class="pagination">
                 <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
@@ -57,7 +36,7 @@ Sistema de Gerenciamento de Concursos
             </ul>
         </div>
     </div>
-    <div class ='row'>
+   <div class ='row'>
         <div class = "col s12 m12 l12">
             <table class = "bordered striped responsive-table card-panel">
                 <thead>
@@ -116,7 +95,7 @@ Sistema de Gerenciamento de Concursos
                     </tr>
                 </tbody>
             </table>
-        </div>
-    </div>
+        </div> 
+    </div> -->
 </div>
 @endsection
