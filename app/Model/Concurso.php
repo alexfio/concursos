@@ -30,18 +30,9 @@ class Concurso extends Model
     }
     
     public function cargosOfertados() {
-        return $this->belongsToMany(
-                Cargo::class, 
-                'oferta_vagas', 
-                'concurso_id', 
-                'cargo_id'
-                )
-                ->withPivot(
-                'vagas_ampla_concorrencia',
-                'vagas_pcd',
-                'qtd_aprovados_ampla_concorrencia',
-                'qtd_aprovados_pcd'        
-                );
+        return $this->hasMany(Cargo::class, 'concurso_id', 'id');
     }
+    
+    
     
 }

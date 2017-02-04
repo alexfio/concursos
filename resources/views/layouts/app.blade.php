@@ -8,11 +8,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>
+        {{ config('app.name', 'SGC  Sistema de Gerenciamento de Concursos') }}
+    </title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-
+    <!--<link href="/css/app.css" rel="stylesheet"> -->
+    <link href="{{url('lib/materialize/dist/css/materialize.min.css')}}"
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -22,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="nav-wrapper">
             <div class="container">
                 <div class="navbar-header">
 
@@ -42,7 +44,7 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
+                    <ul class="left hide-on-med-and-down">
                         &nbsp;
                     </ul>
 

@@ -1,68 +1,39 @@
-@extends('layouts.app')
+@extends('commons.template')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+@section('conteudo')
+<div class = "container">
+   <div class="row">
+      <div class="col s6 m6 l8 offset-s2 offset-m2 offset-l2 ">
+        <div class="card-panel white">
+            <form action = "{{action('AdminController@index')}}" method="post">
+                <input type="hidden" name = "_token" value ="{{csrf_token()}}">
+                <div class = "row">
+                    <div class = "input-field col s12 m12 l12">
+                        <label for = "campoEmail" >E-mail</label>
+                        <input id = "campoEmail" name = "email" type = "text" >    
+                    </div>
                 </div>
-            </div>
+                <div class = "row">
+                    <div class = "input-field col s12 m12 l12">
+                        <label for = "campoSenha" >Senha</label>
+                        <input id = "campoSenha" name = "senha" type = "text" >    
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "col s12 m12 l12 text-left">
+                        <a href="{{url('/register')}}" > Não sou Cadastrado </a>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class = "col l12 m12 s12">
+                        <button type = "submit" class = 'btn waves-effect waves-light right'>
+                            Entrar
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
+      </div>
     </div>
-</div>
+</div> 
 @endsection

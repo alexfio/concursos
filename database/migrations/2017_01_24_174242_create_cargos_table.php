@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOfertaVagasTable extends Migration
+class CreateCargosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateOfertaVagasTable extends Migration
      */
     public function up()
     {
-        Schema::create('oferta_vagas', function (Blueprint $table) {
-            
+        Schema::create('cargos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nome');
             $table->integer('concurso_id');
-            $table->integer('cargo_id');
             $table->integer('vagas_ampla_concorrencia');
             $table->integer('vagas_pcd');
             $table->integer('qtd_aprovados_ampla_concorrencia');
             $table->integer('qtd_aprovados_pcd');
-            
-            $table->primary(['concurso_id', 'cargo_id']);
             
             $table->foreign('concurso_id')
                   ->references('id')
@@ -30,13 +28,6 @@ class CreateOfertaVagasTable extends Migration
                   ->onUpdate('restrict')  
                   ->onDelete('restrict');
             
-            $table->foreign('cargo_id')
-                  ->references('id')
-                  ->on('cargos')
-                  ->onUpdate('restrict')  
-                  ->onDelete('restrict');
-            
-           
         });
     }
 
@@ -47,10 +38,10 @@ class CreateOfertaVagasTable extends Migration
      */
     public function down()
     {
-        Schema::table('oferta_vagas', function(Blueprint $table){
-            $table->dropForeign(['concurso_id']);
-            $table->dropForeign(['cargo_id']);
+        Schema::table('cargos', function(Blueprint $table) {
+           $table->dropForeign(['concurso_id']); 
         });
-        Schema::dropIfExists('oferta_vagas'); 
+        
+        Schema::dropIfExists('cargos');
     }
 }

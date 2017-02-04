@@ -19,17 +19,7 @@ class Cargo extends Model
         return $this->hasMany(ProvaObjetiva::class, 'cargo_id', 'id');
     }
     
-    public function concursosOndeFoiOfertado() {
-        return $this->belongsToMany(
-                Concurso::class, 
-                'oferta_vagas', 
-                'cargo_id',
-                'concurso_id'
-                )->withPivot(
-                'vagas_ampla_concorrencia',
-                'vagas_pcd',
-                'qtd_aprovados_ampla_concorrencia',
-                'qtd_aprovados_pcd'        
-                );
+    public function concurso() {
+        return $this->belongsTo(Concurso::class, 'concurso_id', 'id');
     }
 }
