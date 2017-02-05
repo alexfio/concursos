@@ -1,6 +1,6 @@
 <?php
 
-namespace Concursos;
+namespace Concursos\Model;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

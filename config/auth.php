@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Concursos\User::class,
+            'model' => Concursos\Model\User::class,
         ],
 
         // 'users' => [

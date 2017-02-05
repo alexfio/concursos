@@ -67,7 +67,7 @@ class CandidatosDefault implements CandidatosInterface {
       
    }
 
-    public function consultar(string $criterios): array {
+    public function consultar(array $criterios): array {
         
     }
 
