@@ -21,7 +21,7 @@ PHP, Laravel, Javascript , Angular 2, CSS, Materialize, PostgreSQL,
 > **Note:**
 
 > - PHP: Laravel;
-> - Javascript: jQuery, Typescript;
+> - Javascript: jQuery;
 > - CSS:  Materialize;
 > - SGBD:  PostgreSQL;
 
