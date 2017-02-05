@@ -15,6 +15,7 @@ use Concursos\Modules\CandidatosInterface;
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/candidatos/', 'CandidatosController@index');
+Route::get('/admin/concursos/', 'ConcursosController@index');
 Route::get('/admin/candidatos/cadastro', 'CandidatosController@carregarViewCadastrar');
 Route::post('/admin/candidatos/cadastrar', 'CandidatosController@cadastrar');
 

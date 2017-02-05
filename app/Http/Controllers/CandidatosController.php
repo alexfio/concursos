@@ -24,6 +24,10 @@ class CandidatosController extends Controller
     public function cadastrar(CandidatoCadastroRequest $request) {
         try{
             $this->moduloCandidatos->cadastrarOuAtualizar($request->all());
+            $entrada['cadastro_ok'] = true;
+            return redirect()
+                    ->action("CandidatosController@index")
+                    ->withInput($entrada);
         } 
         catch(CandidatoJaCadastradoException $ex) {
             $entrada = $request->all();

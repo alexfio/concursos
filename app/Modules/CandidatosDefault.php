@@ -46,7 +46,13 @@ class CandidatosDefault implements CandidatosInterface {
        $dados['bairro'] = $this->transformador->trim($dados['bairro']);
        
        //Criando ou atualizando um novo candidato 
-       return $this->candidatosRepository->saveOrUpdate($dados);
+       $id = $this->candidatosRepository->saveOrUpdate($dados);
+       
+       //Enviando e-mail após cadastro
+       $corpo = "Seja-bem vindo ao sistema de gerenciamento de concursos";
+       $this->email->enviar($dados['email'], 'SGC-Ativação', $corpo);
+       
+       return $id;
       
       } catch (CandidatoJaCadastradoException $ex) {
          throw $ex;
@@ -58,8 +64,7 @@ class CandidatosDefault implements CandidatosInterface {
    
    public function recuperarSenha(string $enderecoEmail) {
        $enderecoEmail = $this->transformador->trim($enderecoEmail);
-       
-       
+      
    }
 }
 

@@ -205,7 +205,7 @@
 
 
             </div>
-            <button class="btn waves-effect waves-light btn col s12 m12 l12" type = "submit" >
+            <button class="btn teal waves-effect waves-light btn col s12 m12 l12" type = "submit" >
                 <i class="material-icons right">send</i>
                 Realizar Cadastro
 

@@ -12,7 +12,7 @@
           </a>
       </li>
       <li>
-          <a href="#!">
+          <a href="{{action('ConcursosController@index')}}">
               <i class="material-icons left">reorder</i>
               Concursos
           </a>

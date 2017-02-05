@@ -12,8 +12,8 @@ class GerenciadorEmailDefault implements GerenciadorEmailInterface {
         $this->motorEmail = $motorEmail;
     }
     
-    public function enviar(string $destinatario, string $assunto, string $corpo, array $anexos): bool {
-        
+    public function enviar(string $destinatario, string $assunto, string $corpo, array $anexos = []): bool {
+       return true;
     }
 
 }

@@ -7,29 +7,32 @@ Sistema de Gerenciamento de Concursos
 @section('conteudo')
 <div class ="container">
     <br>
+
     <div class ="row">
-        <div class =' col s4 m4 l4 left-align'>
-            @if(old('cadastro_ok'))
-                <span style = "padding: 6%" class = 'teal  white-text left'>
-                    Candidato Inserido com sucesso !
-                </span>
-            @endif
-        </div>
-        <div class = "col s8 m8 l8 right-align">
-            
+        <div class = "col s12 m12 l12 right-align">
             <a  href ="{{action('CandidatosController@carregarViewCadastrar')}}"
                 class = "btn btn-large waves-effect waves-light">
-                <i class="material-icons left">perm_identity</i>
-                Cadastrar Candidato
+                <i class="material-icons left">mode_edit</i>
+                Novo Concurso
             </a>
             <a  href ="#!"
                 class = "btn btn-large waves-effect waves-light">
                 <i class="material-icons left">search</i>
-                Consultar Candidato
+                Consultar Concurso
+            </a>
+            <a  href ="#!"
+                class = "btn btn-large waves-effect waves-light">
+                <i class="material-icons left">spellcheck</i>
+                Respostas
+            </a>
+            <a  href ="#!"
+                class = "btn btn-large waves-effect waves-light">
+                <i class="material-icons left">library_books</i>
+                Disciplinas
             </a>
         </div>
     </div>
-    
+
     <!--  <div class ="row">
          <div class = "col s12 m12 l12">
              <ul class="pagination">
@@ -105,8 +108,4 @@ Sistema de Gerenciamento de Concursos
          </div> 
      </div> -->
 </div>
-@endsection
-
-@section('scripts')
-@parent
 @endsection
