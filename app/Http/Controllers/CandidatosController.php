@@ -20,7 +20,11 @@ class CandidatosController extends Controller
     public function carregarViewCadastrar() {
        return view('candidatos.cadastro');
     }
-        
+    
+    public function carregarViewConsulta() {
+        return view('candidatos.consultar');
+    }
+    
     public function cadastrar(CandidatoCadastroRequest $request) {
         try{
             $this->moduloCandidatos->cadastrarOuAtualizar($request->all());

@@ -8,28 +8,54 @@ Sistema de Gerenciamento de Concursos
 <div class ="container">
     <br>
     <div class ="row">
-        <div class =' col s4 m4 l4 left-align'>
-            @if(old('cadastro_ok'))
-                <span style = "padding: 6%" class = 'teal  white-text left'>
-                    Candidato Inserido com sucesso !
-                </span>
-            @endif
-        </div>
-        <div class = "col s8 m8 l8 right-align">
-            
-            <a  href ="{{action('CandidatosController@carregarViewCadastrar')}}"
-                class = "btn btn-large waves-effect waves-light">
-                <i class="material-icons left">perm_identity</i>
-                Cadastrar Candidato
-            </a>
-            <a   href ="{{action('CandidatosController@carregarViewConsulta')}}"
-                class = "btn btn-large waves-effect waves-light">
-                <i class="material-icons left">search</i>
+        <div class ='col s12 m12 l12 teal white-text'>
+            <h4>
                 Consultar Candidato
-            </a>
+            </h4>
         </div>
     </div>
-    
+    <div class ="row card-panel">
+        <div class ="col s12 m12 l12">
+            <div class = "row">
+                <div class = 'input-field col s6 m6 l6'>
+                    <label for = "campoNome">Nome</label>
+                    <input id = "campoNome" type = "text">
+                </div>
+                <div class = 'input-field col s3 m3 l3'>
+                    <label for = "campoCPF">CPF</label>
+                    <input id = "campoCPF" type = "text">
+                </div>
+                <div class = 'input-field col s2 m2 l2' >
+                    <input name="group1" type="radio" id="test1" />
+                    <label for="test1">Masculino</label>
+                    <input name="group1" type="radio" id="test2" />
+                    <label for="test2">Feminino</label>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "input-field col s4 m4 l4">
+                    <select name = "estado">
+                    <option  value="" disabled selected ></option>
+                    @foreach($componentes['estados'] as $estado)
+                       <option  value = "{{$estado['id']}}">
+                        {{$estado['nome']}}
+                       </option>
+                    @endforeach
+                    </select>
+                <label>Estado</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = 'row'>
+        <div class ='col s12 m12 l12'>
+            <button class = 'btn waves-effect right'>
+                 <i class="material-icons left">search</i>
+                Consultar
+            </button>
+        </div>
+    </div>
+
     <!--  <div class ="row">
          <div class = "col s12 m12 l12">
              <ul class="pagination">
@@ -109,4 +135,9 @@ Sistema de Gerenciamento de Concursos
 
 @section('scripts')
 @parent
+<script type = 'text/javascript'>
+     $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
 @endsection

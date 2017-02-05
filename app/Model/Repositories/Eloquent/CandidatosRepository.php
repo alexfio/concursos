@@ -65,5 +65,35 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
         $candidato = Candidato::where($coluna, $valor)->firstOrFail();
         return $candidato->toArray();
     }
-    
+
+    public function findByCriteria(array $criterios,int $offset = 0, int $limit = 10): array {
+        $contador = 0;
+        $consulta = null;
+        foreach($criterios as $criterio => $valor) {
+            if($contador == 0) {
+                if(in_array($criterio, ['nome']))
+                    $consulta = Candidato::where($criterio,'like', $valor);
+                else
+                    $consulta = Candidato::where($criterio, $valor);
+            }   
+            else {
+                if(in_array($criterio, ['nome']))
+                    $consulta = $consulta->where($criterio, 'like', $valor);
+                else
+                    $consulta = $consulta->where($criterio, $valor);
+            }
+                
+            $contador++;
+            
+        }
+        
+        return $consulta
+                ->orderBy('nome', 'asc')
+                ->offset($offset)
+                ->limit($limit)
+                ->get()
+                ->toArray();
+      
+    }
+
 }

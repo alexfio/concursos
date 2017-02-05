@@ -66,5 +66,10 @@ class CandidatosDefault implements CandidatosInterface {
        $enderecoEmail = $this->transformador->trim($enderecoEmail);
       
    }
+
+    public function consultar(string $criterios): array {
+        
+    }
+
 }
 
