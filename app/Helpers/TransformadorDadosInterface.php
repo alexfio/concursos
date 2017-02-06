@@ -12,4 +12,6 @@ interface TransformadorDadosInterface {
     public function trim(string $entrada) : string;
     public function hash(string $entrada) : string;
     public function trocarEspacoPorPorcento(string $entrada) : string;
+    public function completarNumeroComZerosAEsquerda(string $entrada) : string;
+    public function tudoMinusculo(string $entrada) : string;
 }

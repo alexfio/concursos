@@ -19,7 +19,7 @@ Route::get('/admin/concursos/', 'ConcursosController@index');
 Route::get('/admin/candidatos/consulta', 'CandidatosController@carregarViewConsulta');
 Route::get('/admin/candidatos/cadastro', 'CandidatosController@carregarViewCadastrar');
 Route::post('/admin/candidatos/cadastrar', 'CandidatosController@cadastrar');
-Route::post('/admin/candidatos/consultar', 'CandidatosController@consultar');
+Route::match(['post', 'get'],'/admin/candidatos/consultar', 'CandidatosController@consultar');
 
 Auth::routes();
 

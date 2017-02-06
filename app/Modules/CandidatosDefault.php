@@ -81,7 +81,7 @@ class CandidatosDefault implements CandidatosInterface {
         foreach ($criterios as $criterio => $valor) {
             switch ($criterio) {
                 case 'nome':
-                    $criteriosAposTransformacao['nome'] = $this->transformador->trocarEspacoPorPorcento($valor);
+                    $criteriosAposTransformacao['nome'] = $this->transformador->aplicarComposicao("tudoMinusculo|trocarEspacoPorPorcento", $valor);
                     break;
                 case 'cpf' :
                     $criteriosAposTransformacao['cpf'] = $this->transformador->deixarApenasNumeros($valor);

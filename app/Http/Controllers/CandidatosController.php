@@ -28,34 +28,58 @@ class CandidatosController extends Controller {
     }
 
     public function cadastrar(CandidatoCadastroRequest $request) {
+        
         try {
+            
             $this->moduloCandidatos->cadastrarOuAtualizar($request->all());
             $entrada['cadastro_ok'] = true;
-            return redirect()
-                            ->action("CandidatosController@index")
-                            ->withInput($entrada);
+            return redirect()->action("CandidatosController@index")
+                             ->withInput($entrada);
+            
         } catch (CandidatoJaCadastradoException $ex) {
             $entrada = $request->all();
             $entrada['jaCadastrado'] = true;
-            return redirect()
-                            ->action("CandidatosController@carregarViewCadastrar")
-                            ->withInput($entrada);
+            return redirect()->action("CandidatosController@carregarViewCadastrar")
+                             ->withInput($entrada);
+            
         } catch (\Exception $ex) {
             $entrada = $request->all();
             $entrada['excecaoGenerica'] = true;
-            return redirect()
-                            ->action("CandidatosController@carregarViewCadastrar")
-                            ->withInput($entrada);
+            return redirect()->action("CandidatosController@carregarViewCadastrar")
+                             ->withInput($entrada);
         }
     }
 
     public function consultar(Request $request) {
        try{
-           $pagina = 1;
-           $qtdPorPagina = 10;
-          var_dump($this->moduloCandidatos->consultar($request->except('_token'), $pagina, $qtdPorPagina));
+           
+           $pagina = $request->input('pg', 1);
+           
+           //Quantidade de Registros pro página
+           $qtdPorPagina = $request->input('qtdPorPg', 15);
+           
+           $criterios = $request->except(['_token', 'pg', 'qtdPorPg']);
+           
+           $data = $this->moduloCandidatos
+                   ->consultar($criterios, $pagina, $qtdPorPagina);
+           
+           $dados['candidatos'] = $data['candidatos'];
+           $dados['qtdPaginas'] = ceil($data['qtdCandidatosConsulta']/$qtdPorPagina);
+           
+           //Convertendo array de criterios para o formato query string
+           $dados['criterios'] = http_build_query($criterios);
+           $dados['paginaAtual'] = $pagina;
+           $dados['qtdPorPg'] = $qtdPorPagina;
+           
+           return redirect()->action("CandidatosController@carregarViewConsulta")
+                            ->withInput($dados + $criterios);
+           
+           
        } catch (\InvalidArgumentException $ex) {
-           echo $ex->getMessage();
+           $entrada['feedback'] = 'SemCriteriosBusca';
+           return redirect()
+                  ->action("CandidatosController@carregarViewConsulta")
+                  ->withInput($entrada);
        }
     }
 

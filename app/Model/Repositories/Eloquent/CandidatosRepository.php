@@ -75,7 +75,7 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
         $consulta = null;
         $limit = $qtdPorPagina;
         $offset = ($pagina - 1) * $limit;
-        
+
         foreach ($criterios as $criterio => $valor) {
             //Caso seja o primeiro critério
             if ($contador == 0) {
@@ -133,16 +133,18 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
 
             $contador++;
         }
+
+
+        $saida['qtdCandidatosConsulta'] = $consulta->count();
+        $saida['candidatos'] = $consulta
+                ->orderBy('nome', 'asc')
+                ->offset($offset)
+                ->limit($limit)
+                ->get()
+                ->toArray();
         
-        
-        $qtdCandidatosConsulta =  $consulta->count();
-        
-        return $consulta
-                        ->orderBy('nome', 'asc')
-                        ->offset($offset)
-                        ->limit($limit)
-                        ->get()
-                        ->toArray();
+        return $saida;
     }
 
+    
 }

@@ -32,7 +32,11 @@ class TransformadorDadosDefault implements TransformadorDadosInterface {
     }
 
     public function adicionarMascaraCPF(string $cpf) : string {
-        
+        $cpfComMascara = substr($cpf, 0, 3);
+        $cpfComMascara = $cpfComMascara . ".". substr($cpf, 3, 3);
+        $cpfComMascara = $cpfComMascara . ".". substr($cpf, 6, 3);
+        $cpfComMascara = $cpfComMascara . "-". substr($cpf, 9, 2);
+        return $cpfComMascara;
     }
     
     public function trim(string $entrada) : string {
@@ -45,6 +49,14 @@ class TransformadorDadosDefault implements TransformadorDadosInterface {
 
     public function trocarEspacoPorPorcento(string $entrada): string {
         return "%" . str_replace(" ", "%", $entrada)  . "%";
+    }
+
+    public function completarNumeroComZerosAEsquerda(string $entrada): string {
+        return str_pad($entrada, 6, "0", STR_PAD_LEFT);
+    }
+
+    public function tudoMinusculo(string $entrada): string {
+        return strtolower($entrada);
     }
 
 }
