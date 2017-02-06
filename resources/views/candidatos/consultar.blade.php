@@ -27,11 +27,16 @@ Sistema de Gerenciamento de Concursos
                         <label for = "campoCPF">CPF</label>
                         <input id = "campoCPF" name = 'cpf' type = "text">
                     </div>
-                    <div class = 'input-field col s2 m2 l2' >
-                        <input name="group1" type="radio" id="test1" />
-                        <label for="test1">Masculino</label>
-                        <input name="group1" type="radio" id="test2" />
-                        <label for="test2">Feminino</label>
+                    <div class = "input-field col s6 m3">
+
+                        <select name = "sexo">
+
+                            <option  value="" disabled selected ></option>
+                            @foreach($componentes['sexo'] as $sexo)
+                            <option <?= old('sexo') == $sexo['id'] ? "selected" : "" ?> value = "{{$sexo['id']}}">{{$sexo['nome']}}</option>
+                            @endforeach
+                        </select>
+                        <label>Sexo</label>
                     </div>
                 </div>
                 <div class = "row">

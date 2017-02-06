@@ -30,6 +30,7 @@ class CandidatosDefault implements CandidatosInterface {
             $dados['nascimento'] = $this->transformador->aplicarComposicao('trim|converterDataBrasileiraParaDateTime', $dados['nascimento']);
             $dados['email'] = $this->transformador->trim($dados['email']);
             $dados['senha'] = $this->transformador->aplicarComposicao('trim|hash', $dados['senha1']);
+            $dados['sexo'] = $this->transformador->aplicarComposicao('trim', $dados['sexo']);
             $dados['telefone_residencial'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['telefone_residencial']);
             $dados['telefone_celular'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['telefone_celular']);
             $dados['cpf'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['cpf']);
@@ -63,9 +64,9 @@ class CandidatosDefault implements CandidatosInterface {
         $enderecoEmail = $this->transformador->trim($enderecoEmail);
     }
 
-    public function consultar(array $dados, int $offset, int $limit): array {
+    public function consultar(array $dados, int $pagina, int $qtdPorPagina): array {
         $criterios = [];
-
+        
         foreach ($dados as $criterio => $valor) {
             if (!empty($valor)) {
                 $criterios[$criterio] = $valor;
@@ -85,10 +86,13 @@ class CandidatosDefault implements CandidatosInterface {
                 case 'cpf' :
                     $criteriosAposTransformacao['cpf'] = $this->transformador->deixarApenasNumeros($valor);
                     break;
+                default: 
+                    $criteriosAposTransformacao[$criterio] = $valor;
+                    break;
             }
         }
         
-        return $this->candidatosRepository->findByCriteria($criteriosAposTransformacao, $offset, $limit);
+        return $this->candidatosRepository->findByCriteria($criteriosAposTransformacao, $pagina, $qtdPorPagina);
         
     }
 

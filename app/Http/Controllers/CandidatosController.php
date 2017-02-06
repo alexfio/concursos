@@ -51,9 +51,9 @@ class CandidatosController extends Controller {
 
     public function consultar(Request $request) {
        try{
-           $offset = 0;
-           $limit = 10;
-          var_dump($this->moduloCandidatos->consultar($request->except('_token'), $offset, $limit));
+           $pagina = 1;
+           $qtdPorPagina = 10;
+          var_dump($this->moduloCandidatos->consultar($request->except('_token'), $pagina, $qtdPorPagina));
        } catch (\InvalidArgumentException $ex) {
            echo $ex->getMessage();
        }

@@ -7,7 +7,7 @@ use Concursos\Model\TipoLogradouro;
 use Concursos\Model\Estado;
 use Concursos\Model\Cidade;
 use Concursos\Model\Inscricao;
-
+use Concursos\Model\Sexo;
 
 class Candidato extends Model
 {
@@ -18,6 +18,9 @@ class Candidato extends Model
         'updated_at',
      ];
     
+    public function sexo() {
+        return $this->belongsTo(Sexo::class, 'sexo_id', 'id');
+    }
     
     public function tipoLogradouro() {
         return $this->belongsTo(TipoLogradouro::class, 'tipo_logradouro_id', 'id');

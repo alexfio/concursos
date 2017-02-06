@@ -74,20 +74,29 @@
                                <?= $errors->has('nome') ? "class = 'validate invalid'" : '' ?>  >
 
                     </div>
-                    <div class = "input-field s6 col m3 l2">
+                    <div class = "input-field  col s6 m3 l2">
                         <label for = "campoNascimento">Nascimento</label>
                         <input id = "campoNascimento" name = "nascimento" 
                                type = "text" value = "{{old('nascimento')}}" 
                                <?= $errors->has('nascimento') ? "class = 'validate invalid'" : '' ?>  >
                     </div>
-                    <div class = "input-field col s6  m3 l2">
+                    <div class = "input-field col s6 m3">
+
+                        <select name = "sexo">
+
+                            <option  value="" disabled selected ></option>
+                            @foreach($componentes['sexo'] as $sexo)
+                            <option <?= old('sexo') == $sexo['id'] ? "selected" : "" ?> value = "{{$sexo['id']}}">{{$sexo['nome']}}</option>
+                            @endforeach
+                        </select>
+                        <label>Sexo</label>
+                    </div>
+                    <div class = "input-field col s6  m3 l3">
                         <label for = "campoCPF">CPF</label>
                         <input id = "campoCPF" type = "text" name = "cpf" 
                                value = "{{old('cpf')}}"
                                <?= $errors->has('cpf') || old('jaCadastrado') ? "class = 'validate invalid'" : '' ?> >
                     </div>
-
-
                     <div class = "input-field col s6 m3 l2">
                         <label for = "campoTelefoneResidencial">Tel. Residencial</label>
                         <input id = "campoTelefoneResidencial" type = "text" 
@@ -101,12 +110,12 @@
                                <?= $errors->has('telefone_celular') ? "class = 'validate invalid'" : '' ?>  >
                     </div>
 
-                    <div class = "input-field col s6 m3">
+                    <div class = "input-field col s6 m3 l2">
                         <label for = "campoRG">RG</label>
                         <input id = "campoRG" type = "text" name = "rg"  value = "{{old('rg')}}" 
                                <?= $errors->has('rg') ? "class = 'validate invalid'" : '' ?> >
                     </div>
-                    <div class = "input-field col s6 m3">
+                    <div class = "input-field col s6 m3 l1">
                         <label title = "RG - Órgão Expedidor"
                                for = "campoRGOrgExp">Org.Exp</label>
 
@@ -117,7 +126,7 @@
                                <?= $errors->has('rg_org_exp') ? "class = 'validate invalid'" : '' ?> >
 
                     </div>
-                    <div class = "input-field col s12 m3">
+                    <div class = "input-field col s6 m3 l2">
 
                         <select name = "rg_uf">
 
@@ -134,7 +143,7 @@
                                <?= $errors->has('rg_data_expedicao') ? "class = 'validate invalid'" : '' ?> >
                     </div>
 
-                    <div class = "input-field col s12 m4">
+                    <div class = "input-field col s12 m4 l2">
                         <select name = "estado" >
                             <option  value="" disabled selected ></option>
                             @foreach($componentes['estados'] as $estado)
@@ -143,29 +152,29 @@
                         </select>
                         <label>Estado</label>
                     </div>
-                    <div class = "input-field col s12 m4">
+                    <div class = "input-field col s12 m4 l2">
                         <select name = "cidade" >
                             <option  value="" disabled selected ></option>
-                            <option <?= old('cidade') == 1 ? "selected" : "" ?> value = "1">Fortaleza</option>
+                            <option <?= old('cidade') == 1831 ? "selected" : "" ?> value = "1831">Fortaleza</option>
                             <option <?= old('cidade') == 2 ? "selected" : "" ?> value = "2">São Paulo</option>
                             <option <?= old('cidade') == 3 ? "selected" : "" ?> value = "3">Salvador</option> 
                             <option <?= old('cidade') == 4 ? "selected" : "" ?> value = "4">Rio de Janeiro</option>
                         </select>
                         <label>Cidade</label>
                     </div>
-                    <div class = "input-field col s12 m4">
+                    <div class = "input-field col s12 m4 l2">
                         <label for = "campoCEP">CEP</label>
                         <input id = "campoCEP" name = "cep" type = "text" value = "{{old('cep')}}"
                                <?= $errors->has('cep') ? "class = 'validate invalid'" : '' ?> >
                     </div>
-                    <div class = "input-field col s12 m3">
+                    <div class = "input-field col s12 m3 l2">
                         <label for = "campoBairro">Bairro</label>
                         <input id = "campoBairro" name = "bairro" type = "text" value = "{{old('bairro')}}"
                                <?= $errors->has('bairro') ? "class = 'validate invalid'" : '' ?>>
                     </div>
 
 
-                    <div class = "input-field col s12 m3">
+                    <div class = "input-field col s12 m3 l4">
                         <select name = "tipo_logradouro" >
                             <option  value="" disabled selected ></option>
                             @foreach($componentes['logradouros'] as $logradouro)
@@ -174,7 +183,7 @@
                         </select>
                         <label>Tipo Logradouro</label>
                     </div>
-                    <div class = "input-field col s8 m4">
+                    <div class = "input-field col s8 m4 l3">
                         <label for = "campoLogradouro">Logradouro</label>
                         <input id = "campoLogradouro" name = "logradouro" type = "text" value = "{{old('logradouro')}}" 
                                <?= $errors->has('logradouro') ? "class = 'validate invalid'" : '' ?>>
@@ -184,17 +193,17 @@
                         <input id = "campoNumero" name = "numero" type = "text" value = "{{old('numero')}}"
                                <?= $errors->has('numero') ? "class = 'validate invalid'" : '' ?>>
                     </div>
-                    <div class = "input-field col s12 l4">
+                    <div class = "input-field col s12 l3">
                         <label for = "campoEmail">E-mail</label>
                         <input id = "campoEmail" type = "text" name = "email" value = "{{old('email')}}" 
                                <?= $errors->has('email') ? "class = 'validate invalid'" : '' ?> >
                     </div>
-                    <div class = "input-field col s12 l4">
+                    <div class = "input-field col s12 l2">
                         <label for = "campoSenha1">Senha</label>
                         <input id = "campoSenha1" type = "password" name = "senha1"
                                <?= $errors->has('senha1') || $errors->has('senha2') || old('senha1') || old('senha2') ? "class = 'validate invalid'" : '' ?>>
                     </div>
-                    <div class = "input-field col s12 l4">
+                    <div class = "input-field col s12 l2">
                         <label for = "campoSenha2">Confirme a senha</label>
                         <input id = "campoSenha2" type = "password" name = "senha2"
                                <?= $errors->has('senha1') || $errors->has('senha2') || old('senha1') || old('senha2') ? "class = 'validate invalid'" : '' ?>>

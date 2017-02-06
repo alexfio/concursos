@@ -185,7 +185,8 @@ return [
         Concursos\Providers\GerenciadorEmailProvider::class,
         Concursos\Providers\ViewComposerProvider::class,
         Concursos\Providers\TiposLogradouroRepositoryProvider::class,
-        Concursos\Providers\ValidacaoProvider::class
+        Concursos\Providers\ValidacaoProvider::class,
+        Concursos\Providers\SexosRepositoryProvider::class
 
     ],
 
