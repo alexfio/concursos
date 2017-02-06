@@ -42,4 +42,9 @@ class TransformadorDadosDefault implements TransformadorDadosInterface {
     public function hash(string $entrada) : string {
         return sha1($entrada);
     }
+
+    public function trocarEspacoPorPorcento(string $entrada): string {
+        return "%" . str_replace(" ", "%", $entrada)  . "%";
+    }
+
 }
