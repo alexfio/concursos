@@ -120,6 +120,7 @@ Sistema de Gerenciamento de Concursos
                         <th data-field="id">Identificador</th>
                         <th data-field="name">Nome</th>
                         <th data-field="price">CPF</th>
+                        <th data-field="action">Ação</th>
                     </tr>
                 </thead>
 
@@ -132,6 +133,7 @@ Sistema de Gerenciamento de Concursos
                         <td>{{app('Concursos\Helpers\TransformadorDadosInterface')
                                    ->adicionarMascaraCPF($candidato['cpf'])}}
                         </td>
+                        <td> </td>
                     </tr>
                     @endforeach
                 </tbody>
