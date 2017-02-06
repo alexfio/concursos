@@ -80,11 +80,11 @@ Sistema de Gerenciamento de Concursos
     
     <br>
     
-    @if(old('feedback') == 'SemCriteriosBusca')
+    @if(old('feedback'))
     <div class ="row animated fadeIn">
         <div class ="card-panel col s12 m12 l12 yellow lighten-4">
             <h5>
-                Pelo menos um critério de busca deve submetido
+                {{old('feedback')}}
             </h5>
         </div>
     </div>
@@ -120,7 +120,7 @@ Sistema de Gerenciamento de Concursos
                         <th data-field="id">Identificador</th>
                         <th data-field="name">Nome</th>
                         <th data-field="price">CPF</th>
-                        <th data-field="action">Ação</th>
+                        <th data-field="action">Ações</th>
                     </tr>
                 </thead>
 
@@ -133,7 +133,20 @@ Sistema de Gerenciamento de Concursos
                         <td>{{app('Concursos\Helpers\TransformadorDadosInterface')
                                    ->adicionarMascaraCPF($candidato['cpf'])}}
                         </td>
-                        <td> </td>
+                        <td>
+                            <a  title = "Exibir Detalhes" class="waves-effect waves-teal btn-flat small">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                            </a>
+                            
+                            <a  title = 'Alterar Dados' class="waves-effect waves-teal btn-flat">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </a>
+                            
+                            <a title="Enviar E-mail" class="waves-effect waves-teal btn-flat">
+                                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            </a>
+                            
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Concursos\Modules\CandidatosInterface;
 use Concursos\Http\Requests\CandidatoCadastroRequest;
 use Concursos\Exceptions\CandidatoJaCadastradoException;
+use Concursos\Exceptions\ResultadoVazioException;
 
 class CandidatosController extends Controller {
 
@@ -63,6 +64,10 @@ class CandidatosController extends Controller {
            $data = $this->moduloCandidatos
                    ->consultar($criterios, $pagina, $qtdPorPagina);
            
+           if(count($data['candidatos']) < 1) {
+               throw new ResultadoVazioException();
+           }
+           
            $dados['candidatos'] = $data['candidatos'];
            $dados['qtdPaginas'] = ceil($data['qtdCandidatosConsulta']/$qtdPorPagina);
            
@@ -76,7 +81,13 @@ class CandidatosController extends Controller {
            
            
        } catch (\InvalidArgumentException $ex) {
-           $entrada['feedback'] = 'SemCriteriosBusca';
+           $entrada['feedback'] = 'Pelo menos um critério de busca deve submetido.';
+           return redirect()
+                  ->action("CandidatosController@carregarViewConsulta")
+                  ->withInput($entrada);
+       }
+       catch (ResultadoVazioException $ex) {
+           $entrada['feedback'] = 'A consulta não retornou resultados.';
            return redirect()
                   ->action("CandidatosController@carregarViewConsulta")
                   ->withInput($entrada);
