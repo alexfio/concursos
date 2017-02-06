@@ -17,7 +17,7 @@ O sistema é composto por dois grandes módulos:
 Tecnologias
 -------------
 
-PHP, Laravel, Javascript , Angular 2, CSS, Materialize, PostgreSQL, 
+PHP, Laravel, Javascript , JQuery, CSS, Materialize, PostgreSQL, 
 > **Note:**
 
 > - PHP: Laravel;
