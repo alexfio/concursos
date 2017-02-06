@@ -27,16 +27,16 @@ Sistema de Gerenciamento de Concursos
                         <label for = "campoCPF">CPF</label>
                         <input id = "campoCPF" name = 'cpf' type = "text" value = "{{old('cpf')}}">
                     </div>
-                    <div class = "input-field col s12 m3">
+                    <div class = "input-field col s12 m12 l3">
 
                         <select name = "sexo">
-
                             <option  value="" disabled selected ></option>
                             @foreach($componentes['sexo'] as $sexo)
                             <option <?= old('sexo') == $sexo['id'] ? "selected" : "" ?> value = "{{$sexo['id']}}">{{$sexo['nome']}}</option>
                             @endforeach
                         </select>
                         <label>Sexo</label>
+                        
                     </div>
                 </div>
                 <div class = "row">
