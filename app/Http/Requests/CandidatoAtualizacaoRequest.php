@@ -80,9 +80,6 @@ class CandidatoAtualizacaoRequest extends FormRequest
         'numero.alpha_num' => 'O campo Número deve conter apenas letras ou número;',
         'email.required' => 'O campo E-mail é obrigatório;',
         'email.email' => 'O campo E-mail deve receber um e-mail válido;',
-        'senha1.required' => 'O campo Senha é obrigatório;',
-        'senha1.same' => 'O campo Senha e Confirme Senha não são iguais;',
-        'senha2.required' => 'O campo Confime a Senha é obrigatório;',
         
     ];
 }
