@@ -34,7 +34,7 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
                     $candidato->nascimento = $dados['nascimento'];
                     $candidato->email = $dados['email'];
                     
-                    //Apenas levar o campo senha consideração se for 
+                    //Apenas levar o campo senha em consideração se for 
                     //usuário novo
                     if(!isset($dados['id']))
                         $candidato->senha = $dados['senha'];
@@ -92,15 +92,21 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
                         break;
 
                     case 'estado':
-                        $consulta = Candidato::whereHas('cidade', function($cidade) use ($valor) {
-                                    $cidade->whereHas('estado', function($estado) use ($valor) {
+                        $consulta = Candidato::whereHas('cidade', 
+                                
+                                function($cidade) use ($valor) {
+                                    $cidade->whereHas('estado', 
+                                            
+                                    function($estado) use ($valor) {
                                         $estado->where('id', $valor);
                                     });
+                                    
                                 });
                         break;
 
                     case 'sexo':
-                        $consulta = Candidato::whereHas('sexo', function($sexo) use ($valor) {
+                        $consulta = Candidato::whereHas('sexo', 
+                                function($sexo) use ($valor) {
                                     $sexo->where('id', $valor);
                                 });
                         break;
@@ -117,16 +123,25 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
                         break;
 
                     case 'estado':
-                        $consulta = $consulta->whereHas('cidade', function($cidade) use ($valor) {
-                            $cidade->whereHas('estado', function($estado) use ($valor) {
+                        
+                        $consulta = $consulta->whereHas('cidade', 
+                        function($cidade) use ($valor) {
+                            
+                            $cidade->whereHas('estado', 
+                            function($estado) use ($valor) {
                                 $estado->where('id', $valor);
                             });
+                            
                         });
                         break;
 
                     case 'sexo':
-                        $consulta = $consulta->whereHas('sexo', function($sexo) use ($valor) {
+                        
+                        $consulta = $consulta->whereHas('sexo', 
+                        
+                            function($sexo) use ($valor) {
                             $sexo->where('id', $valor);
+                            
                         });
 
                         break;
@@ -153,9 +168,9 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
         $cidadesRepository = new CidadesRepository();
         
         //Anexado o Estado aos candidatos
-        
         for($c = 0; $c < count($candidatos); $c++) {
-            $candidatos[$c]['estado'] = $cidadesRepository->findEstado($candidatos[$c]['cidade_id']);
+            $candidatos[$c]['estado'] = $cidadesRepository
+                    ->findEstado($candidatos[$c]['cidade_id']);
         }
         
         $saida['candidatos'] =  $candidatos;

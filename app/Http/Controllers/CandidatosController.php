@@ -27,7 +27,9 @@ class CandidatosController extends Controller {
     
     public function carregarViewEditar($id) {
         $criterios['id'] = $id;
-        $dados['candidato'] = $this->moduloCandidatos->consultar($criterios, 1, 1)['candidatos'][0];
+        $dados['candidato'] = 
+                $this->moduloCandidatos
+                ->consultar($criterios, 1, 1)['candidatos'][0];
         
         return view('candidatos.cadastro', $dados);
     }

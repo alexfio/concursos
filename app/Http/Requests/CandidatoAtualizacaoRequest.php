@@ -50,21 +50,25 @@ class CandidatoAtualizacaoRequest extends FormRequest
     return [
         'nome.required' => 'O campo Nome é obrigatório;',
         'nascimento.required'  => 'O campo Nascimento é obrigatório;',
-        'nascimento.date_format'  => 'O campo Nascimento deve obedecer ao padrão dd/mm/aaaa;',
+        'nascimento.date_format' 
+        => 'O campo Nascimento deve obedecer ao padrão dd/mm/aaaa;',
         'sexo.required'  => 'O campo Sexo é obrigatório;',
         'cpf.required' => 'O campo CPF é obrigatório;',
         'cpf.regex' => 'O campo CPF deve obedecer ao padrão xxx.xxx.xxx-xx;',
         'cpf.cpf_valido' => 'CPF Inválido;',
         'telefone_residencial.required' => 'O campo Telefone Residencial é obrigatório;',
-        'telefone_residencial.regex' => 'O campo Telefone Residencial deve obedecer ao padrão (xx)xxxx-xxxx;',
+        'telefone_residencial.regex' 
+        => 'O campo Telefone Residencial deve obedecer ao padrão (xx)xxxx-xxxx;',
         'telefone_celular.required' => 'O campo Telefone Celular é obrigatório;',
         'rg.required' => 'O campo RG é obrigatório;',
         'rg.alpha_num' => 'O campo RG deve conter apenas letras ou números;',
         'rg_org_exp.required' => 'O campo RG Org. Exp é obrigatório;',
-        'rg_org_exp.alpha_num' => 'O campo RG Org. Exp deve conter apenas letras ou números;',
+        'rg_org_exp.alpha_num' 
+        => 'O campo RG Org. Exp deve conter apenas letras ou números;',
         'rg_uf.required' => 'O campo RG-UF é obrigatório;',
         'rg_data_expedicao.required' => 'O campo RG Data de Expedição é obrigatório;',
-        'rg_data_expedicao.date_format' => 'O campo RG Data de Expedição deve obedecer ao padrão dd/mm/aaaa;',
+        'rg_data_expedicao.date_format' 
+        => 'O campo RG Data de Expedição deve obedecer ao padrão dd/mm/aaaa;',
         'estado.required' => 'O campo Estado é obrigatório;',
         'cidade.required' => 'O campo Cidade é obrigatório;',
         'cep.required' => 'O campo CEP é obrigatório;',

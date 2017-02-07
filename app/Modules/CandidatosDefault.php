@@ -26,29 +26,53 @@ class CandidatosDefault implements CandidatosInterface {
         try {
 
             //Efetuando Transformações de limpeza nos dados de entrada
-            $dados['nome'] = $this->transformador->aplicarComposicao('trim', $dados['nome']);
-            $dados['nascimento'] = $this->transformador->aplicarComposicao('trim|converterDataBrasileiraParaDateTime', $dados['nascimento']);
+            $dados['nome'] = $this->transformador
+                    ->aplicarComposicao('trim', $dados['nome']);
+            
+            $dados['nascimento'] = $this->transformador
+                    ->aplicarComposicao('trim|converterDataBrasileiraParaDateTime', $dados['nascimento']);
+            
             $dados['email'] = $this->transformador->trim($dados['email']);
             
             //Apenas levar o campo senha consideração se for 
             //usuário novo
             
             if(!isset($dados['id']))
-                $dados['senha'] = $this->transformador->aplicarComposicao('trim|hash', $dados['senha1']);
+                $dados['senha'] = $this->transformador
+                    ->aplicarComposicao('trim|hash', $dados['senha1']);
             
-            $dados['sexo'] = $this->transformador->aplicarComposicao('trim', $dados['sexo']);
-            $dados['telefone_residencial'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['telefone_residencial']);
-            $dados['telefone_celular'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['telefone_celular']);
-            $dados['cpf'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['cpf']);
-            $dados['rg'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['rg']);
-            $dados['rg_org_exp'] = $this->transformador->trim($dados['rg_org_exp']);
-            $dados['rg_data_expedicao'] = $this->transformador->aplicarComposicao('trim|converterDataBrasileiraParaDateTime', $dados['rg_data_expedicao']);
+            $dados['sexo'] = $this->transformador
+                    ->aplicarComposicao('trim', $dados['sexo']);
+            
+            $dados['telefone_residencial'] = 
+                    $this->transformador
+                    ->aplicarComposicao('deixarApenasNumeros|trim', $dados['telefone_residencial']);
+            
+            $dados['telefone_celular'] = 
+                    $this->transformador
+                    ->aplicarComposicao('deixarApenasNumeros|trim', $dados['telefone_celular']);
+            
+            $dados['cpf'] = $this->transformador
+                    ->aplicarComposicao('deixarApenasNumeros|trim', $dados['cpf']);
+            
+            $dados['rg'] = $this->transformador
+                    ->aplicarComposicao('deixarApenasNumeros|trim', $dados['rg']);
+            
+            $dados['rg_org_exp'] = $this->transformador
+                    ->trim($dados['rg_org_exp']);
+            
+            $dados['rg_data_expedicao'] = $this->transformador
+                    ->aplicarComposicao('trim|converterDataBrasileiraParaDateTime', $dados['rg_data_expedicao']);
+            
             $dados['rg_uf'] = $this->transformador->trim($dados['rg_uf']);
             $dados['cidade'] = $this->transformador->trim($dados['cidade']);
             $dados['tipo_logradouro'] = $this->transformador->trim($dados['tipo_logradouro']);
             $dados['logradouro'] = $this->transformador->trim($dados['logradouro']);
             $dados['numero'] = $this->transformador->trim($dados['numero']);
-            $dados['cep'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['cep']);
+            
+            $dados['cep'] = $this->transformador
+                    ->aplicarComposicao('deixarApenasNumeros|trim', $dados['cep']);
+            
             $dados['bairro'] = $this->transformador->trim($dados['bairro']);
 
             //Criando ou atualizando um novo candidato 
