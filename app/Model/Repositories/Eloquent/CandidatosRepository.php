@@ -96,7 +96,7 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
                                 
                                 function($cidade) use ($valor) {
                                     $cidade->whereHas('estado', 
-                                            
+                                
                                     function($estado) use ($valor) {
                                         $estado->where('id', $valor);
                                     });

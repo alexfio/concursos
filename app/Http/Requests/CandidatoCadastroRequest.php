@@ -42,7 +42,7 @@ class CandidatoCadastroRequest extends FormRequest
             "logradouro" => "required|string",
             "numero" => "required|alpha_num",
             "email" => "required|email",
-            "senha1" => "required|same:senha2",
+            "senha1" => "required|min:8|same:senha2",
             "senha2" => "required"
             
         ];
@@ -83,6 +83,10 @@ class CandidatoCadastroRequest extends FormRequest
         'numero.alpha_num' => 'O campo Número deve conter apenas letras ou número;',
         'email.required' => 'O campo E-mail é obrigatório;',
         'email.email' => 'O campo E-mail deve receber um e-mail válido;',
+        'senha1.required' => 'O campo Senha é obrigatório;',
+        'senha1.same' => 'O campo Senha e Confirme Senha não são iguais;',
+        'senha1.min' => 'O campo Senha deve possuir no mínimo 8 caracteres;',
+        'senha2.required' => 'O campo Confime a Senha é obrigatório;',
         
     ];
 }
