@@ -42,5 +42,9 @@
     src ="{{url('lib/jquery/dist/jquery.min.js')}}" ></script>
     <script type ='text/javascript' 
     src ="{{url('lib/materialize/dist/js/materialize.min.js')}}" ></script>
+    
+    <script type ='text/javascript' 
+    src ="{{url('js/app.js')}}" ></script>
+    
     @show
 </html>

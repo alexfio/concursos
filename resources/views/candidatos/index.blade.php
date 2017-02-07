@@ -8,28 +8,31 @@ Sistema de Gerenciamento de Concursos
 <div class ="container">
     <br>
     <div class ="row">
-        <div class =' col s4 m4 l4 left-align'>
-            @if(old('cadastro_ok'))
-                <span style = "padding: 6%" class = 'teal  white-text left'>
-                    Candidato Inserido com sucesso !
-                </span>
-            @endif
-        </div>
-        <div class = "col s8 m8 l8 right-align">
+        
+        <div class = "col s8 m8 l12 right-align">
             
             <a  href ="{{action('CandidatosController@carregarViewCadastrar')}}"
-                class = "btn btn-large waves-effect waves-light">
+                class = "btn btn-large waves-effect waves-light left">
                 <i class="material-icons left">perm_identity</i>
                 Cadastrar Candidato
             </a>
             <a   href ="{{action('CandidatosController@carregarViewConsulta')}}"
-                class = "btn btn-large waves-effect waves-light">
+                class = "btn btn-large waves-effect waves-light right">
                 <i class="material-icons left">search</i>
                 Consultar Candidato
             </a>
         </div>
     </div>
     
+    <div class ="row">
+        <div class ='col s4 m12 l12'>
+            @if(old('feedback'))
+                <p class = 'yellow lighten-4  black-text left col l12'>
+                    {{old('feedback')}}
+                </p>
+            @endif
+        </div>
+    </div>
     <!--  <div class ="row">
          <div class = "col s12 m12 l12">
              <ul class="pagination">

@@ -138,7 +138,9 @@ Sistema de Gerenciamento de Concursos
                                 <i class="fa fa-search-plus" aria-hidden="true"></i>
                             </a>
                             
-                            <a  title = 'Alterar Dados' class="waves-effect waves-teal btn-flat">
+                            <a  title = 'Alterar Dados' 
+                                class="waves-effect waves-teal btn-flat"
+                                href = "{{action('CandidatosController@carregarViewEditar', $candidato['id'])}}">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                             

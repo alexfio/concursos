@@ -32,7 +32,9 @@ class TransformadorDadosProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(TransformadorDadosInterface::class, TransformadorDadosDefault::class);
+        $this->app->bind([
+            TransformadorDadosInterface::class => 'transformador'], 
+            TransformadorDadosDefault::class);
     }
     
     public function provides() {

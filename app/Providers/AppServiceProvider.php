@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('cpf_valido', function($atributo, $valor) use ($validacao) {
             return $validacao->cpfEhValido($valor);
         });
+        
+        
     }
 
     /**

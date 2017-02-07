@@ -29,7 +29,13 @@ class CandidatosDefault implements CandidatosInterface {
             $dados['nome'] = $this->transformador->aplicarComposicao('trim', $dados['nome']);
             $dados['nascimento'] = $this->transformador->aplicarComposicao('trim|converterDataBrasileiraParaDateTime', $dados['nascimento']);
             $dados['email'] = $this->transformador->trim($dados['email']);
-            $dados['senha'] = $this->transformador->aplicarComposicao('trim|hash', $dados['senha1']);
+            
+            //Apenas levar o campo senha consideração se for 
+            //usuário novo
+            
+            if(!isset($dados['id']))
+                $dados['senha'] = $this->transformador->aplicarComposicao('trim|hash', $dados['senha1']);
+            
             $dados['sexo'] = $this->transformador->aplicarComposicao('trim', $dados['sexo']);
             $dados['telefone_residencial'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['telefone_residencial']);
             $dados['telefone_celular'] = $this->transformador->aplicarComposicao('deixarApenasNumeros|trim', $dados['telefone_celular']);
@@ -48,20 +54,13 @@ class CandidatosDefault implements CandidatosInterface {
             //Criando ou atualizando um novo candidato 
             $id = $this->candidatosRepository->saveOrUpdate($dados);
 
-            //Enviando e-mail após cadastro
-            $corpo = "Seja-bem vindo ao sistema de gerenciamento de concursos";
-            $this->email->enviar($dados['email'], 'SGC-Ativação', $corpo);
-
             return $id;
+            
         } catch (CandidatoJaCadastradoException $ex) {
             throw $ex;
         } catch (\Exception $ex) {
             throw $ex;
         }
-    }
-
-    public function recuperarSenha(string $enderecoEmail) {
-        $enderecoEmail = $this->transformador->trim($enderecoEmail);
     }
 
     public function consultar(array $dados, int $pagina, int $qtdPorPagina): array {
@@ -94,6 +93,10 @@ class CandidatosDefault implements CandidatosInterface {
         
         return $this->candidatosRepository->findByCriteria($criteriosAposTransformacao, $pagina, $qtdPorPagina);
         
+    }
+    
+    public function recuperarSenha(string $enderecoEmail) {
+        $enderecoEmail = $this->transformador->trim($enderecoEmail);
     }
 
 }

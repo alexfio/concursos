@@ -3,6 +3,7 @@
 namespace Concursos\Model\Repositories\Eloquent;
 
 use Concursos\Model\Repositories\CandidatosRepositoryInterface;
+use Concursos\Model\Repositories\Eloquent\CidadesRepository;
 use Illuminate\Support\Facades\DB;
 use Concursos\Model\Candidato;
 use Concursos\Model\Estado;
@@ -32,7 +33,12 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
                     $candidato->nome = $dados['nome'];
                     $candidato->nascimento = $dados['nascimento'];
                     $candidato->email = $dados['email'];
-                    $candidato->senha = $dados['senha'];
+                    
+                    //Apenas levar o campo senha consideração se for 
+                    //usuário novo
+                    if(!isset($dados['id']))
+                        $candidato->senha = $dados['senha'];
+                    
                     $candidato->telefone_residencial = $dados['telefone_residencial'];
                     $candidato->telefone_celular = $dados['telefone_celular'];
                     $candidato->cpf = $dados['cpf'];
@@ -136,12 +142,23 @@ class CandidatosRepository implements CandidatosRepositoryInterface {
 
 
         $saida['qtdCandidatosConsulta'] = $consulta->count();
-        $saida['candidatos'] = $consulta
+        
+        $candidatos = $consulta
                 ->orderBy('nome', 'asc')
                 ->offset($offset)
                 ->limit($limit)
                 ->get()
                 ->toArray();
+        
+        $cidadesRepository = new CidadesRepository();
+        
+        //Anexado o Estado aos candidatos
+        
+        for($c = 0; $c < count($candidatos); $c++) {
+            $candidatos[$c]['estado'] = $cidadesRepository->findEstado($candidatos[$c]['cidade_id']);
+        }
+        
+        $saida['candidatos'] =  $candidatos;
         
         return $saida;
     }

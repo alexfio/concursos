@@ -13,6 +13,9 @@ class CidadesRepository implements CidadesRepositoryInterface {
       return $cidade->toArray();
     }
 
-    
+    public function findEstado(int $cidadeId): array {
+        $estado = Cidade::find($cidadeId)->estado->toArray();
+        return $estado;
+    }
 
 }

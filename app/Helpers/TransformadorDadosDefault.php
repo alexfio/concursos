@@ -29,6 +29,21 @@ class TransformadorDadosDefault implements TransformadorDadosInterface {
     
     public function adicionarMascaraTelefone(string $telefone): string {
         
+        if(strlen($telefone) == 11) {
+           $telefoneComMascara = "(" . substr($telefone, 0,2) . ")";
+           $telefoneComMascara = $telefoneComMascara .  substr($telefone, 2,5) . "-";
+           $telefoneComMascara = $telefoneComMascara .  substr($telefone, 7);
+           return $telefoneComMascara;
+        }
+        elseif(strlen($telefone) == 10) {
+           $telefoneComMascara = "(" . substr($telefone, 0,2) . ")";
+           $telefoneComMascara = $telefoneComMascara .  substr($telefone, 2,4) . "-";
+           $telefoneComMascara = $telefoneComMascara .  substr($telefone, 6);
+           return $telefoneComMascara;
+        }
+        else {
+            throw new Exception('Telefone Invádlido');
+        }
     }
 
     public function adicionarMascaraCPF(string $cpf) : string {
@@ -57,6 +72,21 @@ class TransformadorDadosDefault implements TransformadorDadosInterface {
 
     public function tudoMinusculo(string $entrada): string {
         return strtolower($entrada);
+    }
+
+    public function converterStringDateTimeParaDataBrasileira(string $data): string {
+        if(strlen($data) == 10) {
+            return \DateTime::createFromFormat("Y-m-d", $data)->format('d/m/Y');
+        }
+        else {
+            return \DateTime::createFromFormat("Y-m-d H:i:s", $data)->format('d/m/Y');
+        }
+        
+    }
+
+    public function adicionarMascaraCEP(string $cep): string {
+        $cepComMascara = substr($cep, 0, 5) . "-" . substr($cep, 5);
+        return $cepComMascara;
     }
 
 }
