@@ -32,7 +32,7 @@
 
     </head>
 
-    <body>
+    <body class = 'animated fadeIn'>
         @include('commons.header') 
         @yield('conteudo')
     </body>
