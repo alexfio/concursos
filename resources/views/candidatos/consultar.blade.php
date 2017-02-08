@@ -14,72 +14,76 @@ Sistema de Gerenciamento de Concursos
             </h4>
         </div>
     </div>
-    <form action = "{{action('CandidatosController@consultar')}}" method = "post">
-        <input  type ="hidden" name = "_token" value ="{{csrf_token()}}">
-        <div class ="row card-panel">
-            <div class ="col s12 m12 l12">
-                <div class = "row">
-                    <div class = 'input-field col s12 m12 l6'>
-                        <label for = "campoNome">Nome</label>
-                        <input id = "campoNome" name = "nome" type = "text" value = "{{old('nome')}}">
-                    </div>
-                    <div class = 'input-field col s12 m12 l3'>
-                        <label for = "campoCPF">CPF</label>
-                        <input id = "campoCPF" name = 'cpf' type = "text" value = "{{old('cpf')}}">
-                    </div>
-                    <div class = "input-field col s12 m12 l3">
+    
+    <div class ="row">
+        <div class ="col s12 m12 l12">
+            <form action = "{{action('CandidatosController@consultar')}}" method = "post">
+                <input  type ="hidden" name = "_token" value ="{{csrf_token()}}">
+                <div class ="row card-panel">
+                    <div class ="col s12 m12 l12">
+                        <div class = "row">
+                            <div class = 'input-field col s12 m12 l6'>
+                                <label for = "campoNome">Nome</label>
+                                <input id = "campoNome" name = "nome" type = "text" value = "{{old('nome')}}">
+                            </div>
+                            <div class = 'input-field col s12 m12 l3'>
+                                <label for = "campoCPF">CPF</label>
+                                <input id = "campoCPF" name = 'cpf' type = "text" value = "{{old('cpf')}}">
+                            </div>
+                            <div class = "input-field col s12 m12 l3">
 
-                        <select name = "sexo">
-                            <option  value="" disabled selected ></option>
-                            @foreach($componentes['sexo'] as $sexo)
-                            <option <?= old('sexo') == $sexo['id'] ? "selected" : "" ?> value = "{{$sexo['id']}}">{{$sexo['nome']}}</option>
-                            @endforeach
-                        </select>
-                        <label>Sexo</label>
-                        
+                                <select name = "sexo">
+                                    <option  value="" disabled selected ></option>
+                                    @foreach($componentes['sexo'] as $sexo)
+                                    <option <?= old('sexo') == $sexo['id'] ? "selected" : "" ?> value = "{{$sexo['id']}}">{{$sexo['nome']}}</option>
+                                    @endforeach
+                                </select>
+                                <label>Sexo</label>
+
+                            </div>
+                        </div>
+                        <div class = "row">
+                            <div class = "input-field col s12 m12 l4">
+                                <select name = "estado">
+                                    <option  value="" disabled selected ></option>
+                                    @foreach($componentes['estados'] as $estado)
+                                    <option <?= old('estado') == $estado['id'] ? 'selected' : '' ?> value = "{{$estado['id']}}">{{$estado['nome']}}</option>
+                                    @endforeach
+                                </select>
+                                <label>Estado</label>
+                            </div>
+                            <div class = "input-field col s12 m12 l2">
+                                <select name = "qtdPorPg">
+                                    <option  value="" disabled selected ></option>
+                                    @for($c = 5; $c <= 50; $c+=15)
+                                    <option <?= old('qtdPorPg') == $c ? 'selected' : '' ?> value = "{{$c}}">{{$c}}</option>
+                                    @endfor
+                                </select>
+                                <label>Registros/Página</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class = "row">
-                    <div class = "input-field col s12 m12 l4">
-                        <select name = "estado">
-                            <option  value="" disabled selected ></option>
-                            @foreach($componentes['estados'] as $estado)
-                            <option <?= old('estado') == $estado['id'] ? 'selected' : '' ?> value = "{{$estado['id']}}">{{$estado['nome']}}</option>
-                            @endforeach
-                        </select>
-                        <label>Estado</label>
+                <div class = 'row'>
+                    <div class ="col s6 m6 l6   ">
+                        <a href ="{{action('CandidatosController@carregarViewConsulta')}}" 
+                           class = 'btn teal waves-effect waves-light btn col s6 m6 l6 left'>
+                            <i class="material-icons left">settings_backup_restore</i>
+                            Limpar Critérios
+                        </a>
+
                     </div>
-                    <div class = "input-field col s12 m12 l2">
-                        <select name = "qtdPorPg">
-                            <option  value="" disabled selected ></option>
-                            @for($c = 5; $c <= 50; $c+=15)
-                            <option <?= old('qtdPorPg') == $c ? 'selected' : '' ?> value = "{{$c}}">{{$c}}</option>
-                            @endfor
-                        </select>
-                        <label>Registros/Página</label>
+                    <div class ='col s6 m6 l6'>               
+                        <button type ="submit" 
+                                class = 'btn teal waves-effect waves-light btn col s6 m6 l6 right'>
+                            <i class="material-icons left">search</i>
+                            Consultar
+                        </button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class = 'row'>
-            <div class ="col s6 m6 l6">
-                <a href ="{{action('CandidatosController@carregarViewConsulta')}}" class = 'btn waves-effect left'>
-                    <i class="material-icons left">settings_backup_restore</i>
-                    Limpar Critérios
-                </a>
-                
-            </div>
-            <div class ='col s6 m6 l6'>               
-                <button type ="submit" class = 'btn waves-effect right'>
-                    <i class="material-icons left">search</i>
-                    Consultar
-                </button>
-            </div>
-        </div>
-    </form>
-    
-    <br>
-    
+            </form>
+         </div>
+    </div>
     @if(old('feedback'))
     <div class ="row animated fadeIn">
         <div class ="card-panel col s12 m12 l12 yellow lighten-4">
@@ -134,7 +138,8 @@ Sistema de Gerenciamento de Concursos
                                    ->adicionarMascaraCPF($candidato['cpf'])}}
                         </td>
                         <td>
-                            <a  title = "Exibir Detalhes" class="waves-effect waves-teal btn-flat small">
+                            <a  title = "Exibir Detalhes" class="waves-effect waves-teal btn-flat small"
+                                href = "{{action('CandidatosController@carregarViewConsultar', $candidato['id'])}}">
                                 <i class="fa fa-search-plus" aria-hidden="true"></i>
                             </a>
                             

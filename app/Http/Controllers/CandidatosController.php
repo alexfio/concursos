@@ -33,6 +33,16 @@ class CandidatosController extends Controller {
         
         return view('candidatos.cadastro', $dados);
     }
+    
+     public function carregarViewConsultar($id) {
+        $criterios['id'] = $id;
+        $dados['candidato'] = 
+                $this->moduloCandidatos
+                ->consultar($criterios, 1, 1)['candidatos'][0];
+        
+        $dados['apenasConsulta'] = true;
+        return view('candidatos.cadastro', $dados);
+    }
 
     public function carregarViewConsulta() {
         return view('candidatos.consultar');

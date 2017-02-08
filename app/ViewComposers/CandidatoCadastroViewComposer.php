@@ -4,6 +4,7 @@ namespace Concursos\ViewComposers;
 use Concursos\Model\Repositories\EstadosRepositoryInterface;
 use Concursos\Model\Repositories\TiposLogradouroRepositoryInterface;
 use Concursos\Model\Repositories\SexoRepositoryInterface;
+use Concursos\Model\Repositories\CidadesRepositoryInterface;
 use Illuminate\View\View;
 
 class CandidatoCadastroViewComposer {
