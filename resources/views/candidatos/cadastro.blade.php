@@ -8,8 +8,7 @@
 <br>
 <div class = 'container'> 
     <div class ="row">
-        <div class ='col s12 m12 l12 teal white-text'>
-
+        <div class ='card-panel col s12 m12 l12 teal white-text'>
             <h4>
                 Dados de Candidato
             </h4>
