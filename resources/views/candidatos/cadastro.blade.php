@@ -63,13 +63,13 @@
 
         @if(!isset($candidato))
 
-            <form action = "{{action('CandidatosController@cadastrar')}}" method = "post" >
+        <form action = "{{action('CandidatosController@cadastrar')}}" method = "post" >
 
-        @else
+            @else
 
             <form action = "{{action('CandidatosController@atualizar')}}" method = "post" >
 
-        @endif
+                @endif
 
                 <div class = "col m12 s12 l12 card-panel">    
 
@@ -190,6 +190,8 @@
                                    <?= isset($apenasConsulta) ? "disabled" : "" ?>>
                         </div>
 
+
+
                         <div class = "input-field col s12 m4 l2">
                             <select name = "estado" <?= isset($apenasConsulta) ? "disabled" : "" ?> >
                                 <option  value="" disabled selected ></option>
@@ -203,6 +205,8 @@
                             </select>
                             <label>Estado</label>
                         </div>
+
+
                         <div class = "input-field col s12 m4 l2">
                             <select name = "cidade" <?= isset($apenasConsulta) ? "disabled" : "" ?>>
                                 <option  value="" disabled selected ></option>
@@ -222,7 +226,7 @@
                                    <?= $errors->has('cep') ? "class = 'validate invalid'" : '' ?> 
                                    <?= isset($apenasConsulta) ? "disabled" : "" ?>>
                         </div>
-                        <div class = "input-field col s12 m3 l2">
+                        <div class = "input-field col s12 m3 l3">
                             <label for = "campoBairro">Bairro</label>
                             <input id = "campoBairro" 
                                    name = "bairro" 
@@ -233,7 +237,7 @@
                         </div>
 
 
-                        <div class = "input-field col s12 m3 l4">
+                        <div class = "input-field col s12 m3 l3">
                             <select name = "tipo_logradouro" <?= isset($apenasConsulta) ? "disabled" : "" ?> >
                                 <option  value="" disabled selected ></option>
                                 @foreach($componentes['logradouros'] as $logradouro)
@@ -296,7 +300,7 @@
                 <div class ="row">
                     <div class ='col s6 m6 l6'>
                         <a href = "javascript:history.back(-1)"
-                            class = "btn teal waves-effect waves-light large col s6 m6 l6">
+                           class = "btn teal waves-effect waves-light large col s6 m6 l6">
                             <i class="material-icons right"></i>
                             Voltar
                         </a>
