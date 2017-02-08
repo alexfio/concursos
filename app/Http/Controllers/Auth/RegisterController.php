@@ -2,7 +2,7 @@
 
 namespace Concursos\Http\Controllers\Auth;
 
-use Concursos\User;
+use Concursos\Model\User;
 use Concursos\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;

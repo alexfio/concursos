@@ -19,9 +19,6 @@ class LogradourosSeeder extends Seeder
         $logradouros[1]['sigla'] = 'AV';
         $logradouros[1]['nome'] = 'Avenida';
         
-        $logradouros[2]['sigla'] = 'AV';
-        $logradouros[2]['nome'] = 'Avenida';
-        
         $logradouros[3]['sigla'] = 'BC';
         $logradouros[3]['nome'] = 'Beco';
         
@@ -38,7 +35,7 @@ class LogradourosSeeder extends Seeder
         $logradouros[7]['nome'] = 'Estrada';
         
         $logradouros[8]['sigla'] = 'FAZ';
-        $logradouros[8]['nome'] = 'FAzenda';
+        $logradouros[8]['nome'] = 'Fazenda';
         
         $logradouros[9]['sigla'] = 'GL';
         $logradouros[9]['nome'] = 'Galeria';

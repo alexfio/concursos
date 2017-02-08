@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Sistema de Gerenciamento de Concursos',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,16 @@ return [
         // Concursos\Providers\BroadcastServiceProvider::class,
         Concursos\Providers\EventServiceProvider::class,
         Concursos\Providers\RouteServiceProvider::class,
+        Concursos\Providers\TransformadorDadosProvider::class,
+        Concursos\Providers\EstadosRepositoryProvider::class,
+        Concursos\Providers\CidadesRepositoryProvider::class,
+        Concursos\Providers\CandidatosRepositoryProvider::class,
+        Concursos\Providers\CandidatosModuleProvider::class,
+        Concursos\Providers\GerenciadorEmailProvider::class,
+        Concursos\Providers\ViewComposerProvider::class,
+        Concursos\Providers\TiposLogradouroRepositoryProvider::class,
+        Concursos\Providers\ValidacaoProvider::class,
+        Concursos\Providers\SexosRepositoryProvider::class
 
     ],
 

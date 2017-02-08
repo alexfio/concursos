@@ -18,12 +18,14 @@ class CreateCandidatosTable extends Migration
             $table->string('nome');
             $table->date('nascimento');
             $table->string('email');
+            $table->string('senha');
             $table->string('telefone_residencial', 15);
             $table->string('telefone_celular', 15);
             $table->string('cpf',11);
             $table->string('rg', 20);
             $table->string('rg_org_exp', 10);
             $table->integer('rg_uf');
+            $table->date('rg_data_expedicao');
             $table->integer('cidade_id');
             $table->integer('tipo_logradouro_id');
             $table->string('logradouro', 255);
