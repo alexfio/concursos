@@ -17,25 +17,38 @@ Sistema de Gerenciamento de Concursos
     
     <div class ="row">
         <div class ="col s12 m12 l12">
-            <form action = "{{action('CandidatosController@consultar')}}" method = "post">
-                <input  type ="hidden" name = "_token" value ="{{csrf_token()}}">
+            <form action = "{{action('CandidatosController@consultar')}}" 
+                  method = "post">
+                
+                <input  type ="hidden" 
+                        name = "_token" 
+                        value ="{{csrf_token()}}">
+                
                 <div class ="row card-panel">
                     <div class ="col s12 m12 l12">
                         <div class = "row">
                             <div class = 'input-field col s12 m12 l6'>
                                 <label for = "campoNome">Nome</label>
-                                <input id = "campoNome" name = "nome" type = "text" value = "{{old('nome')}}">
+                                <input id = "campoNome" 
+                                       name = "nome" 
+                                       type = "text" 
+                                       value = "{{old('nome')}}">
                             </div>
                             <div class = 'input-field col s12 m12 l3'>
                                 <label for = "campoCPF">CPF</label>
-                                <input id = "campoCPF" name = 'cpf' type = "text" value = "{{old('cpf')}}">
+                                <input id = "campoCPF" 
+                                       name = 'cpf' 
+                                       type = "text" 
+                                       value = "{{old('cpf')}}">
                             </div>
                             <div class = "input-field col s12 m12 l3">
 
                                 <select name = "sexo">
-                                    <option  value="" disabled selected ></option>
+                                    <option  value=""  selected ></option>
                                     @foreach($componentes['sexo'] as $sexo)
-                                    <option <?= old('sexo') == $sexo['id'] ? "selected" : "" ?> value = "{{$sexo['id']}}">{{$sexo['nome']}}</option>
+                                    <option 
+                                        <?= old('sexo') == $sexo['id'] ? "selected" : "" ?> 
+                                        value = "{{$sexo['id']}}">{{$sexo['nome']}}</option>
                                     @endforeach
                                 </select>
                                 <label>Sexo</label>
@@ -47,7 +60,8 @@ Sistema de Gerenciamento de Concursos
                                 <select name = "estado">
                                     <option  value="" disabled selected ></option>
                                     @foreach($componentes['estados'] as $estado)
-                                    <option <?= old('estado') == $estado['id'] ? 'selected' : '' ?> value = "{{$estado['id']}}">{{$estado['nome']}}</option>
+                                    <option <?= old('estado') == $estado['id'] ? 'selected' : '' ?> 
+                                        value = "{{$estado['id']}}">{{$estado['nome']}}</option>
                                     @endforeach
                                 </select>
                                 <label>Estado</label>
@@ -56,7 +70,9 @@ Sistema de Gerenciamento de Concursos
                                 <select name = "qtdPorPg">
                                     <option  value="" disabled selected ></option>
                                     @for($c = 5; $c <= 50; $c+=15)
-                                    <option <?= old('qtdPorPg') == $c ? 'selected' : '' ?> value = "{{$c}}">{{$c}}</option>
+                                    <option 
+                                    <?= old('qtdPorPg') == $c ? 'selected' : '' ?> 
+                                    value = "{{$c}}">{{$c}}</option>
                                     @endfor
                                 </select>
                                 <label>Registros/Página</label>
@@ -105,7 +121,9 @@ Sistema de Gerenciamento de Concursos
 
     @for($p = 1; $p <= old('qtdPaginas'); $p++)
         <li  class = "{{ old('paginaAtual') == $p ? 'active teal' :  'waves-effect' }}" >
-            <a href="{{action('CandidatosController@consultar')}}?qtdPorPg={{old('qtdPorPg')}}&pg={{$p}}&{{old('criterios')}}">{{$p}}</a>
+            <a href="{{action('CandidatosController@consultar')}}?qtdPorPg={{old('qtdPorPg')}}&pg={{$p}}&{{old('criterios')}}">
+                {{$p}}
+            </a>
         </li>   
     @endfor
     
