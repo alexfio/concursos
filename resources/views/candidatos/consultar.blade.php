@@ -167,7 +167,7 @@ Sistema de Gerenciamento de Concursos
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                             
-                            <a title="Enviar E-mail" class="waves-effect waves-teal btn-flat">
+                            <a title="Enviar E-mail" class="waves-effect waves-teal btn-flat modal-trigger" href="#modal1">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </a>
                             
@@ -181,6 +181,42 @@ Sistema de Gerenciamento de Concursos
 
     @endif
 
+  <!-- Estrutura do Modal -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          Enviar E-mail
+      </h4>
+        
+      <div class = "row">
+          <div class ="input-field col s12 m12 l12">
+                <label for = "campoDestinatario">Destinatário</label>
+                <input type ="text" name = "destinatario" value = "Alexandre Filho - alexfio@gmail.com" disabled>
+            </div>
+            <div class ="input-field col s12 m12 l12">
+                <label for = "campoAssunto">Assunto</label>
+                <input type ="text" name = "assunto" placeholder="">
+            </div>
+          <div class ="input-field col s12 m12 l12">
+                
+              <textarea 
+                  placeholder=""
+                  style = "min-height: 34%; max-height: 34%; "
+                  id="campoCorpo" 
+                  class="materialize-textarea" 
+                  cols="50" rows = "100"></textarea>
+              <label for = "campoCorpo">Corpo</label>
+            </div>
+            
+       </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Enviar</a>
+    </div>
+  </div>
+    
 </div>
 @endsection
 
@@ -189,6 +225,7 @@ Sistema de Gerenciamento de Concursos
 <script type = 'text/javascript'>
     $(document).ready(function () {
         $('select').material_select();
+        $('.modal').modal();
     });
 </script>
 @endsection
