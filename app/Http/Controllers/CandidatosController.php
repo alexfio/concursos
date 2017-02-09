@@ -34,7 +34,7 @@ class CandidatosController extends Controller {
         return view('candidatos.cadastro', $dados);
     }
     
-    //Carrega os dados de candidato de forma detalhada
+    //Carrega os dados de candidato de forma detalhad
      public function carregarViewConsultar($id) {
         $criterios['id'] = $id;
         $dados['candidato'] = 
