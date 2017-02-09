@@ -192,8 +192,8 @@
 
 
 
-                        <div class = "input-field col s12 m4 l2">
-                            <select name = "estado" <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                        <div class = "input-field col s12 m4 l3">
+                            <select id = "campoEstado" name = "estado" <?= isset($apenasConsulta) ? "disabled" : "" ?> >
                                 <option  value="" disabled selected ></option>
                                 @foreach($componentes['estados'] as $estado)
                                 @if(!isset($candidato))
@@ -208,12 +208,13 @@
 
 
                         <div class = "input-field col s12 m4 l2">
-                            <select name = "cidade" <?= isset($apenasConsulta) ? "disabled" : "" ?>>
-                                <option  value="" disabled selected ></option>
-                                <option <?= old('cidade') == 1831 ? "selected" : "" ?> value = "1831">Fortaleza</option>
-                                <option <?= old('cidade') == 2 ? "selected" : "" ?> value = "2">São Paulo</option>
-                                <option <?= old('cidade') == 3 ? "selected" : "" ?> value = "3">Salvador</option> 
-                                <option <?= old('cidade') == 4 ? "selected" : "" ?> value = "4">Rio de Janeiro</option>
+                            <select id = "campoCidades" name = "cidade" <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                <option  value="" disabled selected >Escolha o Estado</option>
+                                @if(isset($cidades))
+                                    @foreach($cidades as $cidade)
+                                        <option <?= $candidato['cidade_id'] == $cidade['id'] ? "selected" : "" ?> value = "{{$cidade['id']}}"> {{$cidade['nome']}}</option> 
+                                    @endforeach   
+                                @endif              
                             </select>
                             <label>Cidade</label>
                         </div>
@@ -226,7 +227,7 @@
                                    <?= $errors->has('cep') ? "class = 'validate invalid'" : '' ?> 
                                    <?= isset($apenasConsulta) ? "disabled" : "" ?>>
                         </div>
-                        <div class = "input-field col s12 m3 l3">
+                        <div class = "input-field col s12 m3 l2">
                             <label for = "campoBairro">Bairro</label>
                             <input id = "campoBairro" 
                                    name = "bairro" 
@@ -324,10 +325,7 @@
 
 @section('scripts')
 @parent
-<script type = "text/javascript">
-    $(document).ready(function () {
-        $('select').material_select();
-    });
-</script>
+<script src="{{url('js/candidatos/cadastro.js')}}"> </script>
+
 @endsection
 

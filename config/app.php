@@ -186,7 +186,8 @@ return [
         Concursos\Providers\ViewComposerProvider::class,
         Concursos\Providers\TiposLogradouroRepositoryProvider::class,
         Concursos\Providers\ValidacaoProvider::class,
-        Concursos\Providers\SexosRepositoryProvider::class
+        Concursos\Providers\SexosRepositoryProvider::class,
+        Concursos\Providers\EstadosModuleProvider::class
 
     ],
 

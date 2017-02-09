@@ -13,6 +13,7 @@
 use Concursos\Model\Repositories\EstadosRepositoryInterface;
 use Concursos\Modules\CandidatosInterface;
 
+
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/candidatos/', 'CandidatosController@index');
 Route::get('/admin/concursos/', 'ConcursosController@index');
@@ -29,3 +30,5 @@ Route::match(['post', 'get'],'/admin/candidatos/consultar', 'CandidatosControlle
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index');
+
+Route::get('/api/estado/{id}/cidades', 'ApiEstadosController@getCidadesByEstado');

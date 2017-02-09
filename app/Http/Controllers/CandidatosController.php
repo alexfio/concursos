@@ -8,13 +8,19 @@ use Concursos\Http\Requests\CandidatoCadastroRequest;
 use Concursos\Http\Requests\CandidatoAtualizacaoRequest;
 use Concursos\Exceptions\CandidatoJaCadastradoException;
 use Concursos\Exceptions\ResultadoVazioException;
+use Concursos\Modules\EstadosInterface;
 
 class CandidatosController extends Controller {
 
     private $moduloCandidatos;
-
-    public function __construct(CandidatosInterface $moduloCandidatos) {
+    private $moduloEstados;
+    
+    public function __construct(
+            CandidatosInterface $moduloCandidatos, 
+            EstadosInterface $moduloEstados) {
+        
         $this->moduloCandidatos = $moduloCandidatos;
+        $this->moduloEstados = $moduloEstados;
     }
 
     public function index() {
@@ -31,6 +37,7 @@ class CandidatosController extends Controller {
                 $this->moduloCandidatos
                 ->consultar($criterios, 1, 1)['candidatos'][0];
         
+        $dados['cidades'] = $this->moduloEstados->obterCidadesByEstado($dados['candidato']['estado']['id']);
         return view('candidatos.cadastro', $dados);
     }
     
@@ -41,7 +48,7 @@ class CandidatosController extends Controller {
         $dados['candidato'] = 
                 $this->moduloCandidatos
                 ->consultar($criterios, 1, 1)['candidatos'][0];
-        
+        $dados['cidades'] = $this->moduloEstados->obterCidadesByEstado($dados['candidato']['estado']['id']);
         $dados['apenasConsulta'] = true;
         return view('candidatos.cadastro', $dados);
     }
