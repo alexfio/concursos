@@ -29,7 +29,7 @@
         var campoCorpo = $('#campoCorpo');
 
         if (!(campoAssunto.val() && campoCorpo.val())) {
-            alert("Campos Assunto e Corpo são de preenchimento obrigatório");
+            Materialize.toast('Campos Assunto e Corpo são obrigatórios!', 3000, 'yellow darken-3');
         } else {
             var confirmacao = window.confirm("Deseja enviar o e-mail ?");
 
