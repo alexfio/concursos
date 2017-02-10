@@ -156,21 +156,23 @@ Sistema de Gerenciamento de Concursos
                                    ->adicionarMascaraCPF($candidato['cpf'])}}
                         </td>
                         <td>
-                            <a  title = "Exibir Detalhes" class="waves-effect waves-teal btn-flat small"
+                            <a  class="waves-effect waves-teal btn-flat small tooltipped"
+                                data-position="top" data-delay="50" data-tooltip="Exibir Detalhes"
                                 href = "{{action('CandidatosController@carregarViewConsultar', $candidato['id'])}}">
                                 <i class="fa fa-search-plus" aria-hidden="true"></i>
                             </a>
                             
-                            <a  title = 'Alterar Dados' 
-                                class="waves-effect waves-teal btn-flat"
+                            <a  
+                                class="waves-effect waves-teal btn-flat tooltipped"
+                                data-position="top" data-delay="50" data-tooltip="Alterar Dados"
                                 href = "{{action('CandidatosController@carregarViewEditar', $candidato['id'])}}">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                             
                             <a 
                                 id ="candidato-{{$candidato['id']}}"
-                                title="Enviar E-mail" 
-                                class="waves-effect waves-teal btn-flat modal-trigger"
+                                data-position="top" data-delay="50" data-tooltip="Eviar E-mail"
+                                class="waves-effect waves-teal btn-flat modal-trigger tooltipped"
                                 href="#modal1">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </a>
