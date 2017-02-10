@@ -123,4 +123,8 @@ class CandidatosDefault implements CandidatosInterface {
         $enderecoEmail = $this->transformador->trim($enderecoEmail);
     }
 
+    public function enviarEmail(array $dados) : bool {
+       return $this->email->enviar($dados['destinatario'], $dados['assunto'], $dados['corpo']);
+    }
+
 }

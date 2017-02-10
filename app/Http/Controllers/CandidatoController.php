@@ -20,6 +20,10 @@ class CandidatoController extends Controller
         return $candidatos;
     }
     
+    public function enviarEmail(Request $request) {
+        $this->moduloCandidatos->enviarEmail($request->all());
+    }
+    
     /**
      * Display a listing of the resource.
      *

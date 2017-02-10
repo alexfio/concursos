@@ -171,7 +171,7 @@ Sistema de Gerenciamento de Concursos
                             
                             <a 
                                 id ="candidato-{{$candidato['id']}}"
-                                data-position="top" data-delay="50" data-tooltip="Eviar E-mail"
+                                data-position="top" data-delay="50" data-tooltip="Enviar E-mail"
                                 class="waves-effect waves-teal btn-flat modal-trigger tooltipped"
                                 href="#modal1">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
