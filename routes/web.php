@@ -29,6 +29,4 @@ Route::match(['post', 'get'],'/admin/candidatos/consultar', 'CandidatosControlle
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index');
 
-Route::get('/api/estado/{id}/cidades', 'ApiEstadosController@getCidadesByEstado');

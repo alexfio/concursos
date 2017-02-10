@@ -23,13 +23,14 @@
             var campoEstado = $(this);
             carregarCidades(campoEstado);
         });
+       
     }
 
     function carregarCidades(campoEstado) {
         var campoOpcaoSelecionada = campoEstado.find('option:selected');
         var idEstado = campoOpcaoSelecionada.val();
         
-        $.ajax('/api/estado/'+ idEstado +'/cidades', {
+        $.ajax('/api/estados/'+ idEstado +'/cidades', {
             method: 'GET',
             success: function (dados) {
                 var campoCidades = $('#campoCidades');

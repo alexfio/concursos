@@ -167,7 +167,11 @@ Sistema de Gerenciamento de Concursos
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                             
-                            <a title="Enviar E-mail" class="waves-effect waves-teal btn-flat modal-trigger" href="#modal1">
+                            <a 
+                                id ="candidato-{{$candidato['id']}}"
+                                title="Enviar E-mail" 
+                                class="waves-effect waves-teal btn-flat modal-trigger"
+                                href="#modal1">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </a>
                             
@@ -192,15 +196,20 @@ Sistema de Gerenciamento de Concursos
       <div class = "row">
           <div class ="input-field col s12 m12 l12">
                 <label for = "campoDestinatario">Destinatário</label>
-                <input type ="text" name = "destinatario" value = "Alexandre Filho - alexfio@gmail.com" disabled>
+                <input id ="campoDestinatario" 
+                       type ="text" 
+                       name = "destinatario" 
+                       placeholder=""
+                       disabled>
             </div>
             <div class ="input-field col s12 m12 l12">
                 <label for = "campoAssunto">Assunto</label>
-                <input type ="text" name = "assunto" placeholder="">
+                <input id = "campoAssunto" type ="text" name = "assunto" placeholder="">
             </div>
           <div class ="input-field col s12 m12 l12">
                 
               <textarea 
+                  id ="campoCorpo"
                   placeholder=""
                   style = "min-height: 34%; max-height: 34%; "
                   id="campoCorpo" 
@@ -212,8 +221,16 @@ Sistema de Gerenciamento de Concursos
        </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Enviar</a>
+        <a id ="botaoEnviarEmail"
+            href="#!"
+           class="modal-action waves-effect waves-green btn-flat ">
+            Enviar
+        </a>
+        <a href="#!" 
+           id ="botaoCancelarEmail"
+           class="modal-action modal-close waves-effect waves-green btn-flat ">
+            Cancelar
+        </a>
     </div>
   </div>
     
@@ -222,10 +239,6 @@ Sistema de Gerenciamento de Concursos
 
 @section('scripts')
 @parent
-<script type = 'text/javascript'>
-    $(document).ready(function () {
-        $('select').material_select();
-        $('.modal').modal();
-    });
+<script src = "{{url('js/candidatos/consulta.js')}}" type = 'text/javascript'>
 </script>
 @endsection
