@@ -6,19 +6,21 @@ use Concursos\Modules\CandidatosInterface;
 use Concursos\Model\Repositories\CandidatosRepositoryInterface;
 use Concursos\Helpers\TransformadorDadosInterface;
 use Concursos\Exceptions\CandidatoJaCadastradoException;
-use Concursos\Helpers\GerenciadorEmailInterface;
+use Illuminate\Support\Facades\Mail;
+use Concursos\Mail\CandidatoEmailPessoal;
 
 class CandidatosDefault implements CandidatosInterface {
 
     private $candidatosRepository;
     private $transformador;
-    private $email;
-
-    public function __construct(CandidatosRepositoryInterface $repository, TransformadorDadosInterface $transformador, GerenciadorEmailInterface $email) {
+   
+    public function __construct(
+            CandidatosRepositoryInterface $repository, 
+            TransformadorDadosInterface $transformador) {
 
         $this->candidatosRepository = $repository;
         $this->transformador = $transformador;
-        $this->email = $email;
+        
     }
 
     public function cadastrarOuAtualizar(array $dados) {
@@ -124,7 +126,13 @@ class CandidatosDefault implements CandidatosInterface {
     }
 
     public function enviarEmail(array $dados) : bool {
-       return $this->email->enviar($dados['destinatario'], $dados['assunto'], $dados['corpo']);
+       $email = new  CandidatoEmailPessoal(
+               $dados['destinatario'], 
+               $dados['assunto'], 
+               $dados['corpo']);
+        
+       Mail::to($dados['destinatario'])->send($email);
+       return count(Mail::failures()) == 0;
     }
 
 }
