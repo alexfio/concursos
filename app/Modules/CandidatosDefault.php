@@ -89,7 +89,11 @@ class CandidatosDefault implements CandidatosInterface {
         }
     }
 
-    public function consultar(array $dados, int $pagina, int $qtdPorPagina): array {
+    public function consultar(
+            array $dados, 
+            int $pagina, 
+            int $qtdPorPagina): array {
+        
         $criterios = [];
         
         foreach ($dados as $criterio => $valor) {
@@ -99,7 +103,8 @@ class CandidatosDefault implements CandidatosInterface {
         }
 
         if (count($criterios) < 1) {
-            throw new \InvalidArgumentException('Deve ser passado ao menos um critério de busca.');
+            throw new 
+            \InvalidArgumentException('Deve ser passado ao menos um critério de busca.');
         }
         
         $criteriosAposTransformacao = [];
