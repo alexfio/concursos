@@ -34,7 +34,8 @@ class CandidatoEmailPessoal extends Mailable
         return $this->from('alexfiofcasf@gmail.com')
              ->to($this->destinatario)
              ->subject($this->assunto)
-             ->view('emails.candidatos');
+             ->view('emails.candidatos')
+             ->with(["mensagem" => $this->corpo]);
              
     }
 }

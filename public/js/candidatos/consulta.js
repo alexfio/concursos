@@ -1,5 +1,5 @@
 (function () {
-    $(document).ready(function () { 
+    $(document).ready(function () {
         registrarEventos();
     });
 
@@ -29,10 +29,19 @@
         var campoCorpo = $('#campoCorpo');
 
         if (!(campoAssunto.val() && campoCorpo.val())) {
-            Materialize.toast('Campos Assunto e Corpo são obrigatórios!', 3000, 'yellow darken-3');
+            
+            Materialize.toast('Campos Assunto e Corpo são obrigatórios!', 
+            3000, 
+            'yellow darken-3');
+            
         } else {
             var confirmacao = window.confirm("Deseja enviar o e-mail ?");
-
+            
+            var preloader = $('#preloader');
+            preloader.css({
+                'display': 'block'
+            });
+            
             if (confirmacao) {
                 $.ajax('/api/candidatos/email', {
                     method: "POST",
@@ -45,20 +54,36 @@
                         corpo: campoCorpo.val(),
                     },
                     success: function (dados) {
-                        Materialize.toast('E-mail Enviado com sucesso !', 3000, 'teal');
+                        preloader.css({
+                            'display': 'none'
+                        });
+                        
+                        Materialize.toast(
+                        'E-mail Enviado com sucesso !', 
+                        3000, 
+                        'teal');
+                        
                         $('.modal').modal('close');
                         campoAssunto.val('');
                         campoCorpo.val('');
-                        
+
                     },
                     error: function (dados) {
-                        Materialize.toast('Problema ao enviar o E-mail !', 3000, 'red darken-4');
+                        
+                        preloader.css({
+                            'display': 'none'
+                        });
+                        
+                        Materialize.toast(
+                        'Problema ao enviar o E-mail !', 
+                        3000, 
+                        'red darken-4');
                     }
 
                 });
 
 
-            } 
+            }
         }
     }
 

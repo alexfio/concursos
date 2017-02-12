@@ -194,7 +194,14 @@ Sistema de Gerenciamento de Concursos
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
           Enviar E-mail
       </h4>
-        
+        <div id ='preloader' class ='row' style = 'display:none'>
+            <div class ='col s12 m12 l12'>
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+
+            </div>
+        </div>  
       <div class = "row">
           <div class ="input-field col s12 m12 l12">
                 <label for = "campoDestinatario">Destinatário</label>
