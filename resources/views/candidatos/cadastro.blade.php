@@ -89,7 +89,8 @@
                                    name = "nome" 
                                    value = "{{$candidato['nome'] or old('nome') }}" 
                                    <?= $errors->has('nome') ? "class = 'validate invalid'" : '' ?>  
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>
+                                   required>
 
                         </div>
                         <div class = "input-field  col s6 m3 l2">
@@ -99,11 +100,12 @@
                                    type = "text" 
                                    value = "{{ isset($candidato['cpf']) ? app('transformador')->converterStringDateTimeParaDataBrasileira($candidato['nascimento']) : old('nascimento')}}"
                                    <?= $errors->has('nascimento') ? "class = 'validate invalid'" : '' ?>  
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> 
+                                   required>
                         </div>
                         <div class = "input-field col s6 m3">
 
-                            <select name = "sexo" <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                            <select name = "sexo" <?= isset($apenasConsulta) ? "disabled" : "" ?> required >
 
                                 <option  value="" disabled selected ></option>
                                 @foreach($componentes['sexo'] as $sexo)
@@ -123,7 +125,7 @@
                                    name = "cpf" 
                                    value = "{{ isset($candidato['cpf']) ? app('transformador')->adicionarMascaraCPF($candidato['cpf']) : old('cpf')}}"
                                    <?= $errors->has('cpf') || old('jaCadastrado') ? "class = 'validate invalid'" : '' ?> 
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
                         </div>
                         <div class = "input-field col s6 m3 l2">
                             <label for = "campoTelefoneResidencial">Tel. Residencial</label>
@@ -132,7 +134,7 @@
                                    name = "telefone_residencial" 
                                    value = "{{ isset($candidato['telefone_residencial']) ? app('transformador')->adicionarMascaraTelefone($candidato['telefone_residencial']) : old('telefone_residencial')}}"
                                    <?= $errors->has('telefone_residencial') ? "class = 'validate invalid'" : '' ?> 
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
                         </div>
                         <div class = "input-field col s6 m3 l2">
                             <label for = "campoTelefoneCelular">Tel. Celular</label>
@@ -141,7 +143,7 @@
                                    name = "telefone_celular"
                                    value = "{{ isset($candidato['telefone_celular']) ? app('transformador')->adicionarMascaraTelefone($candidato['telefone_celular']) : old('telefone_celular')}}"
                                    <?= $errors->has('telefone_celular') ? "class = 'validate invalid'" : '' ?>  
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
                         </div>
 
                         <div class = "input-field col s6 m3 l2">
@@ -151,7 +153,7 @@
                                    name = "rg"  
                                    value = "{{$candidato['rg'] or old('rg')}}" 
                                    <?= $errors->has('rg') ? "class = 'validate invalid'" : '' ?> 
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
                         </div>
                         <div class = "input-field col s6 m3 l1">
                             <label title = "RG - Órgão Expedidor"
@@ -162,12 +164,12 @@
                                    name = "rg_org_exp" 
                                    value = "{{$candidato['rg_org_exp'] or old('rg_org_exp')}}"
                                    <?= $errors->has('rg_org_exp') ? "class = 'validate invalid'" : '' ?> 
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
 
                         </div>
                         <div class = "input-field col s6 m3 l2">
 
-                            <select name = "rg_uf" <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                            <select name = "rg_uf" <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
                                 <option  value="" disabled selected ></option>
                                 @foreach($componentes['estados'] as $estado)
                                 @if(!isset($candidato))
@@ -187,13 +189,13 @@
                                    type = "text" 
                                    value = "{{ isset($candidato['rg_data_expedicao']) ? app('transformador')->converterStringDateTimeParaDataBrasileira($candidato['rg_data_expedicao']) : old('rg_data_expedicao')}}"
                                    <?= $errors->has('rg_data_expedicao') ? "class = 'validate invalid'" : '' ?> 
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
                         </div>
 
 
 
-                        <div class = "input-field col s12 m4 l2">
-                            <select name = "estado" <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                        <div class = "input-field col s12 m4 l3">
+                            <select id = "campoEstado" name = "estado" <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
                                 <option  value="" disabled selected ></option>
                                 @foreach($componentes['estados'] as $estado)
                                 @if(!isset($candidato))
@@ -208,12 +210,13 @@
 
 
                         <div class = "input-field col s12 m4 l2">
-                            <select name = "cidade" <?= isset($apenasConsulta) ? "disabled" : "" ?>>
-                                <option  value="" disabled selected ></option>
-                                <option <?= old('cidade') == 1831 ? "selected" : "" ?> value = "1831">Fortaleza</option>
-                                <option <?= old('cidade') == 2 ? "selected" : "" ?> value = "2">São Paulo</option>
-                                <option <?= old('cidade') == 3 ? "selected" : "" ?> value = "3">Salvador</option> 
-                                <option <?= old('cidade') == 4 ? "selected" : "" ?> value = "4">Rio de Janeiro</option>
+                            <select id = "campoCidades" name = "cidade" <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
+                                <option  value="" disabled selected >Escolha o Estado</option>
+                                @if(isset($cidades))
+                                    @foreach($cidades as $cidade)
+                                        <option <?= $candidato['cidade_id'] == $cidade['id'] ? "selected" : "" ?> value = "{{$cidade['id']}}"> {{$cidade['nome']}}</option> 
+                                    @endforeach   
+                                @endif              
                             </select>
                             <label>Cidade</label>
                         </div>
@@ -222,23 +225,26 @@
                             <input id = "campoCEP" 
                                    name = "cep" 
                                    type = "text" 
+                                   required
                                    value = "{{ isset($candidato['cep']) ? app('transformador')->adicionarMascaraCEP($candidato['cep']) : old('cep')}}"
                                    <?= $errors->has('cep') ? "class = 'validate invalid'" : '' ?> 
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>
+                                   required>
                         </div>
-                        <div class = "input-field col s12 m3 l3">
+                        <div class = "input-field col s12 m3 l2">
                             <label for = "campoBairro">Bairro</label>
                             <input id = "campoBairro" 
                                    name = "bairro" 
                                    type = "text" 
                                    value = "{{$candidato['bairro'] or old('bairro')}}"
                                    <?= $errors->has('bairro') ? "class = 'validate invalid'" : '' ?> 
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?> 
+                                   required>
                         </div>
 
 
                         <div class = "input-field col s12 m3 l3">
-                            <select name = "tipo_logradouro" <?= isset($apenasConsulta) ? "disabled" : "" ?> >
+                            <select name = "tipo_logradouro" <?= isset($apenasConsulta) ? "disabled" : "" ?> required>
                                 <option  value="" disabled selected ></option>
                                 @foreach($componentes['logradouros'] as $logradouro)
                                 @if(!isset($candidato))
@@ -257,7 +263,8 @@
                                    type = "text" 
                                    value = "{{$candidato['logradouro'] or old('logradouro')}}" 
                                    <?= $errors->has('logradouro') ? "class = 'validate invalid'" : '' ?>
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>
+                                   required>
                         </div>
                         <div class = "input-field col s4 m2">
                             <label for = "campoNumero">Número</label>
@@ -266,7 +273,8 @@
                                    type = "text" 
                                    value = "{{$candidato['numero'] or old('numero')}}"
                                    <?= $errors->has('numero') ? "class = 'validate invalid'" : '' ?>
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>
+                                   required>
                         </div>
                         <div class = "input-field col s12 l3">
                             <label for = "campoEmail">E-mail</label>
@@ -275,19 +283,20 @@
                                    name = "email" 
                                    value = "{{$candidato['email'] or old('email')}}" 
                                    <?= $errors->has('email') ? "class = 'validate invalid'" : '' ?> 
-                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>>
+                                   <?= isset($apenasConsulta) ? "disabled" : "" ?>
+                                   required>
                         </div>
 
                         @if(!isset($candidato))
                         <div class = "input-field col s12 l2">
                             <label for = "campoSenha1">Senha</label>
                             <input id = "campoSenha1" type = "password" name = "senha1"
-                                   <?= $errors->has('senha1') || $errors->has('senha2') || old('senha1') || old('senha2') ? "class = 'validate invalid'" : '' ?>>
+                                   <?= $errors->has('senha1') || $errors->has('senha2') || old('senha1') || old('senha2') ? "class = 'validate invalid'" : '' ?> required>
                         </div>
                         <div class = "input-field col s12 l2">
                             <label for = "campoSenha2">Confirme a senha</label>
                             <input id = "campoSenha2" type = "password" name = "senha2"
-                                   <?= $errors->has('senha1') || $errors->has('senha2') || old('senha1') || old('senha2') ? "class = 'validate invalid'" : '' ?>>
+                                   <?= $errors->has('senha1') || $errors->has('senha2') || old('senha1') || old('senha2') ? "class = 'validate invalid'" : '' ?> required>
                         </div>  
                         @endif
 
@@ -324,10 +333,7 @@
 
 @section('scripts')
 @parent
-<script type = "text/javascript">
-    $(document).ready(function () {
-        $('select').material_select();
-    });
-</script>
+<script src="{{url('js/candidatos/cadastro.js')}}"> </script>
+
 @endsection
 

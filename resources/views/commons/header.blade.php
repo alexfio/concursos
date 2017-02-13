@@ -12,11 +12,19 @@
           </a>
       </li>
       <li>
+          <a href="{{action('InscricoesController@index')}}">
+              <i class="material-icons left">recent_actors</i>
+              Inscrições
+          </a>
+      </li>
+      <li>
           <a href="{{action('ConcursosController@index')}}">
               <i class="material-icons left">reorder</i>
               Concursos
           </a>
       </li>
+      
+      
       <!-- Dropdown Trigger -->
       
       <li>

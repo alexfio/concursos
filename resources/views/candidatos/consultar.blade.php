@@ -156,18 +156,24 @@ Sistema de Gerenciamento de Concursos
                                    ->adicionarMascaraCPF($candidato['cpf'])}}
                         </td>
                         <td>
-                            <a  title = "Exibir Detalhes" class="waves-effect waves-teal btn-flat small"
+                            <a  class="waves-effect waves-teal btn-flat small tooltipped"
+                                data-position="top" data-delay="50" data-tooltip="Exibir Detalhes"
                                 href = "{{action('CandidatosController@carregarViewConsultar', $candidato['id'])}}">
                                 <i class="fa fa-search-plus" aria-hidden="true"></i>
                             </a>
                             
-                            <a  title = 'Alterar Dados' 
-                                class="waves-effect waves-teal btn-flat"
+                            <a  
+                                class="waves-effect waves-teal btn-flat tooltipped"
+                                data-position="top" data-delay="50" data-tooltip="Alterar Dados"
                                 href = "{{action('CandidatosController@carregarViewEditar', $candidato['id'])}}">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                             
-                            <a title="Enviar E-mail" class="waves-effect waves-teal btn-flat">
+                            <a 
+                                id ="candidato-{{$candidato['id']}}"
+                                data-position="top" data-delay="50" data-tooltip="Enviar E-mail"
+                                class="waves-effect waves-teal btn-flat modal-trigger tooltipped"
+                                href="#modal1">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </a>
                             
@@ -181,14 +187,67 @@ Sistema de Gerenciamento de Concursos
 
     @endif
 
+  <!-- Estrutura do Modal -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          Enviar E-mail
+      </h4>
+        <div id ='preloader' class ='row' style = 'display:none'>
+            <div class ='col s12 m12 l12'>
+                <div class="progress">
+                    <div class="indeterminate"></div>
+                </div>
+
+            </div>
+        </div>  
+      <div class = "row">
+          <div class ="input-field col s12 m12 l12">
+                <label for = "campoDestinatario">Destinatário</label>
+                <input id ="campoDestinatario" 
+                       type ="text" 
+                       name = "destinatario" 
+                       placeholder=""
+                       disabled>
+            </div>
+            <div class ="input-field col s12 m12 l12">
+                <label for = "campoAssunto">Assunto</label>
+                <input id = "campoAssunto" type ="text" name = "assunto" placeholder="">
+            </div>
+          <div class ="input-field col s12 m12 l12">
+                
+              <textarea 
+                  id ="campoCorpo"
+                  placeholder=""
+                  style = "min-height: 34%; max-height: 34%; "
+                  id="campoCorpo" 
+                  class="materialize-textarea" 
+                  cols="50" rows = "100"></textarea>
+              <label for = "campoCorpo">Corpo</label>
+            </div>
+            
+       </div>
+    </div>
+    <div class="modal-footer">
+        <a id ="botaoEnviarEmail"
+            href="#!"
+           class="modal-action waves-effect waves-green btn-flat ">
+            Enviar
+        </a>
+        <a href="#!" 
+           id ="botaoCancelarEmail"
+           class="modal-action modal-close waves-effect waves-green btn-flat ">
+            Cancelar
+        </a>
+    </div>
+  </div>
+    
 </div>
 @endsection
 
 @section('scripts')
 @parent
-<script type = 'text/javascript'>
-    $(document).ready(function () {
-        $('select').material_select();
-    });
+<script src = "{{url('js/candidatos/consulta.js')}}" type = 'text/javascript'>
 </script>
 @endsection

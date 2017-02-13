@@ -40,8 +40,12 @@
     @section('scripts')
     <script type ='text/javascript' 
     src ="{{url('lib/jquery/dist/jquery.min.js')}}" ></script>
+    
     <script type ='text/javascript' 
     src ="{{url('lib/materialize/dist/js/materialize.min.js')}}" ></script>
+    
+    <script type ='text/javascript' 
+    src ="{{url('lib/jquery-mask-plugin/dist/jquery.mask.min.js')}}" ></script>
     
     <script type ='text/javascript' 
     src ="{{url('js/app.js')}}" ></script>

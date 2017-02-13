@@ -6,19 +6,21 @@ use Concursos\Modules\CandidatosInterface;
 use Concursos\Model\Repositories\CandidatosRepositoryInterface;
 use Concursos\Helpers\TransformadorDadosInterface;
 use Concursos\Exceptions\CandidatoJaCadastradoException;
-use Concursos\Helpers\GerenciadorEmailInterface;
+use Illuminate\Support\Facades\Mail;
+use Concursos\Mail\CandidatoEmailPessoal;
 
 class CandidatosDefault implements CandidatosInterface {
 
     private $candidatosRepository;
     private $transformador;
-    private $email;
-
-    public function __construct(CandidatosRepositoryInterface $repository, TransformadorDadosInterface $transformador, GerenciadorEmailInterface $email) {
+   
+    public function __construct(
+            CandidatosRepositoryInterface $repository, 
+            TransformadorDadosInterface $transformador) {
 
         $this->candidatosRepository = $repository;
         $this->transformador = $transformador;
-        $this->email = $email;
+        
     }
 
     public function cadastrarOuAtualizar(array $dados) {
@@ -87,7 +89,11 @@ class CandidatosDefault implements CandidatosInterface {
         }
     }
 
-    public function consultar(array $dados, int $pagina, int $qtdPorPagina): array {
+    public function consultar(
+            array $dados, 
+            int $pagina, 
+            int $qtdPorPagina): array {
+        
         $criterios = [];
         
         foreach ($dados as $criterio => $valor) {
@@ -97,7 +103,8 @@ class CandidatosDefault implements CandidatosInterface {
         }
 
         if (count($criterios) < 1) {
-            throw new \InvalidArgumentException('Deve ser passado ao menos um critério de busca.');
+            throw new 
+            \InvalidArgumentException('Deve ser passado ao menos um critério de busca.');
         }
         
         $criteriosAposTransformacao = [];
@@ -121,6 +128,17 @@ class CandidatosDefault implements CandidatosInterface {
     
     public function recuperarSenha(string $enderecoEmail) {
         $enderecoEmail = $this->transformador->trim($enderecoEmail);
+    }
+
+    public function enviarEmail(array $dados) : bool {
+       $email = new  CandidatoEmailPessoal(
+               $dados['destinatario'], 
+               $dados['assunto'], 
+               $dados['corpo']);
+        
+       Mail::to($dados['destinatario'])->send($email);
+       return count(Mail::failures()) == 0;
+       
     }
 
 }

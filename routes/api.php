@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/estados/{id}/cidades', "EstadoController@getCidadeByEstado");
+Route::get('/candidatos/{id}', "CandidatoController@getById");
+Route::post('/candidatos/email', "CandidatoController@enviarEmail");
+Route::resource('candidatos', "CandidatoController");
+Route::resource('estados', "EstadoController");
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');

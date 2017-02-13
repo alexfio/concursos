@@ -7,32 +7,32 @@ Sistema de Gerenciamento de Concursos
 @section('conteudo')
 <div class ="container">
     <br>
+
     <div class ="row">
-        
-        <div class = "col s8 m8 l12 right-align">
-            
+        <div class = "col s12 m12 l12 right-align">
             <a  href ="{{action('CandidatosController@carregarViewCadastrar')}}"
                 class = "btn btn-large waves-effect waves-light left">
                 <i class="material-icons left">mode_edit</i>
-                Novo Candidato
+                Nova Inscrição
             </a>
-            <a   href ="{{action('CandidatosController@carregarViewConsulta')}}"
+            <a  href ="#!"
                 class = "btn btn-large waves-effect waves-light right">
                 <i class="material-icons left">search</i>
-                Consultar Candidato
+                Consultar Inscrições
             </a>
+           <!-- <a  href ="#!"
+                class = "btn btn-large waves-effect waves-light">
+                <i class="material-icons left">spellcheck</i>
+                Respostas
+            </a>
+            <a  href ="#!"
+                class = "btn btn-large waves-effect waves-light">
+                <i class="material-icons left">library_books</i>
+                Disciplinas
+            </a> -->
         </div>
     </div>
-    
-    <div class ="row">
-        <div class ='col s4 m12 l12'>
-            @if(old('feedback'))
-                <p class = 'yellow lighten-4  black-text left col l12'>
-                    {{old('feedback')}}
-                </p>
-            @endif
-        </div>
-    </div>
+
     <!--  <div class ="row">
          <div class = "col s12 m12 l12">
              <ul class="pagination">
@@ -108,8 +108,4 @@ Sistema de Gerenciamento de Concursos
          </div> 
      </div> -->
 </div>
-@endsection
-
-@section('scripts')
-@parent
 @endsection

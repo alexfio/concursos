@@ -11,16 +11,16 @@ Sistema de Gerenciamento de Concursos
     <div class ="row">
         <div class = "col s12 m12 l12 right-align">
             <a  href ="{{action('CandidatosController@carregarViewCadastrar')}}"
-                class = "btn btn-large waves-effect waves-light">
+                class = "btn btn-large waves-effect waves-light left">
                 <i class="material-icons left">mode_edit</i>
                 Novo Concurso
             </a>
             <a  href ="#!"
-                class = "btn btn-large waves-effect waves-light">
+                class = "btn btn-large waves-effect waves-light right">
                 <i class="material-icons left">search</i>
                 Consultar Concurso
             </a>
-            <a  href ="#!"
+           <!-- <a  href ="#!"
                 class = "btn btn-large waves-effect waves-light">
                 <i class="material-icons left">spellcheck</i>
                 Respostas
@@ -29,7 +29,7 @@ Sistema de Gerenciamento de Concursos
                 class = "btn btn-large waves-effect waves-light">
                 <i class="material-icons left">library_books</i>
                 Disciplinas
-            </a>
+            </a> -->
         </div>
     </div>
 
