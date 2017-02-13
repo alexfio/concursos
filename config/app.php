@@ -180,13 +180,16 @@ return [
         Concursos\Providers\TransformadorDadosProvider::class,
         Concursos\Providers\EstadosRepositoryProvider::class,
         Concursos\Providers\CidadesRepositoryProvider::class,
+        Concursos\Providers\ConcursosRepositoryProvider::class,
         Concursos\Providers\CandidatosRepositoryProvider::class,
         Concursos\Providers\CandidatosModuleProvider::class,
+        Concursos\Providers\ConcursosModuleProvider::class,
         Concursos\Providers\ViewComposerProvider::class,
         Concursos\Providers\TiposLogradouroRepositoryProvider::class,
         Concursos\Providers\ValidacaoProvider::class,
         Concursos\Providers\SexosRepositoryProvider::class,
-        Concursos\Providers\EstadosModuleProvider::class
+        Concursos\Providers\EstadosModuleProvider::class,
+        
 
     ],
 

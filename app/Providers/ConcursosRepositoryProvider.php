@@ -3,13 +3,11 @@
 namespace Concursos\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Concursos\Helpers\ValidacaoInterface;
-use Concursos\Helpers\ValidacaoDefault;
+use Concursos\Model\Repositories\ConcursosRepositoryInterface;
+use Concursos\Model\Repositories\Eloquent\ConcursosRepository;
 
-class ValidacaoProvider extends ServiceProvider
+class ConcursosRepositoryProvider extends ServiceProvider
 {
-   
-    
     /**
      * Bootstrap the application services.
      *
@@ -27,8 +25,9 @@ class ValidacaoProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ValidacaoInterface::class, ValidacaoDefault::class);
+        $this->app->bind(
+                ConcursosRepositoryInterface::class,
+                ConcursosRepository::class
+            );
     }
-    
-    
 }

@@ -10,12 +10,6 @@ use Concursos\Model\Repositories\Eloquent\CandidatosRepository;
 class CandidatosRepositoryProvider extends ServiceProvider
 {
     
-    protected $defer;
-    
-    public function __construct($app) {
-        parent::__construct($app);
-        $this->defer = true;
-    }
     
     /**
      * Bootstrap the application services.
@@ -40,7 +34,5 @@ class CandidatosRepositoryProvider extends ServiceProvider
          
     }
     
-    public function provides() {
-        return [CandidatosRepositoryInterface::class];
-    }
+   
 }

@@ -10,12 +10,7 @@ use Concursos\Helpers\TransformadorDadosInterface;
 
 class CandidatosModuleProvider extends ServiceProvider
 {
-    protected $defer;
     
-    public function __construct($app) {
-        parent::__construct($app);
-        $this->defer = true;
-    }
     
     /**
      * Bootstrap the application services.
@@ -43,7 +38,5 @@ class CandidatosModuleProvider extends ServiceProvider
         });
     }
     
-    public function provides() {
-        return [CandidatosInterface::class];
-    }
+    
 }
