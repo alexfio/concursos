@@ -138,6 +138,7 @@ class CandidatosDefault implements CandidatosInterface {
         
        Mail::to($dados['destinatario'])->send($email);
        return count(Mail::failures()) == 0;
+       
     }
 
 }
