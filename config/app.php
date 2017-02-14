@@ -189,7 +189,7 @@ return [
         Concursos\Providers\ValidacaoProvider::class,
         Concursos\Providers\SexosRepositoryProvider::class,
         Concursos\Providers\EstadosModuleProvider::class,
-        
+        Concursos\Providers\SituacaoConcursoProvider::class,        
 
     ],
 

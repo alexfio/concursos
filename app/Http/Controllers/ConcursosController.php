@@ -20,6 +20,10 @@ class ConcursosController extends Controller
         return view('concursos.index');
     }
     
+    public function carregarViewCadastrar() {
+        return view('concursos.cadastro');
+    }
+    
     public function cadastrar() {
         $dados['id'] = 1;
         

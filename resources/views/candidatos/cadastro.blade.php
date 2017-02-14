@@ -336,4 +336,3 @@
 <script src="{{url('js/candidatos/cadastro.js')}}"> </script>
 
 @endsection
-

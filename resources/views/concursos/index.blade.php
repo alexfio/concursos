@@ -10,7 +10,7 @@ Sistema de Gerenciamento de Concursos
 
     <div class ="row">
         <div class = "col s12 m12 l12 right-align">
-            <a  href ="{{action('CandidatosController@carregarViewCadastrar')}}"
+            <a  href ="{{action('ConcursosController@carregarViewCadastrar')}}"
                 class = "btn btn-large waves-effect waves-light left">
                 <i class="material-icons left">mode_edit</i>
                 Novo Concurso

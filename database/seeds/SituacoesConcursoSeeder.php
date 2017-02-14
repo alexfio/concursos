@@ -13,6 +13,11 @@ class SituacoesConcursoSeeder extends Seeder
     public function run()
     {
         $s1 = new SituacaoConcurso();
+        $s1->nome = "Em Definição";
+        $s1->descricao = "Concurso encontra-se na fase de definição";
+        $s1->save();
+        
+        $s1 = new SituacaoConcurso();
         $s1->nome = "Inscrições Abertas";
         $s1->descricao = "Concurso encontra-se na fase de preechimento de inscrições";
         $s1->save();

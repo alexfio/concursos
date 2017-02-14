@@ -5,6 +5,7 @@ namespace Concursos\Providers;
 use Illuminate\Support\ServiceProvider;
 use Concursos\ViewComposers\CandidatoCadastroViewComposer;
 use Concursos\ViewComposers\CandidatoConsultaViewComposer;
+use Concursos\ViewComposers\ConcursoCadastroViewComposer;
 use Illuminate\Support\Facades\View;
 
 class ViewComposerProvider extends ServiceProvider
@@ -15,6 +16,7 @@ class ViewComposerProvider extends ServiceProvider
     {
        View::composer('candidatos.cadastro', CandidatoCadastroViewComposer::class);
        View::composer('candidatos.consultar', CandidatoConsultaViewComposer::class);
+       View::composer('concursos.cadastro', ConcursoCadastroViewComposer::class);
     }
 
     /**
