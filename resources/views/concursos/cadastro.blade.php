@@ -117,15 +117,9 @@
         </div>
     </div>
 
-    <div class = "row">
-        <div class ="col s12 m12 l12">
-            <a class ="btn teal waves-effect right">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                Adicionar Cargo
-            </a>
-        </div>
-        <br> <br> <br>
-        <div class ="row">
+    <div id ="cargos" class = "row">
+
+        <div id-cargo class ="row" style>
             <div class ="col s12 m12 l12">
                 <div class="card grey lighten-5">
                     <div class="card-content black-text">
@@ -134,7 +128,10 @@
                             <div class = "col s12 m12 l6">
                                 <div class ="input-field input-group">
                                     <label for = "campoNomeCargo">Nome</label>
-                                    <input type = "text" name = "nome_cargo">
+                                    <input
+                                        id ="campoNomeCargo"
+                                        type = "text" 
+                                        name = "nome_cargo">
                                 </div>
                             </div>
                             <div class = "col s12 m12 l3">
@@ -184,7 +181,22 @@
 
                 </div>
             </div>
+            
+            
+            
+                <div class ="col s12 m12 l12">
+                        <a class ="btn teal waves-effect left btnRemoverCargo">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        Remover Cargo
+                    </a>
+                    <a class ="btn teal waves-effect right btnAdicionarCargo">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Adicionar Cargo
+                    </a>
+                </div>
+            
         </div>
+
     </div>
 
 
