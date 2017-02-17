@@ -185,7 +185,7 @@
             
             
                 <div class ="col s12 m12 l12">
-                        <a class ="btn teal waves-effect left btnRemoverCargo">
+                        <a class ="btn teal waves-effect left btnRemoverCargo hide">
                         <i class="fa fa-minus" aria-hidden="true"></i>
                         Remover Cargo
                     </a>
