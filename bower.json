@@ -20,6 +20,7 @@
     "materialize": "^0.98.0",
     "font-awesome": "^4.7.0",
     "animate.css": "^3.5.2",
-    "jquery-mask-plugin": "^1.14.9"
+    "jquery-mask-plugin": "^1.14.9",
+    "jquery-smooth-scroll": "^2.1.2"
   }
 }

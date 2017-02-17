@@ -27,7 +27,7 @@ Route::post('/admin/candidatos/cadastrar', 'CandidatosController@cadastrar');
 Route::post('/admin/candidatos/atualizar', 'CandidatosController@atualizar');
 Route::match(['post', 'get'],'/admin/candidatos/consultar', 'CandidatosController@consultar');
 Route::get('/admin/concursos/cadastro', 'ConcursosController@carregarViewCadastrar');
-Route::get('/admin/concursos/cadastrar', 'ConcursosController@cadastrar');
+Route::post('/admin/concursos/cadastrar', 'ConcursosController@cadastrar');
 
 
 Auth::routes();

@@ -24,22 +24,12 @@ class ConcursosController extends Controller
         return view('concursos.cadastro');
     }
     
-    public function cadastrar() {
-        $dados['id'] = 1;
+    public function cadastrar(Request $request) {
         
-        $dados['descricao'] = "Câmara Municipal de Osasco";
         
-        $dados['edital'] = "73/2014";
+        var_dump($request->all());
         
-        $dados['data_inicio_inscricoes'] = "17/08/2017";
-        
-        $dados['data_termino_inscricoes'] = "25/08/2017";
-        
-        $dados['zerar_alguma_prova_elimina_candidato'] = true;
-        
-        $dados['situacao_concurso_id'] = 1;
-        
-        $this->moduloConcursos->cadastrarOuAtualizar($dados);
+        //$this->moduloConcursos->cadastrarOuAtualizar($dados);
         
     }
 }

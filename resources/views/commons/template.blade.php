@@ -48,6 +48,9 @@
     src ="{{url('lib/jquery-mask-plugin/dist/jquery.mask.min.js')}}" ></script>
     
     <script type ='text/javascript' 
+    src ="{{url('lib/jquery-smooth-scroll/jquery.smooth-scroll.min.js')}}" ></script>
+    
+    <script type ='text/javascript' 
     src ="{{url('js/app.js')}}" ></script>
     
     @show

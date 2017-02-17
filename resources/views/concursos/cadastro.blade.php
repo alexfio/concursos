@@ -59,6 +59,9 @@
     </div>
     @endif
 
+ <form action = '{{action('ConcursosController@cadastrar')}}' method = 'post'>
+     <input type = 'hidden' name ='_token' value = '{{csrf_token()}}'  >  
+   
     <div class = "row">
         <div class="input-field col s12">
             <select name = "situacao_concurso" >
@@ -100,6 +103,7 @@
                 <label>
                     Não
                     <input id ="campoZero" type="checkbox" 
+                           value ='true'
                            name = "zerar_alguma_prova_elimina_candidato">
                     <span class="lever"></span>
                     Sim
@@ -119,7 +123,7 @@
 
     <div id ="cargos" class = "row">
 
-        <div id-cargo class ="row" style>
+        <div id-cargo="1" class ="row animated fadeIn" style>
             <div class ="col s12 m12 l12">
                 <div class="card grey lighten-5">
                     <div class="card-content black-text">
@@ -129,27 +133,27 @@
                                 <div class ="input-field input-group">
                                     <label for = "campoNomeCargo">Nome</label>
                                     <input
-                                        id ="campoNomeCargo"
+                                        class ="campoNomeCargo"
                                         type = "text" 
-                                        name = "nome_cargo">
+                                        name = "cargos[nome_cargo][]">
                                 </div>
                             </div>
                             <div class = "col s12 m12 l3">
                                 <div class ="input-field input-group">
                                     <label for = "campoVagasAmpla">Vagas Ampla Concorrência</label>
-                                    <input id = "campoVagasAmpla" 
+                                    <input class = "campoVagasAmpla" 
                                            type = "number" 
                                            min ="1"
-                                           name = "vagas_ampla">
+                                           name = "cargos[vagas_ampla][]">
                                 </div>
                             </div>
                             <div class = "col s12 m12 l3">
                                 <div class ="input-field input-group">
                                     <label for = "campoVagasPCD">Vagas Deficientes</label>
-                                    <input id = "campoVagasPCD" 
+                                    <input class = "campoVagasPCD" 
                                            type = "number" 
                                            min ="0"
-                                           name = "vagas_pcd">
+                                           name = "cargos[vagas_pcd][]">
                                 </div>
                             </div>
                         </div>
@@ -159,10 +163,10 @@
                                     <label for = "campoQtdAprovadosAmpla">
                                         Quantidade Aprovados p/ Ampla Concorrência
                                     </label>
-                                    <input id = "campoQtdAprovadosAmpla" 
+                                    <input class = "campoQtdAprovadosAmpla" 
                                            type = "number" 
                                            min ="1"
-                                           name = "qtd_aprovados_ampla">
+                                           name = "cargos[qtd_aprovados_ampla][]">
                                 </div>
                             </div>
                             <div class ="col s12 m12 l6">
@@ -170,10 +174,10 @@
                                     <label for = "campoQtdAprovadosPCD">
                                         Quantidade Aprovados p/ Deficientes
                                     </label>
-                                    <input id = "campoQtdAprovadosPCD" 
+                                    <input class = "campoQtdAprovadosPCD" 
                                            type = "number" 
                                            min ="1"
-                                           name = "qtd_aprovados_pcd">
+                                           name = "cargos[qtd_aprovados_pcd][]">
                                 </div>
                             </div>
                         </div>
@@ -185,11 +189,11 @@
             
             
                 <div class ="col s12 m12 l12">
-                        <a class ="btn teal waves-effect left btnRemoverCargo hide">
+                        <a class ="btn teal left btnRemoverCargo hide">
                         <i class="fa fa-minus" aria-hidden="true"></i>
                         Remover Cargo
                     </a>
-                    <a class ="btn teal waves-effect right btnAdicionarCargo">
+                    <a class ="btn teal right btnAdicionarCargo show">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                         Adicionar Cargo
                     </a>
@@ -198,7 +202,14 @@
         </div>
 
     </div>
-
+<div class = 'row' >
+    <div class = 'col s12 m12 l12'>
+        <button id = 'btnSubmit' type ='submit' class = 'btn teal right'>
+            Salvar Dados
+        </button>
+    </div>
+</div>
+  </form>    
 
 </div>
 @endsection
