@@ -4,6 +4,7 @@ namespace Concursos\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Concursos\Modules\ConcursosInterface;
+use Concursos\Http\Requests\ConcursoCadastroRequest;
 
 class ConcursosController extends Controller
 {
@@ -24,7 +25,7 @@ class ConcursosController extends Controller
         return view('concursos.cadastro');
     }
     
-    public function cadastrar(Request $request) {
+    public function cadastrar(ConcursoCadastroRequest $request) {
         
         
         var_dump($request->all());

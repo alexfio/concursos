@@ -76,7 +76,10 @@
 
         <div class = "row">
             <div class ="input-field col s12 m12 l12">
-                <textarea id="campoDescricao" class="materialize-textarea"></textarea>
+                <textarea 
+                    id="campoDescricao" 
+                    name = "descricao"
+                    class="materialize-textarea">{{old('descricao')}}</textarea>
                 <label for="campoDescricao">Descrição</label>
             </div>
         </div>
@@ -84,17 +87,23 @@
         <div class = "row">
             <div class ="input-field col s4 m4 l3">
                 <label for ="campoEdital" >Edital</label>
-                <input id = "campoEdital" type ="text" name = "edital">
+                <input id = "campoEdital" 
+                       type ="text" 
+                       name = "edital"
+                       value = "{{old('edital')}}">
             </div>
             <div class ="input-field col s4 m4 l3">            
                 <label for ="campoDataInicioInscricoes" >Data Início Inscrições</label>
                 <input id = "campoDataInicioInscricoes" 
-                       type ="text" name = "data_inicio_inscricoes">
+                       type ="text" 
+                       name = "data_inicio_inscricoes"
+                       value = "{{old('data_inicio_inscricoes')}}">
             </div>
             <div class ="input-field col s4 m4 l3">
                 <label for ="campoDataTerminoInscricoes" >Data Término Inscrições</label>
                 <input id = "campoDataTerminoInscricoes" type ="text" 
-                       name = "data_termino_inscricoes">
+                       name = "data_termino_inscricoes"
+                       value = "{{old('data_termino_inscricoes')}}" >
             </div>
             <div class ="col s4 m4 l3">
                 <label for = "campoZero">Zero em Alguma Prova Elimina Candidato</label>
@@ -120,10 +129,11 @@
                 </h4>
             </div>
         </div>
-
+         
         <div id ="cargos" class = "row">
-
-            <div id-cargo="1" class ="row animated fadeIn" style>
+          @if(old('cargos'))   
+           @for($c = 0; $c < count(old('cargos')['nome_cargo']); $c++)
+            <div id-cargo="{{$c + 1}}" class ="row animated fadeIn" >
                 <div class ="col s12 m12 l12">
                     <div class="card grey lighten-5">
                         <div class="card-content black-text">
@@ -136,7 +146,9 @@
                                             id = "campoNomeCargo"
                                             class ="campoNomeCargo"
                                             type = "text" 
-                                            name = "cargos[nome_cargo][]">
+                                            name = "cargos[nome_cargo][]"
+                                            value = '{{old('cargos')['nome_cargo'][$c]}}'
+                                            required>
                                     </div>
                                 </div>
                                 <div class = "col s12 m12 l3">
@@ -147,7 +159,9 @@
                                             class = "campoVagasAmpla" 
                                             type = "number" 
                                             min ="1"
-                                            name = "cargos[vagas_ampla][]">
+                                            name = "cargos[vagas_ampla][]"
+                                            value = '{{old('cargos')['vagas_ampla'][$c]}}'
+                                            required>
                                     </div>
                                 </div>
                                 <div class = "col s12 m12 l3">
@@ -158,7 +172,9 @@
                                             class = "campoVagasPCD" 
                                             type = "number" 
                                             min ="0"
-                                            name = "cargos[vagas_pcd][]">
+                                            name = "cargos[vagas_pcd][]"
+                                            value = '{{old('cargos')['vagas_pcd'][$c]}}'
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +189,9 @@
                                             class = "campoQtdAprovadosAmpla" 
                                             type = "number" 
                                             min ="1"
-                                            name = "cargos[qtd_aprovados_ampla][]">
+                                            name = "cargos[qtd_aprovados_ampla][]"
+                                            value = '{{old('cargos')['qtd_aprovados_ampla'][$c]}}'
+                                            required>
                                     </div>
                                 </div>
                                 <div class ="col s12 m12 l6">
@@ -184,9 +202,11 @@
                                         <input 
                                             id = "campoQtdAprovadosPCD"
                                             class = "campoQtdAprovadosPCD" 
-                                               type = "number" 
-                                               min ="0"
-                                               name = "cargos[qtd_aprovados_pcd][]">
+                                            type = "number" 
+                                            min ="0"
+                                            name = "cargos[qtd_aprovados_pcd][]" 
+                                            value = '{{old('cargos')['qtd_aprovados_pcd'][$c]}}'
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -195,10 +215,8 @@
                     </div>
                 </div>
 
-
-
                 <div class ="col s12 m12 l12">
-                    <a class="waves-effect waves-light btn btnRemoverCargo hide" >
+                    <a class="waves-effect waves-light btn btnRemoverCargo  {{$c == 0 ? 'hide' : '' }}"" >
                         <i class="fa fa-minus" aria-hidden="true"></i>
                         Remover Cargo
                     </a>
@@ -209,7 +227,98 @@
                 </div>
 
             </div>
+           @endfor
+          @else
+            <div id-cargo="1" class ="row animated fadeIn" >
+                <div class ="col s12 m12 l12">
+                    <div class="card grey lighten-5">
+                        <div class="card-content black-text">
+                            <span class="card-title">Novo Cargo</span>
+                            <div class ="row">
+                                <div class = "col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoNomeCargo">Nome</label>
+                                        <input
+                                            id = "campoNomeCargo"
+                                            class ="campoNomeCargo"
+                                            type = "text" 
+                                            name = "cargos[nome_cargo][]"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class = "col s12 m12 l3">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoVagasAmpla">Vagas Ampla Concorrência</label>
+                                        <input 
+                                            id ="campoVagasAmpla"
+                                            class = "campoVagasAmpla" 
+                                            type = "number" 
+                                            min ="1"
+                                            name = "cargos[vagas_ampla][]"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class = "col s12 m12 l3">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoVagasPCD">Vagas Deficientes</label>
+                                        <input
+                                            id ="campoVagasPCD"
+                                            class = "campoVagasPCD" 
+                                            type = "number" 
+                                            min ="0"
+                                            name = "cargos[vagas_pcd][]"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class ="col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoQtdAprovadosAmpla">
+                                            Quantidade Aprovados p/ Ampla Concorrência
+                                        </label>
+                                        <input 
+                                            id = "campoQtdAprovadosAmpla"
+                                            class = "campoQtdAprovadosAmpla" 
+                                            type = "number" 
+                                            min ="1"
+                                            name = "cargos[qtd_aprovados_ampla][]"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class ="col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoQtdAprovadosPCD">
+                                            Quantidade Aprovados p/ Deficientes
+                                        </label>
+                                        <input 
+                                            id = "campoQtdAprovadosPCD"
+                                            class = "campoQtdAprovadosPCD" 
+                                            type = "number" 
+                                            min ="0"
+                                            name = "cargos[qtd_aprovados_pcd][]" 
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+
+                <div class ="col s12 m12 l12">
+                    <a class="waves-effect waves-light btn btnRemoverCargo hide" >
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        Remover Cargo
+                    </a>
+                    <a class ="btn teal right btnAdicionarCargo">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Adicionar Cargo
+                    </a>
+                </div>
+
+            </div>
+          @endif
         </div>
         <div class = 'row' >
             <div class = 'col s12 m12 l12'>
