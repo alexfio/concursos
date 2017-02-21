@@ -64,16 +64,23 @@
 
         <div class = "row">
             <div class="input-field col s12">
+                
                 <select name = "situacao_concurso" >
+                    
                     @foreach($componentes['situacoes'] as $situacao)
-                    <option value="{{$situacao['id']}}">{{ $situacao['nome']}}</option>
+                        <option 
+                            <?= old('situacao_concurso') == $situacao['id'] 
+                                  ? "selected" : ""  ?>
+                             value="{{$situacao['id']}}"
+                             
+                             >{{$situacao['nome']}}</option>
+                       
                     @endforeach
                 </select>
                 <label>Situação Concurso</label>
             </div>
         </div>
-
-
+        
         <div class = "row">
             <div class ="input-field col s12 m12 l12">
                 <textarea 
@@ -113,7 +120,8 @@
                         Não
                         <input id ="campoZero" type="checkbox" 
                                value ='true'
-                               name = "zerar_alguma_prova_elimina_candidato">
+                               name = "zerar_alguma_prova_elimina_candidato"
+                               <?= old('zerar_alguma_prova_elimina_candidato') ? 'checked' :  ''  ?>>
                         <span class="lever"></span>
                         Sim
                     </label>
@@ -364,6 +372,7 @@
 @section('scripts')
 @parent
 <script src="{{url('js/concursos/cadastro.js')}}"></script>
+
 
 @endsection
 

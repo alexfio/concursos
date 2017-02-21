@@ -2,10 +2,10 @@
     
     
     $(document).ready(function(){
-        $('select').material_select();
-        $('.modal').modal();
         registrarEventos();
         aplicarMascaras();
+        $('select').material_select();
+        $('.modal').modal();
          
     });
     
