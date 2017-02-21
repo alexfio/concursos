@@ -59,137 +59,146 @@
     </div>
     @endif
 
- <form action = '{{action('ConcursosController@cadastrar')}}' method = 'post'>
-     <input type = 'hidden' name ='_token' value = '{{csrf_token()}}'  >  
-   
-    <div class = "row">
-        <div class="input-field col s12">
-            <select name = "situacao_concurso" >
-                @foreach($componentes['situacoes'] as $situacao)
-                <option value="{{$situacao['id']}}">{{ $situacao['nome']}}</option>
-                @endforeach
-            </select>
-            <label>Situação Concurso</label>
-        </div>
-    </div>
+    <form action = '{{action('ConcursosController@cadastrar')}}' method = 'post'>
+        <input type = 'hidden' name ='_token' value = '{{csrf_token()}}'  >  
 
-
-    <div class = "row">
-        <div class ="input-field col s12 m12 l12">
-            <textarea id="campoDescricao" class="materialize-textarea"></textarea>
-            <label for="campoDescricao">Descrição</label>
-        </div>
-    </div>
-
-    <div class = "row">
-        <div class ="input-field col s4 m4 l3">
-            <label for ="campoEdital" >Edital</label>
-            <input id = "campoEdital" type ="text" name = "edital">
-        </div>
-        <div class ="input-field col s4 m4 l3">            
-            <label for ="campoDataInicioInscricoes" >Data Início Inscrições</label>
-            <input id = "campoDataInicioInscricoes" 
-                   type ="text" name = "data_inicio_inscricoes">
-        </div>
-        <div class ="input-field col s4 m4 l3">
-            <label for ="campoDataTerminoInscricoes" >Data Término Inscrições</label>
-            <input id = "campoDataTerminoInscricoes" type ="text" 
-                   name = "data_termino_inscricoes">
-        </div>
-        <div class ="col s4 m4 l3">
-            <label for = "campoZero">Zero em Alguma Prova Elimina Candidato</label>
-            <br><br>
-            <div class="switch">
-                <label>
-                    Não
-                    <input id ="campoZero" type="checkbox" 
-                           value ='true'
-                           name = "zerar_alguma_prova_elimina_candidato">
-                    <span class="lever"></span>
-                    Sim
-                </label>
+        <div class = "row">
+            <div class="input-field col s12">
+                <select name = "situacao_concurso" >
+                    @foreach($componentes['situacoes'] as $situacao)
+                    <option value="{{$situacao['id']}}">{{ $situacao['nome']}}</option>
+                    @endforeach
+                </select>
+                <label>Situação Concurso</label>
             </div>
         </div>
-    </div>
 
 
-    <div class ="row">
-        <div class ='card-panel col s12 m12 l12 teal white-text'>
-            <h4>
-                Definição de Cargos
-            </h4>
+        <div class = "row">
+            <div class ="input-field col s12 m12 l12">
+                <textarea id="campoDescricao" class="materialize-textarea"></textarea>
+                <label for="campoDescricao">Descrição</label>
+            </div>
         </div>
-    </div>
 
-    <div id ="cargos" class = "row">
-
-        <div id-cargo="1" class ="row animated fadeIn" style>
-            <div class ="col s12 m12 l12">
-                <div class="card grey lighten-5">
-                    <div class="card-content black-text">
-                        <span class="card-title">Novo Cargo</span>
-                        <div class ="row">
-                            <div class = "col s12 m12 l6">
-                                <div class ="input-field input-group">
-                                    <label for = "campoNomeCargo">Nome</label>
-                                    <input
-                                        class ="campoNomeCargo"
-                                        type = "text" 
-                                        name = "cargos[nome_cargo][]">
-                                </div>
-                            </div>
-                            <div class = "col s12 m12 l3">
-                                <div class ="input-field input-group">
-                                    <label for = "campoVagasAmpla">Vagas Ampla Concorrência</label>
-                                    <input class = "campoVagasAmpla" 
-                                           type = "number" 
-                                           min ="1"
-                                           name = "cargos[vagas_ampla][]">
-                                </div>
-                            </div>
-                            <div class = "col s12 m12 l3">
-                                <div class ="input-field input-group">
-                                    <label for = "campoVagasPCD">Vagas Deficientes</label>
-                                    <input class = "campoVagasPCD" 
-                                           type = "number" 
-                                           min ="0"
-                                           name = "cargos[vagas_pcd][]">
-                                </div>
-                            </div>
-                        </div>
-                        <div class = "row">
-                            <div class ="col s12 m12 l6">
-                                <div class ="input-field input-group">
-                                    <label for = "campoQtdAprovadosAmpla">
-                                        Quantidade Aprovados p/ Ampla Concorrência
-                                    </label>
-                                    <input class = "campoQtdAprovadosAmpla" 
-                                           type = "number" 
-                                           min ="1"
-                                           name = "cargos[qtd_aprovados_ampla][]">
-                                </div>
-                            </div>
-                            <div class ="col s12 m12 l6">
-                                <div class ="input-field input-group">
-                                    <label for = "campoQtdAprovadosPCD">
-                                        Quantidade Aprovados p/ Deficientes
-                                    </label>
-                                    <input class = "campoQtdAprovadosPCD" 
-                                           type = "number" 
-                                           min ="1"
-                                           name = "cargos[qtd_aprovados_pcd][]">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+        <div class = "row">
+            <div class ="input-field col s4 m4 l3">
+                <label for ="campoEdital" >Edital</label>
+                <input id = "campoEdital" type ="text" name = "edital">
+            </div>
+            <div class ="input-field col s4 m4 l3">            
+                <label for ="campoDataInicioInscricoes" >Data Início Inscrições</label>
+                <input id = "campoDataInicioInscricoes" 
+                       type ="text" name = "data_inicio_inscricoes">
+            </div>
+            <div class ="input-field col s4 m4 l3">
+                <label for ="campoDataTerminoInscricoes" >Data Término Inscrições</label>
+                <input id = "campoDataTerminoInscricoes" type ="text" 
+                       name = "data_termino_inscricoes">
+            </div>
+            <div class ="col s4 m4 l3">
+                <label for = "campoZero">Zero em Alguma Prova Elimina Candidato</label>
+                <br><br>
+                <div class="switch">
+                    <label>
+                        Não
+                        <input id ="campoZero" type="checkbox" 
+                               value ='true'
+                               name = "zerar_alguma_prova_elimina_candidato">
+                        <span class="lever"></span>
+                        Sim
+                    </label>
                 </div>
             </div>
-            
-            
-            
+        </div>
+
+
+        <div class ="row">
+            <div class ='card-panel col s12 m12 l12 teal white-text'>
+                <h4>
+                    Definição de Cargos
+                </h4>
+            </div>
+        </div>
+
+        <div id ="cargos" class = "row">
+
+            <div id-cargo="1" class ="row animated fadeIn" style>
                 <div class ="col s12 m12 l12">
-                        <a class ="btn teal left btnRemoverCargo hide">
+                    <div class="card grey lighten-5">
+                        <div class="card-content black-text">
+                            <span class="card-title">Novo Cargo</span>
+                            <div class ="row">
+                                <div class = "col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoNomeCargo">Nome</label>
+                                        <input
+                                            id = "campoNomeCargo"
+                                            class ="campoNomeCargo"
+                                            type = "text" 
+                                            name = "cargos[nome_cargo][]">
+                                    </div>
+                                </div>
+                                <div class = "col s12 m12 l3">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoVagasAmpla">Vagas Ampla Concorrência</label>
+                                        <input 
+                                            id ="campoVagasAmpla"
+                                            class = "campoVagasAmpla" 
+                                            type = "number" 
+                                            min ="1"
+                                            name = "cargos[vagas_ampla][]">
+                                    </div>
+                                </div>
+                                <div class = "col s12 m12 l3">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoVagasPCD">Vagas Deficientes</label>
+                                        <input
+                                            id ="campoVagasPCD"
+                                            class = "campoVagasPCD" 
+                                            type = "number" 
+                                            min ="0"
+                                            name = "cargos[vagas_pcd][]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class ="col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoQtdAprovadosAmpla">
+                                            Quantidade Aprovados p/ Ampla Concorrência
+                                        </label>
+                                        <input 
+                                            id = "campoQtdAprovadosAmpla"
+                                            class = "campoQtdAprovadosAmpla" 
+                                            type = "number" 
+                                            min ="1"
+                                            name = "cargos[qtd_aprovados_ampla][]">
+                                    </div>
+                                </div>
+                                <div class ="col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoQtdAprovadosPCD">
+                                            Quantidade Aprovados p/ Deficientes
+                                        </label>
+                                        <input 
+                                            id = "campoQtdAprovadosPCD"
+                                            class = "campoQtdAprovadosPCD" 
+                                               type = "number" 
+                                               min ="0"
+                                               name = "cargos[qtd_aprovados_pcd][]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class ="col s12 m12 l12">
+                    <a class="waves-effect waves-light btn btnRemoverCargo hide" >
                         <i class="fa fa-minus" aria-hidden="true"></i>
                         Remover Cargo
                     </a>
@@ -198,18 +207,47 @@
                         Adicionar Cargo
                     </a>
                 </div>
-            
-        </div>
 
+            </div>
+
+        </div>
+        <div class = 'row' >
+            <div class = 'col s12 m12 l12'>
+                <button id = 'btnSubmit' type ='submit' class = 'btn teal right'>
+                    Salvar Dados
+                </button>
+            </div>
+        </div>
+    </form>    
+
+
+  <!-- Modal Structure -->
+  <div id="modalConfirmacao" class="modal">
+    <div class="modal-content">
+      <h4>Confirmação</h4>
+      <p>DESEJA REMOVER O CARGO ?</p>
     </div>
-<div class = 'row' >
-    <div class = 'col s12 m12 l12'>
-        <button id = 'btnSubmit' type ='submit' class = 'btn teal right'>
-            Salvar Dados
-        </button>
+    <div class="modal-footer">
+      <a href="#!" 
+         class=" 
+         modal-action 
+         modal-close 
+         waves-effect 
+         waves-green btn-flat">
+          Não
+      </a>
+        <a 
+         id ="btnSimModal"   
+         href="#!" 
+         class=" 
+         modal-action 
+         modal-close 
+         waves-effect 
+         waves-green btn-flat">
+          Sim
+      </a>
     </div>
-</div>
-  </form>    
+  </div>
 
 </div>
 @endsection
@@ -217,10 +255,6 @@
 @section('scripts')
 @parent
 <script src="{{url('js/concursos/cadastro.js')}}"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-    $('select').material_select();
-});
-</script>
+
 @endsection
 

@@ -2,8 +2,17 @@
     
     
     $(document).ready(function(){
+        $('select').material_select();
+        $('.modal').modal();
         registrarEventos();
+        aplicarMascaras();
+         
     });
+    
+    function aplicarMascaras() {
+        $('#campoDataInicioInscricoes').mask('00/00/0000');
+        $('#campoDataTerminoInscricoes').mask('00/00/0000');
+    }
     
     function registrarEventos() {
         var botoesAddCargo = $('.btnAdicionarCargo');
@@ -51,12 +60,14 @@
     }
     
     function removerCargo() {
-        var confirmacao = confirm('Deseja Remover o Cargo ?');
-        if(confirmacao) {
-            $(this).parents('div[id-cargo]').remove();
-        }
-            
-            
+        
+        $('#modalConfirmacao').modal('open');
+        var btnRemover = $(this);            
+        
+        $('#btnSimModal').on('click', function() {
+            btnRemover.parents('div[id-cargo]').remove();
+        });
+        
     }
     
 }());
