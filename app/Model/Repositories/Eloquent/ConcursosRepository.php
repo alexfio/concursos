@@ -6,6 +6,7 @@ use Concursos\Model\Repositories\ConcursosRepositoryInterface;
 use Concursos\Model\Concurso;
 use Concursos\Model\SituacaoConcurso;
 use Illuminate\Support\Facades\DB;
+use Concursos\Model\Cargo;
 
 class ConcursosRepository implements ConcursosRepositoryInterface {
 
@@ -31,15 +32,32 @@ class ConcursosRepository implements ConcursosRepositoryInterface {
             $situacao = SituacaoConcurso::findOrFail($dados['situacao_concurso_id']);
 
             $concurso->situacaoConcurso()->associate($situacao);
-
-            $cargos = $dados['cargos'];
-            
-            var_dump($cargos);
-            
-            exit;
-            
             $concurso->save();
             
+            $cargos = $dados['cargos'];
+           
+            foreach($cargos as $dadosCargo) {
+                $cargo = null;
+                if(array_key_exists("id", $cargos)) 
+                    $cargo =  Cargo::findOrFail($cargos['id']);
+                else 
+                    $cargo = new Cargo();
+                
+                $cargo->nome = $dadosCargo['nome_cargo'];
+                $cargo->vagas_ampla_concorrencia = $dadosCargo['vagas_ampla'];
+                $cargo->vagas_pcd = $dadosCargo['vagas_pcd'];
+                $cargo->qtd_aprovados_ampla_concorrencia = 
+                        $dadosCargo['qtd_aprovados_ampla'];
+                $cargo->qtd_aprovados_pcd = $dadosCargo['qtd_aprovados_pcd'];
+                
+                $cargo->concurso()->associate($concurso);
+                
+                $cargo->save();
+                
+                
+            }
+            
+   
             return $concurso->id;
         });
         
