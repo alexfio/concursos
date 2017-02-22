@@ -20,6 +20,7 @@ class ConcursosRepository implements ConcursosRepositoryInterface {
 
 
         $id_concurso = DB::transaction(function() use ($dados, $concurso) {
+            $concurso->nome = $dados['nome'];
             $concurso->descricao = $dados['descricao'];
             $concurso->edital = $dados['edital'];
             $concurso->data_inicio_inscricoes = $dados['data_inicio_inscricoes'];
@@ -31,6 +32,12 @@ class ConcursosRepository implements ConcursosRepositoryInterface {
 
             $concurso->situacaoConcurso()->associate($situacao);
 
+            $cargos = $dados['cargos'];
+            
+            var_dump($cargos);
+            
+            exit;
+            
             $concurso->save();
             
             return $concurso->id;

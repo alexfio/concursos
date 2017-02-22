@@ -24,6 +24,7 @@ class ConcursoCadastroRequest extends FormRequest
     public function rules()
     {
         return [
+            "nome" => "required",
             "descricao" => "required",
             "edital" => "required",
             "data_inicio_inscricoes" => "required|date_format:d/m/Y",
@@ -33,6 +34,7 @@ class ConcursoCadastroRequest extends FormRequest
     
     public function messages() {
         return [
+           "nome.required" => "O campo nome é obrigatório;" ,
            "descricao.required" => "O campo descrição é obrigatório;" ,
            "edital.required" => "O campo edital é obrigatório;",
            "data_inicio_inscricoes.required" => "O campo Data de Início das Inscrições é obrigatório;" ,

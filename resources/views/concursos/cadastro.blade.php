@@ -61,7 +61,14 @@
 
     <form action = '{{action('ConcursosController@cadastrar')}}' method = 'post'>
         <input type = 'hidden' name ='_token' value = '{{csrf_token()}}'  >  
-
+        <div class ="row">
+            <div class ='input-field col s12 m12 l12'>
+                <label for ='campoNome' >Nome</label>
+                <input id = "campoNome" 
+                       name = 'nome' 
+                       type = "text" value = "{{old('nome')}}">
+            </div>
+        </div>
         <div class = "row">
             <div class="input-field col s12">
                 

@@ -21,7 +21,9 @@ class ConcursosDefault implements ConcursosInterface {
     
     public function cadastrarOuAtualizar(array $dados) {
         
-        
+        $dados['nome'] = $this
+                ->transformador
+                ->aplicarComposicao("trim", $dados['nome']);
         
         $dados['descricao'] = $this
                 ->transformador
@@ -46,7 +48,13 @@ class ConcursosDefault implements ConcursosInterface {
                 ->transformador
                 ->aplicarComposicao("trim", $dados['situacao_concurso_id']);
         
+       
+        for($c = 0; $c < count($dados['cargos']); $c++) {
+            $dados['cargos'][$c]['nome_cargo'] =
+                $this->transformador->trim($dados['cargos'][$c]['nome_cargo']);
+        }
         
+       
        $this->concursosRepository->saveOrUpdate($dados);
         
         
