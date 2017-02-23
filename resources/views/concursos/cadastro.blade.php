@@ -231,7 +231,7 @@
                 </div>
 
                 <div class ="col s12 m12 l12">
-                    <a class="waves-effect waves-light btn btnRemoverCargo  {{$c == 0 ? 'hide' : '' }}"" >
+                    <a class="waves-effect waves-light btn btnRemoverCargo  {{$c == 0 ? 'hide' : '' }}" >
                         <i class="fa fa-minus" aria-hidden="true"></i>
                         Remover Cargo
                     </a>
@@ -243,6 +243,96 @@
 
             </div>
            @endfor
+          @elseif(isset($concurso))
+            <div id-cargo="1" class ="row animated fadeIn" >
+                <div class ="col s12 m12 l12">
+                    <div class="card grey lighten-5">
+                        <div class="card-content black-text">
+                            <span class="card-title">Novo Cargo</span>
+                            <div class ="row">
+                                <div class = "col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoNomeCargo">Nome</label>
+                                        <input
+                                            id = "campoNomeCargo"
+                                            class ="campoNomeCargo"
+                                            type = "text" 
+                                            name = "cargos[nome_cargo][]"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class = "col s12 m12 l3">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoVagasAmpla">Vagas Ampla Concorrência</label>
+                                        <input 
+                                            id ="campoVagasAmpla"
+                                            class = "campoVagasAmpla" 
+                                            type = "number" 
+                                            min ="1"
+                                            name = "cargos[vagas_ampla][]"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class = "col s12 m12 l3">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoVagasPCD">Vagas Deficientes</label>
+                                        <input
+                                            id ="campoVagasPCD"
+                                            class = "campoVagasPCD" 
+                                            type = "number" 
+                                            min ="0"
+                                            name = "cargos[vagas_pcd][]"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class ="col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoQtdAprovadosAmpla">
+                                            Quantidade Aprovados p/ Ampla Concorrência
+                                        </label>
+                                        <input 
+                                            id = "campoQtdAprovadosAmpla"
+                                            class = "campoQtdAprovadosAmpla" 
+                                            type = "number" 
+                                            min ="1"
+                                            name = "cargos[qtd_aprovados_ampla][]"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class ="col s12 m12 l6">
+                                    <div class ="input-field input-group">
+                                        <label for = "campoQtdAprovadosPCD">
+                                            Quantidade Aprovados p/ Deficientes
+                                        </label>
+                                        <input 
+                                            id = "campoQtdAprovadosPCD"
+                                            class = "campoQtdAprovadosPCD" 
+                                            type = "number" 
+                                            min ="0"
+                                            name = "cargos[qtd_aprovados_pcd][]" 
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class ="col s12 m12 l12">
+                    <a class="waves-effect waves-light btn btnRemoverCargo hide" >
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                        Remover Cargo
+                    </a>
+                    <a class ="btn teal right btnAdicionarCargo">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        Adicionar Cargo
+                    </a>
+                </div>
+
+            </div>
           @else
             <div id-cargo="1" class ="row animated fadeIn" >
                 <div class ="col s12 m12 l12">
