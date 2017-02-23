@@ -128,7 +128,8 @@
                         <input id ="campoZero" type="checkbox" 
                                value ='true'
                                name = "zerar_alguma_prova_elimina_candidato"
-                               <?= old('zerar_alguma_prova_elimina_candidato') ? 'checked' :  ''  ?>>
+                               <?= old('zerar_alguma_prova_elimina_candidato') 
+                                                        ? 'checked' :  ''  ?>>
                         <span class="lever"></span>
                         Sim
                     </label>
@@ -168,7 +169,8 @@
                                 </div>
                                 <div class = "col s12 m12 l3">
                                     <div class ="input-field input-group">
-                                        <label for = "campoVagasAmpla">Vagas Ampla Concorrência</label>
+                                        <label for = "campoVagasAmpla">
+                                            Vagas Ampla Concorrência</label>
                                         <input 
                                             id ="campoVagasAmpla"
                                             class = "campoVagasAmpla" 
@@ -231,7 +233,8 @@
                 </div>
 
                 <div class ="col s12 m12 l12">
-                    <a class="waves-effect waves-light btn btnRemoverCargo  {{$c == 0 ? 'hide' : '' }}" >
+                    <a class="waves-effect waves-light btn btnRemoverCargo  
+                       {{$c == 0 ? 'hide' : '' }}" >
                         <i class="fa fa-minus" aria-hidden="true"></i>
                         Remover Cargo
                     </a>
@@ -263,7 +266,8 @@
                                 </div>
                                 <div class = "col s12 m12 l3">
                                     <div class ="input-field input-group">
-                                        <label for = "campoVagasAmpla">Vagas Ampla Concorrência</label>
+                                        <label for = "campoVagasAmpla">
+                                            Vagas Ampla Concorrência</label>
                                         <input 
                                             id ="campoVagasAmpla"
                                             class = "campoVagasAmpla" 
@@ -275,7 +279,8 @@
                                 </div>
                                 <div class = "col s12 m12 l3">
                                     <div class ="input-field input-group">
-                                        <label for = "campoVagasPCD">Vagas Deficientes</label>
+                                        <label for = "campoVagasPCD">
+                                            Vagas Deficientes</label>
                                         <input
                                             id ="campoVagasPCD"
                                             class = "campoVagasPCD" 
@@ -290,7 +295,8 @@
                                 <div class ="col s12 m12 l6">
                                     <div class ="input-field input-group">
                                         <label for = "campoQtdAprovadosAmpla">
-                                            Quantidade Aprovados p/ Ampla Concorrência
+                                            Quantidade Aprovados p/
+                                            Ampla Concorrência
                                         </label>
                                         <input 
                                             id = "campoQtdAprovadosAmpla"
@@ -353,7 +359,8 @@
                                 </div>
                                 <div class = "col s12 m12 l3">
                                     <div class ="input-field input-group">
-                                        <label for = "campoVagasAmpla">Vagas Ampla Concorrência</label>
+                                        <label for = "campoVagasAmpla">
+                                            Vagas Ampla Concorrência</label>
                                         <input 
                                             id ="campoVagasAmpla"
                                             class = "campoVagasAmpla" 
@@ -365,7 +372,8 @@
                                 </div>
                                 <div class = "col s12 m12 l3">
                                     <div class ="input-field input-group">
-                                        <label for = "campoVagasPCD">Vagas Deficientes</label>
+                                        <label for = "campoVagasPCD">
+                                            Vagas Deficientes</label>
                                         <input
                                             id ="campoVagasPCD"
                                             class = "campoVagasPCD" 
